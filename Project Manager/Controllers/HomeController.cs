@@ -15,7 +15,11 @@ namespace Project_Manager.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var db = new project_manager_dbContext();
+
+            var model = db.Category.ToList();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
