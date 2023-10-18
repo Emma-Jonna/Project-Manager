@@ -23,14 +23,19 @@ namespace Project_Manager.Controllers
         {
             var db = new project_manager_dbContext();
 
-            var model = db.Project;
+            var model = db.Project.ToList();
 
             return View(model);
         }
 
         public IActionResult UpdateProject()
         {
-            return View();
+
+            var db = new project_manager_dbContext();
+
+            var model = db.Project.ToList();
+
+            return View(model);
         }
     }
 }
