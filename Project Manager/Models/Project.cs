@@ -15,7 +15,7 @@ public partial class Project
 
     public string Description { get; set; }
 
-    public int? ProjectStatusId { get; set; }
+    public int? StatusId { get; set; }
 
     public int? CategoryId { get; set; }
 
@@ -35,7 +35,7 @@ public partial class Project
 
     public virtual ICollection<Material> Material { get; set; } = new List<Material>();
 
-    public virtual Status ProjectStatus { get; set; }
+    public virtual Status Status { get; set; }
 
     public virtual User User { get; set; }
 }
