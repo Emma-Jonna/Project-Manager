@@ -1,6 +1,6 @@
 ﻿@*@using PassDatainMVC.Models*@
 @*@model Project_Manager.Models.Category*@
-@model List<Category>
+@model List<Project>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -9,8 +9,14 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
+        <ul>
     @foreach (var item in Model)
     {
-        <div>@item.Name</div>
+            <li>
+                <div>
+                    <a asp-controller="Project" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
+                </div>
+            </li>
     }
+        </ul>
 </div>
