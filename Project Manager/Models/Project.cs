@@ -19,6 +19,8 @@ public partial class Project
 
     public int? CategoryId { get; set; }
 
+    public int? TypeId { get; set; }
+
     public DateTime? StartDate { get; set; }
 
     public DateTime? EndDate { get; set; }
@@ -36,6 +38,8 @@ public partial class Project
     public virtual ICollection<Material> Material { get; set; } = new List<Material>();
 
     public virtual Status Status { get; set; }
+
+    public virtual Type Type { get; set; }
 
     public virtual User User { get; set; }
 }
