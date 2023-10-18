@@ -19,7 +19,11 @@ namespace Project_Manager.Controllers
 
             var model = db.Category.ToList();
 
-            return View(model);
+            var projects = db.Project.Where(project => project.UserId == 1).ToList();
+            //var projects = db.Project.Include(m => m.Material).Where(project => project.UserId == 1).ToList();
+            //var projects = db.Project.ToList();
+
+            return View(projects);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

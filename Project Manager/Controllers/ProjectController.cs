@@ -1,12 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Project_Manager.Models;
 
 namespace Project_Manager.Controllers
 {
     public class ProjectController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            var db = new project_manager_dbContext();
+
+            //var project = db.Project.Find(id);
+            //var project = db.Project.include.Where(p => p.Id == id).First();
+            var project = db.Project.Include(m => m.Material).Include(c => c.Category).Include(t => t.Type).Include(s => s.Status).Where(p => p.Id == id).First();
+
+            //Console.WriteLine(project.CategoryId);
+
+            return View(project);
         }
 
         public IActionResult CreateProject()
