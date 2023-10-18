@@ -21,7 +21,11 @@ namespace Project_Manager.Controllers
 
         public IActionResult CreateProject()
         {
-            return View();
+            var db = new project_manager_dbContext();
+
+            var model = db.Project;
+
+            return View(model);
         }
 
         public IActionResult UpdateProject()
