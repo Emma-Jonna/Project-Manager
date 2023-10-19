@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "SignIn";
 }
-@model List<User>
 
 <h1>SignIn</h1>
 
@@ -20,10 +19,5 @@
     </form>
 
     <a asp-controller="User" asp-action="SignUp">Register</a>
-
-    @foreach (var item in Model)
-    {
-        <p>@item.Name</p>
-    }
 </section>
 

@@ -20,14 +20,36 @@ namespace Project_Manager.Controllers
         }
 
         [HttpPost]
+        public IActionResult SignInUser(User formData)
+        {
+            var db = new project_manager_dbContext();
+
+            var user = db.User.ToList();
+
+            var findUser = db.User.Where(u => u.Email == formData.Email || u.Password == formData.Password);
+
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult SignUpUser(User formData)
         {
             //TODO check if all fields were filled
-            //TODO check if the user already exist
-            //TODO show errors to user
-            //TODO show success
-            var user = new User();
+            //TODO redirect to signup and show errors
+            //TODO redirect to signup and show success
             var db = new project_manager_dbContext();
+
+            var findUser = db.User.Where(u => u.Email == formData.Email).ToList();
+
+            Console.WriteLine(findUser.Count());
+
+            if (findUser.Count() > 0)
+            {
+                return RedirectToAction("SignUp");
+            }
+
+
+            var user = new User();
 
             user.Name = formData.Name;
             user.Email = formData.Email;
@@ -37,7 +59,6 @@ namespace Project_Manager.Controllers
             db.SaveChanges();
 
             return RedirectToAction("SignIn");
-            //TODO redirect to signup and show success
         }
     }
 }
