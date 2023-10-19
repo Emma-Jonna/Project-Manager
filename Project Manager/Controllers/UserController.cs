@@ -26,9 +26,18 @@ namespace Project_Manager.Controllers
 
             var user = db.User.ToList();
 
-            var findUser = db.User.Where(u => u.Email == formData.Email || u.Password == formData.Password);
+            var findUser = db.User.Where(u => u.Email == formData.Email && u.Password == formData.Password).ToList();
 
-            return View();
+            Console.WriteLine(findUser.Count());
+
+            if (findUser.Count() == 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            TempData["error"] = "Something Went Wrong Please Try Again";
+            return RedirectToAction("SignIn");
+
         }
 
         [HttpPost]
@@ -43,8 +52,9 @@ namespace Project_Manager.Controllers
 
             Console.WriteLine(findUser.Count());
 
-            if (findUser.Count() > 0)
+            if (findUser.Count() != 0)
             {
+                TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("SignUp");
             }
 
@@ -57,8 +67,9 @@ namespace Project_Manager.Controllers
 
             db.User.Add(user);
             db.SaveChanges();
+            TempData["success"] = "Successfully Created Account";
 
-            return RedirectToAction("SignIn");
+            return RedirectToAction("SignUp");
         }
     }
 }

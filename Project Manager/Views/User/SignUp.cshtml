@@ -40,3 +40,11 @@
     }*@
 </section>
 
+@if (TempData["success"] != null)
+{
+    <p>@Html.Encode(TempData["success"])</p>
+}else if (TempData["error"] != null)
+{
+    <p>@Html.Encode(TempData["error"])</p>
+}
+

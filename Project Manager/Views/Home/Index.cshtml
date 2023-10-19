@@ -9,14 +9,14 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
-        <ul>
-    @foreach (var item in Model)
-    {
+    <ul>
+        @foreach (var item in Model)
+        {
             <li>
                 <div>
                     <a asp-controller="Project" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
                 </div>
             </li>
-    }
-        </ul>
+        }
+    </ul>
 </div>

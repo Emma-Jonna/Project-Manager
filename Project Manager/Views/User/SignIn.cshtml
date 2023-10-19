@@ -5,17 +5,23 @@
 <h1>SignIn</h1>
 
 <section>
-    <form asp-action="">
-        <label>
+
+    @if (TempData["error"] != null)
+    {
+        <p>@Html.Encode(TempData["error"])</p>
+    }
+
+    <form method="post" asp-controller="User" asp-action="SignInUser">
+        <label for="Email">
             <p>Email</p>
-            <input />
+            <input name="Email" type="email" />
         </label>
-        <label>
+        <label for="Password">
             <p>Password</p>
-            <input />
+            <input name="Password" type="password" />
         </label>
         @*<a asp-controller="Home" asp-action="Index">Login</a>*@
-        <button>Login</button>
+        <button type="submit" value="SignInUser">Sign In</button>
     </form>
 
     <a asp-controller="User" asp-action="SignUp">Register</a>
