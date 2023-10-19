@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "SignUp";
 }
+@model Project_Manager.Models.User
 
 <h1>SignUp</h1>
 
 <section>
-    <form>
+    <form method="post" asp-controller="User" asp-action="RegisterUser">
         <label>
             <p>Name</p>
             <input />
@@ -19,7 +20,22 @@
             <p>Password</p>
             <input />
         </label>
-        <a asp-controller="User" asp-action="SignUp">Login</a>
+        <a asp-controller="User" asp-action="SignUp">Sign Up</a>
+        <button type="submit" value="RegisterUser">Sign Up</button>
     </form>
+
+    @using (Html.BeginForm("RegisterUser", "User", FormMethod.Post))
+    {
+        <label for="Name">Name:</label>
+        @Html.TextBoxFor(m => m.Name)
+
+        <label for="Email">Email:</label>
+        @Html.TextBoxFor(m => m.Email)
+
+        <label for="Password">Password:</label>
+        @Html.TextBoxFor(m => m.Password)
+
+        <input type="submit" value="RegisterUser">
+    }
 </section>
 

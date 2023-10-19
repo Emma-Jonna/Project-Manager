@@ -1,7 +1,7 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "SignIn";
 }
+@model List<User>
 
 <h1>SignIn</h1>
 
@@ -18,5 +18,10 @@
         @*<a asp-controller="Home" asp-action="Index">Login</a>*@
         <button>Login</button>
     </form>
+
+    @foreach (var item in Model)
+    {
+        <p>@item.Name</p>
+    }
 </section>
 
