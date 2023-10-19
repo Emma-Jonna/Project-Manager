@@ -20,7 +20,7 @@ namespace Project_Manager.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterUser(User formData)
+        public IActionResult SignUpUser(User formData)
         {
             //TODO check if all fields were filled
             //TODO check if the user already exist
