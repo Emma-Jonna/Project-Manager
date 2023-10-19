@@ -8,34 +8,36 @@
 
 <section>
     <form method="post" asp-controller="User" asp-action="RegisterUser">
-        <label>
+        <label for="Name">
             <p>Name</p>
-            <input />
+            <input name="Name" type="text"/>
         </label>
-        <label>
+        <label for="Email">
             <p>Email</p>
-            <input />
+            <input name="Email" type="email"/>
         </label>
-        <label>
+        <label for="Password">
             <p>Password</p>
-            <input />
+            <input name="Password" type="password"/>
         </label>
         <a asp-controller="User" asp-action="SignUp">Sign Up</a>
         <button type="submit" value="RegisterUser">Sign Up</button>
     </form>
 
-    @using (Html.BeginForm("RegisterUser", "User", FormMethod.Post))
+    <a asp-controller="User" asp-action="SignIn">Back</a>
+
+    @*@using (Html.BeginForm("RegisterUser", "User", FormMethod.Post))
     {
         <label for="Name">Name:</label>
-        @Html.TextBoxFor(m => m.Name)
+        @Html.TextBoxFor(u => u.Name)
 
         <label for="Email">Email:</label>
-        @Html.TextBoxFor(m => m.Email)
+        @Html.TextBoxFor(u => u.Email)
 
         <label for="Password">Password:</label>
-        @Html.TextBoxFor(m => m.Password)
+        @Html.TextBoxFor(u => u.Password)
 
         <input type="submit" value="RegisterUser">
-    }
+    }*@
 </section>
 

@@ -11,7 +11,6 @@ namespace Project_Manager.Controllers
 
             var model = db.User.ToList();
 
-
             return View(model);
         }
 
@@ -38,6 +37,7 @@ namespace Project_Manager.Controllers
             db.SaveChanges();
 
             return RedirectToAction("SignIn");
+            //TODO redirect to signup and show success
         }
     }
 }
