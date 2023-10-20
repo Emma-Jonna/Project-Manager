@@ -10,7 +10,6 @@ namespace Project_Manager.Controllers
     {
         public IActionResult SignIn()
         {
-            //TODO If a user is logged in should not view this page
 
             if (User.Identity.IsAuthenticated)
             {
@@ -25,7 +24,6 @@ namespace Project_Manager.Controllers
 
         public IActionResult SignUp()
         {
-            //TODO If a user is logged in should not view this page
 
             if (User.Identity.IsAuthenticated)
             {
@@ -80,15 +78,12 @@ namespace Project_Manager.Controllers
         [HttpPost]
         public IActionResult SignUpUser(User formData)
         {
-            //TODO check if all fields were filled
-            //TODO redirect to signup and show errors
-            //TODO redirect to signup and show success
 
-            /*if (!ModelState.IsValid)
+            if (formData.Email == null || formData.Password == null || formData.Name == null)
             {
-                TempData["error"] = "Something Went Wrong Please Try Again";
+                TempData["error"] = "Please fill in all the fields";
                 return RedirectToAction("SignUp");
-            }*/
+            }
 
             var db = new project_manager_dbContext();
 
