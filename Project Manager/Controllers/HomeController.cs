@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project_Manager.Models;
 using System.Diagnostics;
 
@@ -21,11 +22,16 @@ namespace Project_Manager.Controllers
 
             var model = db.Category.ToList();
 
+            var uderId = Convert.ToInt32(User.FindFirst("UserId").Value);
+            //var userName = User.Identity.Name;
+            //var userEmail = User.Identity.Email;
+
             Console.WriteLine(TempData["userId"]);
 
             var userData = Convert.ToInt32(TempData["userId"]);
 
-            var projects = db.Project.Where(project => project.UserId == userData).ToList();
+            var projects = db.Project.Include(u => u.User).Where(project => project.UserId == uderId).ToList();
+            //var projects = db.Project.Include(u => u.User).Where(project => project.UserId == userData).ToList();
             //var projects = db.Project.Include(m => m.Material).Where(project => project.UserId == 1).ToList();
             //var projects = db.Project.ToList();
 

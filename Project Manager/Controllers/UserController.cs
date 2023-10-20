@@ -11,6 +11,11 @@ namespace Project_Manager.Controllers
         public IActionResult SignIn()
         {
             //TODO If a user is logged in should not view this page
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var db = new project_manager_dbContext();
 
             var model = db.User.ToList();
@@ -21,6 +26,12 @@ namespace Project_Manager.Controllers
         public IActionResult SignUp()
         {
             //TODO If a user is logged in should not view this page
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -55,15 +66,13 @@ namespace Project_Manager.Controllers
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, Convert.ToString(formData.Email))
+                new Claim("UserId", Convert.ToString(findUser[0].Id)),
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties());
-
-            TempData["userId"] = findUser[0].Id;
 
             return RedirectToAction("Index", "Home");
         }
