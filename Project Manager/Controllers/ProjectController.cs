@@ -26,12 +26,21 @@ namespace Project_Manager.Controllers
         {
             var db = new project_manager_dbContext();
 
-            var model = db.Project.Include(m => m.Material).Include(c => c.Category).Include(t => t.Type).ToList();
+            var categories = db.Category.ToList();
+            var type = db.Type.ToList();
 
-            foreach (var item in model)
-            {
-                Console.WriteLine(item.Type.Name);
-            }
+            //var model = categories.Concat(type).ToList();
+
+            //var model = db.Category.Include.Include(c => c.Category).Include(t => t.Type).ToList();
+            var model = db.Project.Include(c => c.Category).Include(t => t.Type).ToList();
+
+            //var m = db.Project.LeftJoin(c => c.Category).ToList();
+
+            //model.Add("Categories", db.Category.ToList());
+
+            //var model = db.Type.ToList();
+
+            Console.WriteLine(model);
 
 
             return View(model);
