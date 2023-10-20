@@ -7,6 +7,7 @@ namespace Project_Manager.Controllers
     {
         public IActionResult SignIn()
         {
+            //TODO If a user is logged in should not view this page
             var db = new project_manager_dbContext();
 
             var model = db.User.ToList();
@@ -16,12 +17,19 @@ namespace Project_Manager.Controllers
 
         public IActionResult SignUp()
         {
+            //TODO If a user is logged in should not view this page
             return View();
         }
 
         [HttpPost]
         public IActionResult SignInUser(User formData)
         {
+            if (formData.Email == null || formData.Password == null)
+            {
+                TempData["error"] = "Please fill in all the fields";
+                return RedirectToAction("SignIn");
+            }
+
             var db = new project_manager_dbContext();
 
             var user = db.User.ToList();
@@ -47,11 +55,11 @@ namespace Project_Manager.Controllers
             //TODO redirect to signup and show errors
             //TODO redirect to signup and show success
 
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("SignUp");
-            }
+            }*/
 
             var db = new project_manager_dbContext();
 
