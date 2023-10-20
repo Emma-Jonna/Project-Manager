@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Project_Manager.Models;
+using System.Security.Claims;
 
 namespace Project_Manager.Controllers
 {
@@ -21,9 +24,17 @@ namespace Project_Manager.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult SignInUser(User formData)
+        public async Task<IActionResult> SignOutUser()
         {
+            await HttpContext.SignOutAsync();
+
+            return RedirectToAction("SignIn");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignInUser(User formData)
+        {
+
             if (formData.Email == null || formData.Password == null)
             {
                 TempData["error"] = "Please fill in all the fields";
@@ -36,16 +47,25 @@ namespace Project_Manager.Controllers
 
             var findUser = db.User.Where(u => u.Email == formData.Email && u.Password == formData.Password).ToList();
 
-            Console.WriteLine(findUser.Count());
-
-            if (findUser.Count() == 1)
+            if (findUser.Count() != 1)
             {
-                return RedirectToAction("Index", "Home");
+                TempData["error"] = "Something Went Wrong Please Try Again";
+                return RedirectToAction("SignIn");
             }
 
-            TempData["error"] = "Something Went Wrong Please Try Again";
-            return RedirectToAction("SignIn");
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, Convert.ToString(formData.Email))
+            };
 
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties());
+
+            TempData["userId"] = findUser[0].Id;
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

@@ -21,7 +21,11 @@ namespace Project_Manager.Controllers
 
             var model = db.Category.ToList();
 
-            var projects = db.Project.Where(project => project.UserId == 1).ToList();
+            Console.WriteLine(TempData["userId"]);
+
+            var userData = Convert.ToInt32(TempData["userId"]);
+
+            var projects = db.Project.Where(project => project.UserId == userData).ToList();
             //var projects = db.Project.Include(m => m.Material).Where(project => project.UserId == 1).ToList();
             //var projects = db.Project.ToList();
 
