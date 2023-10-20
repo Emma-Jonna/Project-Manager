@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace Project_Manager
 {
     public class Program
@@ -5,6 +7,14 @@ namespace Project_Manager
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+                options =>
+                {
+                    options.LoginPath = "/User/SignIn";
+                    options.Cookie.Name = "ProjectManagerCookie";
+                }
+                );
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -24,7 +34,9 @@ namespace Project_Manager
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
 
             app.MapControllerRoute(
                 name: "default",
