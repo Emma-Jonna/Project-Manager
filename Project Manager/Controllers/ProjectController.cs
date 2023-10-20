@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_Manager.Models;
 
@@ -6,6 +7,7 @@ namespace Project_Manager.Controllers
 {
     public class ProjectController : Controller
     {
+        [Authorize]
         public IActionResult Index(int id)
         {
             var db = new project_manager_dbContext();
@@ -19,6 +21,7 @@ namespace Project_Manager.Controllers
             return View(project);
         }
 
+        [Authorize]
         public IActionResult CreateProject()
         {
             var db = new project_manager_dbContext();
@@ -28,6 +31,7 @@ namespace Project_Manager.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult UpdateProject()
         {
 

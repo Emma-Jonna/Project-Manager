@@ -46,6 +46,13 @@ namespace Project_Manager.Controllers
             //TODO check if all fields were filled
             //TODO redirect to signup and show errors
             //TODO redirect to signup and show success
+
+            if (!ModelState.IsValid)
+            {
+                TempData["error"] = "Something Went Wrong Please Try Again";
+                return RedirectToAction("SignUp");
+            }
+
             var db = new project_manager_dbContext();
 
             var findUser = db.User.Where(u => u.Email == formData.Email).ToList();
