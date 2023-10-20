@@ -2,9 +2,9 @@
     ViewData["Title"] = "SignIn";
 }
 
-<h1>SignIn</h1>
-
 <section>
+
+<h1>SignIn</h1>
 
     @if (TempData["error"] != null)
     {
@@ -14,16 +14,15 @@
     <form method="post" asp-controller="User" asp-action="SignInUser">
         <label for="Email">
             <p>Email</p>
-            <input name="Email" type="email" />
+            <input name="Email" type="email" placeholder="rune@yrgo.se" />
         </label>
         <label for="Password">
             <p>Password</p>
             <input name="Password" type="password" />
         </label>
-        @*<a asp-controller="Home" asp-action="Index">Login</a>*@
         <button type="submit" value="SignInUser">Sign In</button>
     </form>
 
-    <a asp-controller="User" asp-action="SignUp">Register</a>
+    <a asp-controller="User" asp-action="SignUp">Register Account</a>
 </section>
 

@@ -15,6 +15,7 @@ namespace Project_Manager.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var db = new project_manager_dbContext();
 
             var model = db.User.ToList();

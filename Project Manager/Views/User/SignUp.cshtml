@@ -4,47 +4,35 @@
 }
 @model Project_Manager.Models.User
 
+<section>
+
 <h1>SignUp</h1>
 
-<section>
+    @if (TempData["success"] != null)
+    {
+        <p>@Html.Encode(TempData["success"])</p>
+    }
+    else if (TempData["error"] != null)
+    {
+        <p>@Html.Encode(TempData["error"])</p>
+    }
+
     <form method="post" asp-controller="User" asp-action="SignUpUser">
         <label for="Name">
             <p>Name</p>
-            <input name="Name" type="text"/>
+            <input name="Name" type="text" placeholder="Rune"/>
         </label>
         <label for="Email">
             <p>Email</p>
-            <input name="Email" type="email"/>
+            <input name="Email" type="email" placeholder="rune@yrgo.se" />
         </label>
         <label for="Password">
             <p>Password</p>
-            <input name="Password" type="password"/>
+            <input name="Password" type="password" />
         </label>
         <button type="submit" value="SignUpUser">Sign Up</button>
     </form>
 
-    <a asp-controller="User" asp-action="SignIn">Back</a>
-
-    @*@using (Html.BeginForm("RegisterUser", "User", FormMethod.Post))
-    {
-        <label for="Name">Name:</label>
-        @Html.TextBoxFor(u => u.Name)
-
-        <label for="Email">Email:</label>
-        @Html.TextBoxFor(u => u.Email)
-
-        <label for="Password">Password:</label>
-        @Html.TextBoxFor(u => u.Password)
-
-        <input type="submit" value="RegisterUser">
-    }*@
+    <a asp-controller="User" asp-action="SignIn">Go Back</a>
 </section>
-
-@if (TempData["success"] != null)
-{
-    <p>@Html.Encode(TempData["success"])</p>
-}else if (TempData["error"] != null)
-{
-    <p>@Html.Encode(TempData["error"])</p>
-}
 

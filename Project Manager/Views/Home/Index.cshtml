@@ -13,9 +13,14 @@
         @foreach (var item in Model)
         {
             <li>
-                <div>
-                    <a asp-controller="Project" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
-                </div>
+                <a asp-controller="Project" asp-action="index" asp-route-id="@item.Id">
+                    <div class="project-card">
+                        <p>@item.Name</p>
+                        <p>@item.Status.Name</p>
+                        <p>@item.Type.Name</p>
+                        <p>@item.Category.Name</p>
+                    </div>
+                    </a>
             </li>
         }
     </ul>

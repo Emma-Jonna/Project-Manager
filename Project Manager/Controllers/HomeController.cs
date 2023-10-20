@@ -28,7 +28,7 @@ namespace Project_Manager.Controllers
 
             var userData = Convert.ToInt32(TempData["userId"]);
 
-            var projects = db.Project.Include(u => u.User).Where(project => project.UserId == userId).ToList();
+            var projects = db.Project.Include(u => u.User).Include(c => c.Category).Include(t => t.Type).Include(s => s.Status).Where(project => project.UserId == userId).ToList();
             //var projects = db.Project.Include(u => u.User).Where(project => project.UserId == userData).ToList();
             //var projects = db.Project.Include(m => m.Material).Where(project => project.UserId == 1).ToList();
             //var projects = db.Project.ToList();

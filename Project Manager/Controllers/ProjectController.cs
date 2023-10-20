@@ -26,7 +26,13 @@ namespace Project_Manager.Controllers
         {
             var db = new project_manager_dbContext();
 
-            var model = db.Project.ToList();
+            var model = db.Project.Include(m => m.Material).Include(c => c.Category).Include(t => t.Type).ToList();
+
+            foreach (var item in model)
+            {
+                Console.WriteLine(item.Type.Name);
+            }
+
 
             return View(model);
         }
