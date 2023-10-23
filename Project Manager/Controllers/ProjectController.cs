@@ -41,10 +41,18 @@ namespace Project_Manager.Controllers
         [Authorize]
         public IActionResult UpdateProject()
         {
-
             var db = new project_manager_dbContext();
 
-            var model = db.Project.ToList();
+            var typeModel = db.Type.ToList();
+            var categoryModel = db.Category.ToList();
+            var statusModel = db.Status.ToList();
+
+            var model = new CreateProject()
+            {
+                Category = categoryModel,
+                Type = typeModel,
+                Status = statusModel,
+            };
 
             return View(model);
         }
@@ -59,18 +67,21 @@ namespace Project_Manager.Controllers
 
             var id = projectId.Value;
 
+            Console.WriteLine(id);
+
             var db = new project_manager_dbContext();
 
-            var projectToDelete = db.Project.Find(id);
-            var materialsToDelete = db.Material.Find(id);
+            var projectToDelete = db.Project.First(p => p.Id == id);
+            var materialsToDelete = db.Material.First(m => m.ProjectId == id);
 
             if (projectToDelete == null || materialsToDelete == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            db.Project.Remove(projectToDelete);
             db.Material.Remove(materialsToDelete);
+            db.SaveChanges();
+            db.Project.Remove(projectToDelete);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
