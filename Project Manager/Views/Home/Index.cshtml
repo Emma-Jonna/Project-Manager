@@ -9,6 +9,11 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
+    @if (TempData["success"] != null)
+    {
+        <p>@Html.Encode(TempData["success"])</p>
+    }
+
     <ul>
         @foreach (var item in Model)
         {

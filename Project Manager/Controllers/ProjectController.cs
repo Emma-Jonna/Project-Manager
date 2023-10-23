@@ -93,12 +93,10 @@ namespace Project_Manager.Controllers
             Console.WriteLine(formData.TypeId);
             Console.WriteLine(formData.StatusId);
 
-            /*db.Project.Add(newProject);
-            db.SaveChanges();*/
+            db.Project.Add(newProject);
+            db.SaveChanges();
 
-            Console.WriteLine(newProject);
-
-            Console.WriteLine(userId);
+            TempData["success"] = "Successfully created project";
 
             return RedirectToAction("Index", "Home");
         }
