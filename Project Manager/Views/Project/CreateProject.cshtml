@@ -8,48 +8,29 @@
 <secion>
     <form>
         <label>
-            <p>Name</p>
+            <p>Project Name</p>
             <input />
         </label>
 
-        <select>
-        @foreach (var item in Model.Category)
-        {
-        <option>@item.Name</option>
-        }
-        </select>
+        <label>
+            <p>Project Category</p>
+            <select>
+                @foreach (var item in Model.Category)
+                {
+                    <option>@item.Name</option>
+                }
+            </select>
+        </label>
 
-        <select>
-            @foreach (var item in Model.Type)
-            {
-                <option>@item.Name</option>
-            }
-        </select>
-
-        @*<select>
-        <ul>
-        @foreach (var item in Model)
-        {
-        <option>
-        <li>@item.Category</li>
-        </option>
-        }
-        </ul>
-        </select>*@
-
-        @*<select>
-        <ul>
-        <option>
-        <li>
-        @Model.
-        </li>
-        </option>
-        </ul>
-        </select>*@
-
-        @*<select>
-        <option>status</option>
-        </select>*@
+        <label>
+            <p>Project Type</p>
+            <select>
+                @foreach (var item in Model.Type)
+                {
+                    <option>@item.Name</option>
+                }
+            </select>
+        </label>
 
         <label>
             <p>Description</p>
@@ -57,8 +38,17 @@
         </label>
 
         <label>
-            <p>Material</p>
+            <p>Material List</p>
             @*<input name="Material" type="text" placeholder="Rune" />*@
+            <ul>
+                @*@foreach (var item in list)
+                {
+                <li>
+                <p>@item.Name</p>
+                <p>@item.Amount</p>
+                </li>
+                }*@
+            </ul>
         </label>
 
         @*<label>
