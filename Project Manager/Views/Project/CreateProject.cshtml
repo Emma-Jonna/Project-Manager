@@ -6,28 +6,46 @@
 <h1>CreateProject</h1>
 
 <secion>
-    <form>
+    @if (TempData["error"] != null)
+    {
+        <p>@Html.Encode(TempData["error"])</p>
+    }
+
+    <form method="post" asp-controller="Project" asp-action="CreateNewProject">
         <label>
             <p>Project Name</p>
-            <input />
+            <input name="Name" type="text" />
         </label>
 
         <label>
             <p>Project Category</p>
-            <select>
+            <select name="CategoryId">
+                <option value="0">...</option>
                 @foreach (var item in Model.Category)
                 {
-                    <option>@item.Name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
             </select>
         </label>
 
         <label>
             <p>Project Type</p>
-            <select>
+            <select name="TypeId">
+                <option value="0">...</option>
                 @foreach (var item in Model.Type)
                 {
-                    <option>@item.Name</option>
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </label>
+
+        <label>
+            <p>Project Status</p>
+            <select name="StatusId">
+                <option value="0">...</option>
+                @foreach (var item in Model.Status)
+                {
+                    <option value="@item.Id">@item.Name</option>
                 }
             </select>
         </label>
@@ -61,25 +79,27 @@
         <input type="date" />
         </label>*@
 
-        <label>
-            <p>Before Image</p>
-            <input type="file" />
-        </label>
+        @*<label>
+        <p>Before Image</p>
+        <input type="file" />
+        </label>*@
 
         @*<label>
         <p>After Image</p>
         <input type="file" />
         </label>*@
 
-        <label>
-            <p>Sketch</p>
-            <input type="file" />
-        </label>
+        @*<label>
+        <p>Sketch</p>
+        <input type="file" />
+        </label>*@
 
-        <label>
-            <p>Pattern Link</p>
-            <input />
-        </label>
+        @*<label>
+        <p>Pattern Link</p>
+        <input />
+        </label>*@
+
+        <button type="submit" value="CreateNewProject">Create Project</button>
     </form>
 </secion>
 

@@ -26,11 +26,13 @@ namespace Project_Manager.Controllers
 
             var typeModel = db.Type.ToList();
             var categoryModel = db.Category.ToList();
+            var statusModel = db.Status.ToList();
 
             var model = new CreateProject()
             {
                 Category = categoryModel,
                 Type = typeModel,
+                Status = statusModel,
             };
 
             return View(model);
@@ -45,6 +47,60 @@ namespace Project_Manager.Controllers
             var model = db.Project.ToList();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateNewProject(Project formData)
+        {
+            var db = new project_manager_dbContext();
+
+            var projectName = formData.Name;
+            var category = formData.CategoryId;
+            var type = formData.TypeId;
+            var status = formData.StatusId;
+            var description = formData.Description;
+            var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+
+            if (projectName == null || category == 0 || type == 0 || status == 0 || description == null)
+            {
+                TempData["error"] = "Something Went Wrong Please Try Again";
+
+                return RedirectToAction("CreateProject", "Project");
+            }
+
+
+
+            var newProject = new Project()
+            {
+                Name = projectName,
+                CategoryId = category,
+                TypeId = type,
+                StatusId = status,
+                Description = description,
+                UserId = userId,
+                StartDate = null,
+                EndDate = null,
+                BeforeImage = "",
+                AfterImage = "",
+                PatternLink = "",
+                Sketch = ""
+            };
+
+            Console.WriteLine(newProject);
+
+            Console.WriteLine(formData.Name);
+            Console.WriteLine(formData.CategoryId);
+            Console.WriteLine(formData.TypeId);
+            Console.WriteLine(formData.StatusId);
+
+            /*db.Project.Add(newProject);
+            db.SaveChanges();*/
+
+            Console.WriteLine(newProject);
+
+            Console.WriteLine(userId);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

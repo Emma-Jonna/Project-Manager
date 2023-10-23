@@ -8,5 +8,7 @@ namespace Project_Manager.Models
 
         public virtual ICollection<Type> Type { get; set; } = new List<Type>();
 
+        public virtual ICollection<Status> Status { get; set; } = new List<Status>();
+
     }
 }
