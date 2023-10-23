@@ -5,24 +5,29 @@
 
 <section>
 
-<h1>@Model.Name</h1>
+    <h1>@Model.Name</h1>
 
-<p>@Model.Category.Name</p>
-<p>@Model.Status.Name</p>
-<p>@Model.Type.Name</p>
-<p>@Model.Description</p>
+    <p>@Model.Category.Name</p>
+    <p>@Model.Status.Name</p>
+    <p>@Model.Type.Name</p>
+    <p>@Model.Description</p>
 
-<p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
-<p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
+    <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
+    <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
 
-@foreach (var item in Model.Material)
-{
-    <p>@item.Name</p>
-}
+    @foreach (var item in Model.Material)
+    {
+        <p>@item.Name</p>
+    }
 
-<p>@Model.BeforeImage</p>
-<p>@Model.AfterImage</p>
-<p>@Model.Sketch</p>
-<p>@Model.PatternLink</p>
+    <p>@Model.BeforeImage</p>
+    <p>@Model.AfterImage</p>
+    <p>@Model.Sketch</p>
+    <p>@Model.PatternLink</p>
+
+    <form method="post" asp-controller="Project" asp-action="DeleteProject">
+        <input name="projectId" value=@Model.Id hidden />
+        <button type="submit">Delete</button>
+    </form>
 
 </section>

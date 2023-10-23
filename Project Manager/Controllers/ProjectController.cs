@@ -50,6 +50,33 @@ namespace Project_Manager.Controllers
         }
 
         [HttpPost]
+        public IActionResult DeleteProject(int? projectId)
+        {
+            if (projectId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var id = projectId.Value;
+
+            var db = new project_manager_dbContext();
+
+            var projectToDelete = db.Project.Find(id);
+            var materialsToDelete = db.Material.Find(id);
+
+            if (projectToDelete == null || materialsToDelete == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            db.Project.Remove(projectToDelete);
+            db.Material.Remove(materialsToDelete);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreateNewProject(Project formData)
         {
             var db = new project_manager_dbContext();
