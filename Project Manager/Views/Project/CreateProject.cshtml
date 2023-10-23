@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "CreateProject";
 }
-@model List<Project>;
+@model CreateProject
 
 <h1>CreateProject</h1>
 
@@ -12,22 +12,43 @@
             <input />
         </label>
 
-        @*<select>
-            @foreach (var item in Model)
-            {
-                <option>@item.Category.Name</option>
-            }
-        </select>*@
+        <select>
+        @foreach (var item in Model.Category)
+        {
+        <option>@item.Name</option>
+        }
+        </select>
 
         <select>
-           @* @foreach (var item in Model)
-            {                
+            @foreach (var item in Model.Type)
+            {
                 <option>@item.Name</option>
-            }*@
+            }
         </select>
 
         @*<select>
-            <option>status</option>
+        <ul>
+        @foreach (var item in Model)
+        {
+        <option>
+        <li>@item.Category</li>
+        </option>
+        }
+        </ul>
+        </select>*@
+
+        @*<select>
+        <ul>
+        <option>
+        <li>
+        @Model.
+        </li>
+        </option>
+        </ul>
+        </select>*@
+
+        @*<select>
+        <option>status</option>
         </select>*@
 
         <label>
@@ -41,8 +62,8 @@
         </label>
 
         @*<label>
-            <p>Start date</p>
-            <input type="date" />
+        <p>Start date</p>
+        <input type="date" />
         </label>*@
 
         @*<label>
@@ -56,8 +77,8 @@
         </label>
 
         @*<label>
-            <p>After Image</p>
-            <input type="file" />
+        <p>After Image</p>
+        <input type="file" />
         </label>*@
 
         <label>

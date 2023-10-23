@@ -26,22 +26,20 @@ namespace Project_Manager.Controllers
         {
             var db = new project_manager_dbContext();
 
-            var categories = db.Category.ToList();
-            var type = db.Type.ToList();
-
-            //var model = categories.Concat(type).ToList();
+            var typeModel = db.Type.ToList();
+            var categoryModel = db.Category.ToList();
 
             //var model = db.Category.Include.Include(c => c.Category).Include(t => t.Type).ToList();
-            var model = db.Project.Include(c => c.Category).Include(t => t.Type).ToList();
+            //var model = db.Project.Include(c => c.Category).Include(t => t.Type).ToList();
 
-            //var m = db.Project.LeftJoin(c => c.Category).ToList();
+            //var model = new List<KeyValuePair<string, List<KeyValuePair<int, string>>>>();
+            //var model = new List<List<KeyValuePair<int, string>>>();
 
-            //model.Add("Categories", db.Category.ToList());
-
-            //var model = db.Type.ToList();
-
-            Console.WriteLine(model);
-
+            var model = new CreateProject()
+            {
+                Category = categoryModel,
+                Type = typeModel,
+            };
 
             return View(model);
         }
@@ -55,6 +53,15 @@ namespace Project_Manager.Controllers
             var model = db.Project.ToList();
 
             return View(model);
+        }
+
+        public IActionResult CategoryPartial()
+        {
+            var db = new project_manager_dbContext();
+
+            var categories = db.Category.ToList();
+
+            return PartialView("_Categories", categories);
         }
     }
 }
