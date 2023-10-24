@@ -39,22 +39,31 @@ namespace Project_Manager.Controllers
         }
 
         [Authorize]
-        public IActionResult UpdateProject()
+        public IActionResult UpdateProject(int? projectId)
         {
             var db = new project_manager_dbContext();
 
             var typeModel = db.Type.ToList();
             var categoryModel = db.Category.ToList();
             var statusModel = db.Status.ToList();
+            var project = db.Project.Where(p => p.Id == projectId.Value).ToList();
 
-            var model = new CreateProject()
+            var model = new EditProject()
             {
                 Category = categoryModel,
                 Type = typeModel,
                 Status = statusModel,
+                Project = project
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult UpdateProjectInfo(EditProject formData)
+        {
+            return RedirectToAction("Index", "Project", new { id = 2 });
         }
 
         [HttpPost]
