@@ -1,4 +1,6 @@
-﻿namespace Project_Manager.Models
+﻿#nullable disable
+
+namespace Project_Manager.Models
 {
     public class EditProject
     {

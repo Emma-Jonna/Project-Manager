@@ -7,6 +7,13 @@ namespace Project_Manager.Controllers
 {
     public class ProjectController : Controller
     {
+        //Create Project
+        //TODO if status is 
+        //TODO
+
+        //Edit Project
+        //TODO
+
         [Authorize]
         public IActionResult Index(int id)
         {
@@ -70,10 +77,26 @@ namespace Project_Manager.Controllers
         [Authorize]
         public IActionResult UpdateProjectInfo(EditProject formData)
         {
-            return RedirectToAction("Index", "Project", new { id = 2 });
+            var db = new project_manager_dbContext();
+
+            var projectId = formData.Project.Id;
+            var projectName = formData.Project.Name;
+            var projectCategory = formData.Project.CategoryId;
+            var projectType = formData.Project.TypeId;
+            var projectStatus = formData.Project.StatusId;
+            var projectDescription = formData.Project.Description;
+            var projectStartDate = formData.Project.StartDate;
+            var projectEndDate = formData.Project.EndDate;
+            var projectBeforeImage = formData.Project.BeforeImage;
+            var projectAfterImage = formData?.Project.AfterImage;
+            var projectPatternLink = formData?.Project.PatternLink;
+            var projectSketch = formData?.Project.Sketch;
+
+            return RedirectToAction("Index", "Project", new { id = projectId });
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult DeleteProject(int? projectId)
         {
             if (projectId == null)
@@ -104,7 +127,8 @@ namespace Project_Manager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNewProject(Project formData)
+        [Authorize]
+        public IActionResult CreateNewProject(Project formData)
         {
             var db = new project_manager_dbContext();
 

@@ -11,6 +11,11 @@ namespace Project_Manager.Controllers
         public IActionResult SignIn()
         {
 
+            if (User.Identity == null)
+            {
+                return View();
+            }
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
@@ -25,6 +30,10 @@ namespace Project_Manager.Controllers
 
         public IActionResult SignUp()
         {
+            if (User.Identity == null)
+            {
+                return View();
+            }
 
             if (User.Identity.IsAuthenticated)
             {
