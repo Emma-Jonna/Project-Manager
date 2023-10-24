@@ -9,12 +9,24 @@
     <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
         <label>
             <p>Name</p>
-            <input />
+            <input value="@Model.Project.Name" />
         </label>
 
-        <select>
-            <option>category</option>
-        </select>
+        <label>
+            <p>Project Category</p>
+            <select name="CategoryId">
+                <option value="0">...</option>
+                @foreach (var item in Model.Category)
+                {
+                    if (item.Id == Model.Project.CategoryId)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </label>
 
         <select>
             <option>type</option>
@@ -22,11 +34,12 @@
         </select>
 
         <select>
-        <option>status</option>
+            <option>status</option>
         </select>
 
         <label>
             <p>Description</p>
+            <input name="Description" type="text" value="@Model.Project.Description"/>
         </label>
 
         <label>
@@ -35,8 +48,8 @@
         </label>
 
         <label>
-        <p>End date</p>
-        <input type="date" />
+            <p>End date</p>
+            <input type="date" />
         </label>
 
         <label>
@@ -45,8 +58,8 @@
         </label>
 
         <label>
-        <p>After Image</p>
-        <input type="file" />
+            <p>After Image</p>
+            <input type="file" />
         </label>
 
         <label>

@@ -41,12 +41,19 @@ namespace Project_Manager.Controllers
         [Authorize]
         public IActionResult UpdateProject(int? projectId)
         {
+            if (projectId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var id = projectId.Value;
+
             var db = new project_manager_dbContext();
 
             var typeModel = db.Type.ToList();
             var categoryModel = db.Category.ToList();
             var statusModel = db.Status.ToList();
-            var project = db.Project.Where(p => p.Id == projectId.Value).ToList();
+            var project = db.Project.First(p => p.Id == id);
 
             var model = new EditProject()
             {

@@ -8,6 +8,6 @@
 
         public virtual ICollection<Status> Status { get; set; } = new List<Status>();
 
-        public virtual ICollection<Project> Project { get; set; } = new List<Project>();
+        public virtual Project Project { get; set; }
     }
 }
