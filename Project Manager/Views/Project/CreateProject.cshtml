@@ -3,9 +3,9 @@
 }
 @model CreateProject
 
+<secion>
 <h1>CreateProject</h1>
 
-<secion>
     @if (TempData["error"] != null)
     {
         <p>@Html.Encode(TempData["error"])</p>
@@ -13,7 +13,7 @@
 
     <form method="post" asp-controller="Project" asp-action="CreateNewProject">
         <label>
-            <p>Project Name</p>
+            <p class="hello">Project Name</p>
             <input name="Name" type="text" />
         </label>
 
@@ -102,4 +102,10 @@
         <button type="submit" value="CreateNewProject">Create Project</button>
     </form>
 </secion>
+
+<a asp-controller="Home" asp-action="Index">Go Back</a>
+
+@section Scripts {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
 

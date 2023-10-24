@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace Project_Manager.Controllers
 {
+    //TODO fix issue in chore to make cookie more secure
     public class UserController : Controller
     {
         public IActionResult SignIn()

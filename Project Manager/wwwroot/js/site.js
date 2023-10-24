@@ -2,3 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+const test = document.querySelector(".hello");
+
+console.log("hellooo");
+console.log(test);

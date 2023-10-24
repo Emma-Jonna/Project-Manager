@@ -43,6 +43,55 @@ namespace Project_Manager.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [Authorize]
+        public IActionResult CreateNewProject(Project formData)
+        {
+            if (User.FindFirst("UserId") == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new project_manager_dbContext();
+
+            var projectName = formData.Name;
+            var category = formData.CategoryId;
+            var type = formData.TypeId;
+            var status = formData.StatusId;
+            var description = formData.Description;
+            var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+
+            if (projectName == null || category == 0 || type == 0 || status == 0 || description == null)
+            {
+                TempData["error"] = "Something Went Wrong Please Try Again";
+
+                return RedirectToAction("CreateProject", "Project");
+            }
+
+            var newProject = new Project()
+            {
+                Name = projectName,
+                CategoryId = category,
+                TypeId = type,
+                StatusId = status,
+                Description = description,
+                UserId = userId,
+                StartDate = null,
+                EndDate = null,
+                BeforeImage = "",
+                AfterImage = "",
+                PatternLink = "",
+                Sketch = ""
+            };
+
+            db.Project.Add(newProject);
+            db.SaveChanges();
+
+            TempData["success"] = "Successfully created project";
+
+            return RedirectToAction("Index", "Home");
+        }
+
         [Authorize]
         public IActionResult UpdateProject(int? projectId)
         {
@@ -118,55 +167,6 @@ namespace Project_Manager.Controllers
             db.SaveChanges();
             db.Project.Remove(projectToDelete);
             db.SaveChanges();
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpPost]
-        [Authorize]
-        public IActionResult CreateNewProject(Project formData)
-        {
-            if (User.FindFirst("UserId") == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            var db = new project_manager_dbContext();
-
-            var projectName = formData.Name;
-            var category = formData.CategoryId;
-            var type = formData.TypeId;
-            var status = formData.StatusId;
-            var description = formData.Description;
-            var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
-
-            if (projectName == null || category == 0 || type == 0 || status == 0 || description == null)
-            {
-                TempData["error"] = "Something Went Wrong Please Try Again";
-
-                return RedirectToAction("CreateProject", "Project");
-            }
-
-            var newProject = new Project()
-            {
-                Name = projectName,
-                CategoryId = category,
-                TypeId = type,
-                StatusId = status,
-                Description = description,
-                UserId = userId,
-                StartDate = null,
-                EndDate = null,
-                BeforeImage = "",
-                AfterImage = "",
-                PatternLink = "",
-                Sketch = ""
-            };
-
-            db.Project.Add(newProject);
-            db.SaveChanges();
-
-            TempData["success"] = "Successfully created project";
 
             return RedirectToAction("Index", "Home");
         }
