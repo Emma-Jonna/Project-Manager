@@ -28,48 +28,71 @@
             </select>
         </label>
 
-        <select>
-            <option>type</option>
-            <option selected>name</option>
-        </select>
-
-        <select>
-            <option>status</option>
-        </select>
-
         <label>
-            <p>Description</p>
-            <input name="Description" type="text" value="@Model.Project.Description"/>
+            <p>Project Type</p>
+            <select name="TypeId">
+                <option value="0">...</option>
+                @foreach (var item in Model.Type)
+                {
+                    if (item.Id == Model.Project.CategoryId)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
         </label>
 
         <label>
+            <p>Project Status</p>
+            <select name="StatusId">
+                <option value="0">...</option>
+                @foreach (var item in Model.Status)
+                {
+                    if (item.Id == Model.Project.CategoryId)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </label>
+
+        @*<label>
+        <p>Description</p>
+        <input name="Description" type="text" value="@Model.Project.Description" />
+        </label>*@
+
+        <label>
             <p>Start date</p>
-            <input type="date" />
+            <input type="date" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />            
         </label>
 
         <label>
             <p>End date</p>
-            <input type="date" />
+            <input type="date" value="@(Model.Project.EndDate.HasValue ? @Model.Project.EndDate.Value.ToString("yyyy-MM-dd") : "" )" />
         </label>
 
         <label>
             <p>Before Image</p>
-            <input type="file" />
+            <input type="file" value="@Model.Project.BeforeImage"/>
         </label>
 
         <label>
             <p>After Image</p>
-            <input type="file" />
+            <input type="file" value="@Model.Project.AfterImage"/>
         </label>
 
         <label>
             <p>Sketch</p>
-            <input type="file" />
+            <input type="file" value="@Model.Project.Sketch"/>
         </label>
 
         <label>
             <p>Pattern Link</p>
-            <input />
+            <input value="@Model.Project.PatternLink"/>
         </label>
 
         <button type="submit">Save Changes</button>
