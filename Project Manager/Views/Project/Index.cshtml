@@ -6,6 +6,11 @@
 <section>
     <h1>@Model.Name</h1>
 
+    @if (TempData["error"] != null)
+    {
+        <p>@Html.Encode(TempData["error"])</p>
+    }
+
     <p>@Model.Category.Name</p>
     <p>@Model.Status.Name</p>
     <p>@Model.Type.Name</p>
@@ -29,7 +34,7 @@
         <button type="submit">Delete</button>
     </form>
 
-    <form method="get" asp-controller="Project" asp-action="UpdateProject">
+    <form method="post" asp-controller="Project" asp-action="UpdateProject">
         <input name="projectId" value="@Model.Id" hidden />
         <button type="submit">Edit</button>
     </form>

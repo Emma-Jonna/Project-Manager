@@ -9,7 +9,7 @@
     <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
         <label>
             <p class="hello">Name</p>
-            <input value="@Model.Project.Name" />
+            <input name="Name" value="@Model.Project.Name" />
         </label>
 
         <label>
@@ -60,10 +60,10 @@
             </select>
         </label>
 
-        @*<label>
+        <label>
         <p>Description</p>
         <input name="Description" type="text" value="@Model.Project.Description" />
-        </label>*@
+        </label>
 
         <label>
             <p>Start date</p>
@@ -94,6 +94,8 @@
             <p>Pattern Link</p>
             <input name="PatternLink" value="@Model.Project.PatternLink" />
         </label>
+
+        <input name="Id" value="@Model.Project.Id" hidden/>
 
         <button type="submit">Save Changes</button>
     </form>
