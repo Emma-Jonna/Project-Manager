@@ -19,8 +19,6 @@ namespace Project_Manager.Controllers
         {
             var db = new project_manager_dbContext();
 
-            //var project = db.Project.Find(id);
-            //var project = db.Project.include.Where(p => p.Id == id).First();
             var project = db.Project.Include(m => m.Material).Include(c => c.Category).Include(t => t.Type).Include(s => s.Status).Where(p => p.Id == id).First();
 
             return View(project);
@@ -106,8 +104,6 @@ namespace Project_Manager.Controllers
 
             var id = projectId.Value;
 
-            Console.WriteLine(id);
-
             var db = new project_manager_dbContext();
 
             var projectToDelete = db.Project.First(p => p.Id == id);
@@ -130,6 +126,11 @@ namespace Project_Manager.Controllers
         [Authorize]
         public IActionResult CreateNewProject(Project formData)
         {
+            if (User.FindFirst("UserId") == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var db = new project_manager_dbContext();
 
             var projectName = formData.Name;
@@ -146,8 +147,6 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("CreateProject", "Project");
             }
 
-
-
             var newProject = new Project()
             {
                 Name = projectName,
@@ -163,13 +162,6 @@ namespace Project_Manager.Controllers
                 PatternLink = "",
                 Sketch = ""
             };
-
-            Console.WriteLine(newProject);
-
-            Console.WriteLine(formData.Name);
-            Console.WriteLine(formData.CategoryId);
-            Console.WriteLine(formData.TypeId);
-            Console.WriteLine(formData.StatusId);
 
             db.Project.Add(newProject);
             db.SaveChanges();
