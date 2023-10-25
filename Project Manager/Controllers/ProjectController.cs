@@ -35,12 +35,14 @@ namespace Project_Manager.Controllers
             var typeModel = db.Type.ToList();
             var categoryModel = db.Category.ToList();
             var statusModel = db.Status.ToList();
+            var materialModel = db.Material.ToList();
 
             var model = new CreateProject()
             {
                 Category = categoryModel,
                 Type = typeModel,
                 Status = statusModel,
+                Material = materialModel
             };
 
             return View(model);
@@ -57,13 +59,22 @@ namespace Project_Manager.Controllers
 
             var db = new project_manager_dbContext();
 
+            Console.WriteLine(formData.Material.Count()); ;
+
+            foreach (var item in formData.Material)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Amount);
+                Console.WriteLine(item.Acquired);
+            }
+
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
 
             if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
 
-                return RedirectToAction("CreateProject", "Project");
+                return RedirectToAction("CreateProject");
             }
 
             var newProject = new Project()
@@ -124,15 +135,15 @@ namespace Project_Manager.Controllers
         public IActionResult UpdateProjectInfo(Project formData)
         {
 
+            if (User.FindFirst("UserId") == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (formData.Id == 0)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again1";
 
-                return RedirectToAction("Index", "Project");
-            }
-
-            if (User.FindFirst("UserId") == null)
-            {
                 return RedirectToAction("Index", "Home");
             }
 
@@ -146,20 +157,20 @@ namespace Project_Manager.Controllers
             {
                 TempData["error"] = "Something Went Wrong Please Try Again1";
 
-                return RedirectToAction("Index", "Project");
+                return RedirectToAction("Index", "Home");
             }
 
             if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again1";
 
-                return RedirectToAction("index", "Project", new { id = projectId });
+                return RedirectToAction("index", new { id = projectId });
             }
             else if (formData.EndDate.HasValue && formData.StartDate == null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again2";
 
-                return RedirectToAction("Index", "Project", new { id = projectId });
+                return RedirectToAction("Index", new { id = projectId });
             }
 
             project.Name = formData.Name;
@@ -177,7 +188,7 @@ namespace Project_Manager.Controllers
             db.Project.Update(project);
             db.SaveChanges();
 
-            return RedirectToAction("index", "Project", new { id = projectId });
+            return RedirectToAction("index", new { id = projectId });
         }
 
         [HttpPost]
