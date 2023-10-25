@@ -22,11 +22,12 @@ namespace Project_Manager.Controllers
 
             var model = db.Category.ToList();
 
+            if (User.FindFirst("UserId").Value == null)
+            {
+                return RedirectToAction("SignIn", "User");
+            }
+
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
-
-            Console.WriteLine(TempData["userId"]);
-
-            var userData = Convert.ToInt32(TempData["userId"]);
 
             var projects = db.Project.Include(u => u.User).Include(c => c.Category).Include(t => t.Type).Include(s => s.Status).Where(project => project.UserId == userId).ToList();
 

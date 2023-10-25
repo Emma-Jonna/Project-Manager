@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project_Manager.Models;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using System.Security.Claims;
 namespace Project_Manager.Controllers
 {
     //TODO fix issue in chore to make cookie more secure
+    //TODO switch identity to Httpcontext
     public class UserController : Controller
     {
         public IActionResult SignIn()
@@ -16,8 +18,7 @@ namespace Project_Manager.Controllers
             {
                 return View();
             }
-
-            if (User.Identity.IsAuthenticated)
+            else if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -35,8 +36,7 @@ namespace Project_Manager.Controllers
             {
                 return View();
             }
-
-            if (User.Identity.IsAuthenticated)
+            else if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -44,6 +44,7 @@ namespace Project_Manager.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> SignOutUser()
         {
             await HttpContext.SignOutAsync();
@@ -65,9 +66,9 @@ namespace Project_Manager.Controllers
 
             var user = db.User.ToList();
 
-            var findUser = db.User.Where(u => u.Email == formData.Email && u.Password == formData.Password).ToList();
+            var findUser = db.User.FirstOrDefault(u => u.Email == formData.Email || u.Password == formData.Password);
 
-            if (findUser.Count() != 1)
+            if (findUser == null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("SignIn");
@@ -75,7 +76,7 @@ namespace Project_Manager.Controllers
 
             var claims = new List<Claim>
             {
-                new Claim("UserId", Convert.ToString(findUser[0].Id)),
+                new Claim("UserId", Convert.ToString(findUser.Id)),
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -98,25 +99,24 @@ namespace Project_Manager.Controllers
 
             var db = new project_manager_dbContext();
 
-            var findUser = db.User.Where(u => u.Email == formData.Email).ToList();
+            var findUser = db.User.FirstOrDefault(u => u.Email == formData.Email);
 
-            Console.WriteLine(findUser.Count());
-
-            if (findUser.Count() != 0)
+            if (findUser != null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("SignUp");
             }
 
-
-            var user = new User();
-
-            user.Name = formData.Name;
-            user.Email = formData.Email;
-            user.Password = formData.Password;
+            var user = new User()
+            {
+                Name = formData.Name,
+                Email = formData.Email,
+                Password = formData.Password,
+            };
 
             db.User.Add(user);
             db.SaveChanges();
+
             TempData["success"] = "Successfully Created Account";
 
             return RedirectToAction("SignUp");

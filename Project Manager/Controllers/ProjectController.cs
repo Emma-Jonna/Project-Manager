@@ -57,14 +57,9 @@ namespace Project_Manager.Controllers
 
             var db = new project_manager_dbContext();
 
-            var projectName = formData.Name;
-            var category = formData.CategoryId;
-            var type = formData.TypeId;
-            var status = formData.StatusId;
-            var description = formData.Description;
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
 
-            if (projectName == null || category == 0 || type == 0 || status == 0 || description == null)
+            if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
 
@@ -73,11 +68,11 @@ namespace Project_Manager.Controllers
 
             var newProject = new Project()
             {
-                Name = projectName,
-                CategoryId = category,
-                TypeId = type,
-                StatusId = status,
-                Description = description,
+                Name = formData.Name,
+                CategoryId = formData.CategoryId,
+                TypeId = formData.TypeId,
+                StatusId = formData.StatusId,
+                Description = formData.Description,
                 UserId = userId,
                 StartDate = null,
                 EndDate = null,
@@ -134,6 +129,11 @@ namespace Project_Manager.Controllers
                 TempData["error"] = "Something Went Wrong Please Try Again1";
 
                 return RedirectToAction("Index", "Project");
+            }
+
+            if (User.FindFirst("UserId") == null)
+            {
+                return RedirectToAction("Index", "Home");
             }
 
             var projectId = formData.Id;
@@ -194,22 +194,28 @@ namespace Project_Manager.Controllers
             var db = new project_manager_dbContext();
 
             var projectToDelete = db.Project.FirstOrDefault(p => p.Id == id);
-            var materialsToDelete = db.Material.FirstOrDefault(m => m.ProjectId == id);
+            var materialsToDelete = db.Material.Where(m => m.ProjectId == id).ToList();
+
 
             if (projectToDelete == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            if (materialsToDelete == null)
+            else if (materialsToDelete == null)
             {
                 db.Project.Remove(projectToDelete);
                 db.SaveChanges();
+
                 return RedirectToAction("Index", "Home");
             }
 
+            foreach (var item in materialsToDelete)
+            {
+                db.Material.Remove(item);
+                db.SaveChanges();
+            }
+
             db.Project.Remove(projectToDelete);
-            db.Material.Remove(materialsToDelete);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
