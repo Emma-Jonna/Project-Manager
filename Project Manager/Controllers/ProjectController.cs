@@ -59,18 +59,9 @@ namespace Project_Manager.Controllers
 
             var db = new project_manager_dbContext();
 
-            Console.WriteLine(formData.Material.Count()); ;
-
-            foreach (var item in formData.Material)
-            {
-                Console.WriteLine(item.Name);
-                Console.WriteLine(item.Amount);
-                Console.WriteLine(item.Acquired);
-            }
-
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
 
-            if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null)
+            if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null || formData.Material.Count() < 1)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
 
@@ -95,6 +86,35 @@ namespace Project_Manager.Controllers
 
             db.Project.Add(newProject);
             db.SaveChanges();
+
+            foreach (var item in formData.Material)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Amount);
+
+                var name = item.Name;
+                var amount = item.Amount;
+                var acquired = false;
+                var projectId = db.Project.Max(p => p.Id);
+
+                if (item.Acquired == true)
+                {
+                    Console.WriteLine("false");
+
+                    acquired = true;
+                }
+
+                var newMaterial = new Material()
+                {
+                    Name = name,
+                    Amount = amount,
+                    Acquired = acquired,
+                    ProjectId = projectId,
+                };
+
+                db.Material.Add(newMaterial);
+                db.SaveChanges();
+            }
 
             TempData["success"] = "Successfully created project";
 

@@ -49,33 +49,15 @@
                 }
             </select>
         </label>
-         @*needs to be textarea*@
+
         <label>
             <p>Description</p>
-            <input name="Description" type="text" />
+            <textarea name="Description" rows="4" cols="50"></textarea>
         </label>
 
         <label>
             <p>Material List</p>
-            @*<input name="Material" type="text" placeholder="Rune" />*@
             <ul class="materials-list">
-                @*@foreach (var item in list)
-                {
-                <li>
-                <p>@item.Name</p>
-                <p>@item.Amount</p>
-                </li>
-                }*@
-                @*<li>                    
-                    <input name="Material[0].Name" value="fabric" type="text" />
-                    <input name="Material[0].Amount" value="3m" type="text" />
-                    <input id="0" name="Material[0].Acquired" type="checkbox" />
-                </li>
-                <li>
-                    <input name="Material[1].Name" value="thread" type="text" />
-                    <input name="Material[1].Amount" value="10m" type="text" />
-                    <input id="1" name="Material[1].Acquired" type="checkbox" />
-                </li>*@
             </ul>
             <div class="add-material-button">Add Material</div>
         </label>
