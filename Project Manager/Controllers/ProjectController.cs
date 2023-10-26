@@ -143,13 +143,15 @@ namespace Project_Manager.Controllers
             var categoryModel = db.Category.ToList();
             var statusModel = db.Status.ToList();
             var project = db.Project.First(p => p.Id == id);
+            var material = db.Material.Where(m => m.ProjectId == id).ToList();
 
             var model = new EditProject()
             {
                 Category = categoryModel,
                 Type = typeModel,
                 Status = statusModel,
-                Project = project
+                Project = project,
+                Material = material
             };
 
             return View(model);

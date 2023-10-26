@@ -10,6 +10,8 @@ namespace Project_Manager.Models
 
         public virtual ICollection<Status> Status { get; set; } = new List<Status>();
 
+        public virtual ICollection<Material> Material { get; set; } = new List<Material>();
+
         public virtual Project Project { get; set; }
     }
 }
