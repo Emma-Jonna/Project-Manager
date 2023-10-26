@@ -4,76 +4,66 @@ const listItems = document.querySelectorAll(".materials-list li");
 const checkboxes = document.querySelectorAll("li [type=checkbox]");
 
 let materialIndex = 0;
-let idIndex = 0;
 
 addMaterialButton.addEventListener("click", () => {
-    //console.log("button clicked");
 
     CreateListItem();
 
-    idIndex++;
+    materialIndex++;
 });
 
 const DeleteMaterial = (event) => {
-    //console.log(event.target.id);    
-    var button = document.getElementById(event.id);
-
-    //console.log(materialUl);
 
     for (var i = 0; i < materialUl.children.length; i++) {
-        //console.log(i);
-        //console.log(materialUl.children[i].id);
-        //console.log(event.target.id);
-
 
         if (materialUl.children[i].id == `list-${event.target.id}`) {
-            //console.log("match");
+
             var listItem = document.getElementById(`list-${event.target.id}`);
-            //console.log(listItem);
 
             materialUl.removeChild(listItem);
 
-            /*if (materialUl.length == 1) {
-                materialUl.removeChild(materialUl.firstChild);
-            }*/
-        } else {
-            //console.log("no match");
         }
     }
-    //console.log(listItem);
 
-
-    // all list items in an array
     let array = [...materialUl.children];
-
-    //console.log(array);
-
-    // printing all list items inputs
-    //idIndex = 0;
+    materialIndex = 0;
 
     array.forEach((element) => {
+        
+        element.id = `list-${materialIndex}`;
 
+        for (let i = 0; i < element.children.length; i++) {            
 
-        //console.log(element.id);
-        //element.id = `list-${idIndex}`;
-        //idIndex++;
+            let inputClassName = element.children[i].classList.value;
 
-        for (let i = 0; i < element.children.length; i++) {
-            //console.log(element.children[i]);
-            //console.log(element.children[i].name);            
+            if (inputClassName == "material-name") {
 
+                element.children[i].name = `Material[${materialIndex}].Name`;
 
-            //element.children[i].name = `Material[${materialIndex}].Amount`;
+            } else if (inputClassName == "material-amount") {
+
+                element.children[i].name = `Material[${materialIndex}].Amount`;
+
+            } else if (inputClassName == "material-checkbox") {
+
+                element.children[i].name = `Material[${materialIndex}].Acquired`;
+
+            } else if (inputClassName == "delete-button-container") {
+
+                element.children[i].id = materialIndex;
+                
+                element.children[i].children[0].id = materialIndex;
+            }            
         }
+
+        materialIndex++;
     });
 }
 
 const CheckCheckBox = (event) => {
-    if (event.target.checked) {
-        //console.log("checked");
+    if (event.target.checked) {        
         event.target.value = true;
-    } else {
-        //console.log("not checked");
+    } else {        
         event.target.value = false;
     }
 }
@@ -81,7 +71,7 @@ const CheckCheckBox = (event) => {
 const CreateListItem = () => {
 
     const materialContainer = document.createElement("li");
-    materialContainer.id = `list-${idIndex}`;
+    materialContainer.id = `list-${materialIndex}`;
     materialContainer.classList.add("material-container");
 
     const materialNameInput = document.createElement("input");
@@ -92,21 +82,25 @@ const CreateListItem = () => {
 
     materialNameInput.type = "text";
     materialNameInput.name = `Material[${materialIndex}].Name`;
+    materialNameInput.classList.add("material-name");
 
     materialAmountInput.type = "text";
     materialAmountInput.name = `Material[${materialIndex}].Amount`;
+    materialAmountInput.classList.add("material-amount");
 
     materialAcquiredInput.type = "checkbox";
     materialAcquiredInput.name = `Material[${materialIndex}].Acquired`;
     materialAcquiredInput.value = false;
     materialAcquiredInput.addEventListener('change', CheckCheckBox);
+    materialAcquiredInput.classList.add("material-checkbox");
 
     deleteMaterialInput.name = `Material[${materialIndex}].Acquired`;
-    deleteMaterialInput.id = `${idIndex}`
+    deleteMaterialInput.id = `${materialIndex}`
     deleteMaterialInput.addEventListener('click', DeleteMaterial);
+    deleteMaterialInput.classList.add("delete-button-container");
 
     deleteMaterialTextbox.textContent = "Delete";
-    deleteMaterialTextbox.id = `${idIndex}`
+    deleteMaterialTextbox.id = `${materialIndex}`
 
     materialContainer.appendChild(materialNameInput);
     materialContainer.appendChild(materialAmountInput);
