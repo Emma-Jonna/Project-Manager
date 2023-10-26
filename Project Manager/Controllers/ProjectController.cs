@@ -57,6 +57,11 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            foreach (var item in formData.Material)
+            {
+                Console.WriteLine(item.Name);
+            }
+
             var db = new project_manager_dbContext();
 
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
@@ -76,12 +81,12 @@ namespace Project_Manager.Controllers
                 StatusId = formData.StatusId,
                 Description = formData.Description,
                 UserId = userId,
-                StartDate = null,
-                EndDate = null,
-                BeforeImage = "",
-                AfterImage = "",
-                PatternLink = "",
-                Sketch = ""
+                StartDate = formData.StartDate,
+                EndDate = formData.EndDate,
+                BeforeImage = formData.BeforeImage,
+                AfterImage = formData.AfterImage,
+                PatternLink = formData.PatternLink,
+                Sketch = formData.Sketch,
             };
 
             db.Project.Add(newProject);
