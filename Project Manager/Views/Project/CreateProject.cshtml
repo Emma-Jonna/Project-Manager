@@ -4,7 +4,7 @@
 @model CreateProject
 
 <secion>
-<h1>CreateProject</h1>
+    <h1>CreateProject</h1>
 
     @if (TempData["error"] != null)
     {
@@ -58,38 +58,46 @@
         <label>
             <p>Material List</p>
             <ul class="materials-list">
+                <li id="list-0" >
+                    <input type="text" name="Material[0].Amount" class="material-name" />
+                    <input type="text" name="Material[0].Amount" class="material-amount" />
+                    <input type="checkbox" name="Material[0].Amount" class="material-checkbox" />
+                    <div id="0" class="delete-button-container default-list-item-button">
+                        <p id="0">Delete</p>
+                    </div>
+                </li>
             </ul>
             <div class="add-material-button">Add Material</div>
         </label>
 
         <label>
-        <p>Start date</p>
-        <input type="date" />
+            <p>Start date</p>
+            <input type="date" />
         </label>
 
         <label>
-        <p>End date</p>
-        <input type="date" />
+            <p>End date</p>
+            <input type="date" />
         </label>
 
         <label>
-        <p>Before Image</p>
-        <input type="file" />
+            <p>Before Image</p>
+            <input type="file" />
         </label>
 
         <label>
-        <p>After Image</p>
-        <input type="file" />
+            <p>After Image</p>
+            <input type="file" />
         </label>
 
         <label>
-        <p>Sketch</p>
-        <input type="file" />
+            <p>Sketch</p>
+            <input type="file" />
         </label>
 
         <label>
-        <p>Pattern Link</p>
-        <input />
+            <p>Pattern Link</p>
+            <input />
         </label>
 
         <button type="submit" value="CreateNewProject">Create Project</button>
