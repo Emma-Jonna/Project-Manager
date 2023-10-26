@@ -4,7 +4,7 @@
 @model EditProject;
 
 <secion>
-<h1>UpdateProject</h1>
+    <h1>UpdateProject</h1>
 
     <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
         <label>
@@ -61,13 +61,46 @@
         </label>
 
         <label>
-        <p>Description</p>
+            <p>Description</p>
             <textarea name="Description" rows="4" cols="50">@Model.Project.Description</textarea>
         </label>
 
         <label>
+            @{
+                var index = 0;
+            }
+            <p>Material List</p>
+            <ul class="materials-list">
+                @foreach (var item in Model.Material)
+                {
+                    <li id="list-@index">
+                        <input type="text" name="Material[@index].Amount" class="material-name" value="@item.Name" />
+                        <input type="text" name="Material[@index].Amount" class="material-amount" value="@item.Amount" />
+
+                        @if (item.Acquired == true)
+                        {
+                            <input type="checkbox" name="Material[@index].Amount" class="material-checkbox" checked />
+                        }
+                        else if (item.Acquired != true)
+                        {
+                            <input type="checkbox" name="Material[@index].Amount" class="material-checkbox" checked />
+                        }
+                        <div id="@index" class="delete-button-container default-list-item-button">
+                            <p id="@index">Delete</p>
+                        </div>
+                    </li>
+                }
+                @{
+                    index++;
+                }
+            </ul>
+            <div class="add-material-button">Add Material</div>
+        </label>
+
+
+        <label>
             <p>Start date</p>
-            <input type="date" name="StartDate" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />            
+            <input type="date" name="StartDate" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />
         </label>
 
         <label>
@@ -95,7 +128,7 @@
             <input name="PatternLink" value="@Model.Project.PatternLink" />
         </label>
 
-        <input name="Id" value="@Model.Project.Id" hidden/>
+        <input name="Id" value="@Model.Project.Id" hidden />
 
         <button type="submit">Save Changes</button>
     </form>
@@ -104,5 +137,5 @@
 <a asp-controller="Home" asp-action="Index">Go Back</a>
 
 @section Scripts {
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/createProject.js" asp-append-version="true"></script>
 }
