@@ -2,17 +2,24 @@ const materialUl = document.querySelector("ul");
 const addMaterialButton = document.querySelector(".add-material-button");
 const listItems = document.querySelectorAll(".materials-list li");
 const checkboxes = document.querySelectorAll("li [type=checkbox]");
+const defaultButton = document.querySelectorAll(".default-list-item-button");
+//const defaultButton = document.getElementsByClassName(".default-list-item-button");
 
 let materialIndex = 0;
 
 addMaterialButton.addEventListener("click", () => {
-
+    
     CreateListItem();
 
     materialIndex++;
 });
 
 const DeleteMaterial = (event) => {
+    console.log(event);
+    ChangeListItemsIds(event);
+}
+
+const ChangeListItemsIds = (event) => {
 
     for (var i = 0; i < materialUl.children.length; i++) {
 
@@ -21,18 +28,22 @@ const DeleteMaterial = (event) => {
             var listItem = document.getElementById(`list-${event.target.id}`);
 
             materialUl.removeChild(listItem);
-
         }
     }
 
     let array = [...materialUl.children];
     materialIndex = 0;
 
+    ChangeElementsIds(array);
+}
+
+const ChangeElementsIds = (array) => {
+
     array.forEach((element) => {
-        
+
         element.id = `list-${materialIndex}`;
 
-        for (let i = 0; i < element.children.length; i++) {            
+        for (let i = 0; i < element.children.length; i++) {
 
             let inputClassName = element.children[i].classList.value;
 
@@ -51,9 +62,9 @@ const DeleteMaterial = (event) => {
             } else if (inputClassName == "delete-button-container") {
 
                 element.children[i].id = materialIndex;
-                
+
                 element.children[i].children[0].id = materialIndex;
-            }            
+            }
         }
 
         materialIndex++;
@@ -111,3 +122,13 @@ const CreateListItem = () => {
     materialUl.appendChild(materialContainer);
 }
 
+let array = [...materialUl.children];
+
+ChangeElementsIds(array);
+
+
+defaultButton.forEach((button) => button.addEventListener('click', DeleteMaterial));
+checkboxes.forEach((checkbox) => checkbox.addEventListener('click', CheckCheckBox));
+
+console.log(defaultButton);
+console.log(array);

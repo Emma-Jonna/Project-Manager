@@ -68,35 +68,39 @@
         <label>
             @{
                 var index = 0;
+                var materials = Model.Material.ToList();
             }
             <p>Material List</p>
             <ul class="materials-list">
-                @foreach (var item in Model.Material)
-                {
-                    <li id="list-@index">
-                        <input type="text" name="Material[@index].Amount" class="material-name" value="@item.Name" />
-                        <input type="text" name="Material[@index].Amount" class="material-amount" value="@item.Amount" />
 
-                        @if (item.Acquired == true)
+                @for (int i = 0; i < materials.Count(); i++)
+                {
+                    <li id="list-@i" class="material-container" >
+                        <input name="Material[@i].Id" value="@materials[i].Id" hidden/>
+                        <input type="text" name="Material[@i].Name" class="material-name" value="@materials[i].Name" />
+                        <input type="text" name="Material[@i].Amount" class="material-amount" value="@materials[i].Amount" />
+
+                        @if (materials[i].Acquired == true)
                         {
-                            <input type="checkbox" name="Material[@index].Amount" class="material-checkbox" checked />
+                            <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" checked value="true" />
                         }
-                        else if (item.Acquired != true)
+                        else if (materials[i].Acquired != true)
                         {
-                            <input type="checkbox" name="Material[@index].Amount" class="material-checkbox" checked />
+                            <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" value="false" />
                         }
-                        <div id="@index" class="delete-button-container default-list-item-button">
-                            <p id="@index">Delete</p>
+                        <div id="@i" class="delete-button-container default-list-item-button">
+                            <p id="@i">Delete</p>
                         </div>
                     </li>
                 }
+
                 @{
                     index++;
                 }
+
             </ul>
             <div class="add-material-button">Add Material</div>
         </label>
-
 
         <label>
             <p>Start date</p>

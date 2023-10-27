@@ -161,6 +161,7 @@ namespace Project_Manager.Controllers
         [Authorize]
         public IActionResult UpdateProjectInfo(Project formData)
         {
+            var materials = formData.Material.ToList();
 
             if (User.FindFirst("UserId") == null)
             {
@@ -214,6 +215,64 @@ namespace Project_Manager.Controllers
 
             db.Project.Update(project);
             db.SaveChanges();
+
+            var projectMaterials = db.Material.Where(p => p.ProjectId == project.Id).ToList();
+
+            foreach (var item in formData.Material)
+            {
+                foreach (var itemÏnDatabase in projectMaterials)
+                {
+                    if (itemÏnDatabase.Id == item.Id)
+                    {
+                        var material = db.Material.FirstOrDefault(m => m.Id == itemÏnDatabase.Id);
+
+                        if (material != null)
+                        {
+                            material.Name = item.Name;
+                            material.Amount = item.Amount;
+
+                            if (item.Acquired == true)
+                            {
+                                material.Acquired = true;
+                            }
+                            else if (item.Acquired != true)
+                            {
+                                material.Acquired = false;
+                            }
+
+                            db.Material.Update(material);
+                            db.SaveChanges();
+                        }
+
+                    }
+                    else if (itemÏnDatabase.Id != item.Id)
+                    {
+                        var material = db.Material.FirstOrDefault(m => m.Id == itemÏnDatabase.Id);
+
+                        if (material != null)
+                        {
+                            /*db.Material.Remove(material);
+                            db.SaveChanges();*/
+
+                        }
+                        else if (material == null)
+                        {
+                            var newMaterial = new Material()
+                            {
+                                Name = item.Name,
+                                Amount = item.Amount,
+                                Acquired = item.Acquired,
+                                ProjectId = project.Id,
+                            };
+
+                            Console.WriteLine(newMaterial.ToString());
+
+                            /*db.Material.Add(newMaterial);
+                            db.SaveChanges();*/
+                        }
+                    }
+                }
+            }
 
             return RedirectToAction("index", new { id = projectId });
         }
