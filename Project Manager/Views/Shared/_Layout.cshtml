@@ -4,18 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Project_Manager</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @*<link rel="stylesheet" href="~/Project_Manager.styles.css" asp-append-version="true" />*@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp">Sign up</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignIn">Sign In</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="UpdateProject">Update Project</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+        <nav class="">
+            <a class="" asp-controller="User" asp-action="SignUp">Sign up</a>
+            <a class="" asp-controller="User" asp-action="SignIn">Sign In</a>
+            <a class="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
+            <a class="" asp-controller="Project" asp-action="UpdateProject">Update Project</a>
+            <a class="" asp-controller="Home" asp-action="Index">Dashboard</a>
         </nav>
     </header>
     <main role="main" class="pb-3">
@@ -27,7 +25,6 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
