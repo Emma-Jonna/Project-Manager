@@ -8,14 +8,16 @@ namespace Project_Manager.Controllers
     public class ProjectController : Controller
     {
         //Create Project
-        //TODO if status ready all materials aquired
-        //TODO if status completed all materials aquierd
+        //TODO if status ready all materials acquired
+        //TODO if status completed all materials acquired
         //TODO error and if things does not exist
         //TODO show success
 
         //Edit Project
-        //TODO if status ready all materials aquired
-        //TODO if status completed all materials aquierd
+        //TODO if status ready all materials acquired
+        //TODO if status completed all materials acquired
+        //TODO error and if things does not exist
+        //TODO show success
 
         [Authorize]
         public IActionResult Index(int id)
@@ -57,11 +59,6 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            foreach (var item in formData.Material)
-            {
-                Console.WriteLine(item.Name);
-            }
-
             var db = new project_manager_dbContext();
 
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
@@ -94,9 +91,6 @@ namespace Project_Manager.Controllers
 
             foreach (var item in formData.Material)
             {
-                Console.WriteLine(item.Name);
-                Console.WriteLine(item.Amount);
-
                 var name = item.Name;
                 var amount = item.Amount;
                 var acquired = false;
@@ -104,8 +98,6 @@ namespace Project_Manager.Controllers
 
                 if (item.Acquired == true)
                 {
-                    Console.WriteLine("false");
-
                     acquired = true;
                 }
 
@@ -216,61 +208,65 @@ namespace Project_Manager.Controllers
             db.Project.Update(project);
             db.SaveChanges();
 
-            var projectMaterials = db.Material.Where(p => p.ProjectId == project.Id).ToList();
+            var formMaterialList = formData.Material.ToList();
+            var formMaterialsIds = formData.Material.Select(x => x.Id).ToList();
+            var projectMaterialIds = db.Material.Where(p => p.ProjectId == project.Id).Select(x => x.Id).ToList();
 
-            foreach (var item in formData.Material)
+            var matchingIds = projectMaterialIds.Intersect(formMaterialsIds);
+            var materialsToDelete = projectMaterialIds.Except(formMaterialsIds);
+
+            foreach (var item in matchingIds)
             {
-                foreach (var itemÏnDatabase in projectMaterials)
+                var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
+                var materialInForm = formMaterialList.FirstOrDefault(m => m.Id == item);
+
+                if (materialInDatabase != null && materialInForm != null)
                 {
-                    if (itemÏnDatabase.Id == item.Id)
+                    materialInDatabase.Name = materialInForm.Name;
+                    materialInDatabase.Amount = materialInForm.Amount;
+
+                    if (materialInForm.Acquired == true)
                     {
-                        var material = db.Material.FirstOrDefault(m => m.Id == itemÏnDatabase.Id);
-
-                        if (material != null)
-                        {
-                            material.Name = item.Name;
-                            material.Amount = item.Amount;
-
-                            if (item.Acquired == true)
-                            {
-                                material.Acquired = true;
-                            }
-                            else if (item.Acquired != true)
-                            {
-                                material.Acquired = false;
-                            }
-
-                            db.Material.Update(material);
-                            db.SaveChanges();
-                        }
-
+                        materialInDatabase.Acquired = true;
                     }
-                    else if (itemÏnDatabase.Id != item.Id)
+                    else if (materialInForm.Acquired != true)
                     {
-                        var material = db.Material.FirstOrDefault(m => m.Id == itemÏnDatabase.Id);
-
-                        if (material != null)
-                        {
-                            /*db.Material.Remove(material);
-                            db.SaveChanges();*/
-
-                        }
-                        else if (material == null)
-                        {
-                            var newMaterial = new Material()
-                            {
-                                Name = item.Name,
-                                Amount = item.Amount,
-                                Acquired = item.Acquired,
-                                ProjectId = project.Id,
-                            };
-
-                            Console.WriteLine(newMaterial.ToString());
-
-                            /*db.Material.Add(newMaterial);
-                            db.SaveChanges();*/
-                        }
+                        materialInDatabase.Acquired = false;
                     }
+
+                    db.Material.Update(materialInDatabase);
+                    db.SaveChanges();
+                }
+            }
+
+            foreach (var item in materialsToDelete)
+            {
+                var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
+
+                if (materialInDatabase != null)
+                {
+                    db.Material.Remove(materialInDatabase);
+                    db.SaveChanges();
+
+                }
+            }
+
+            foreach (var item in formMaterialList)
+            {
+                var materialInForm = db.Material.FirstOrDefault(m => m.Id == item.Id);
+
+                if (materialInForm == null)
+                {
+                    var newMaterial = new Material()
+                    {
+                        Name = item.Name,
+                        Amount = item.Amount,
+                        Acquired = item.Acquired,
+                        ProjectId = project.Id,
+                    };
+
+                    db.Material.Add(newMaterial);
+                    db.SaveChanges();
                 }
             }
 
