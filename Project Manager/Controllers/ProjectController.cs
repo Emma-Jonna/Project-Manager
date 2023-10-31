@@ -70,6 +70,35 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("CreateProject");
             }
 
+            if (formData.PatternLink != null)
+            {
+                var extension = Path.GetExtension(formData.PatternLink);
+            }
+
+            /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploded something
+            {
+                ImageFile = HttpContext.Request.Form.Files.GetFile("file_Main");
+                if (ImageFile != null)
+                {
+                    var extension = Path.GetExtension(ImageFile.FileName);//get file name
+                    if (ImageExtensions.Contains(extension.ToUpperInvariant()))
+                    {
+                        using var dataStream = new MemoryStream();
+                        await ImageFile.CopyToAsync(dataStream);
+                        byte[] imageBytes = dataStream.ToArray(); // you can save this to your byte array variable and remove the 2 lines below
+                        string base64String = Convert.ToBase64String(imageBytes);
+                        User.UserPicture = base64String; // to save the image as base64String 
+                    }
+                    else
+                    {
+                        Msg = "image format must be in JPG, BMP or PNG"; //Custom error message
+                        return Page();
+                    }
+                }
+            }*/
+
+
+
             var newProject = new Project()
             {
                 Name = formData.Name,
