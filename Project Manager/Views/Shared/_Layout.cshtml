@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Project_Manager</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css"/>
+    <link rel="stylesheet" href="~/css/typography.css" />
+    <link rel="stylesheet" href="~/css/global.css" />
 </head>
 <body>
     <header>
@@ -17,15 +20,15 @@
             }
         </nav>
     </header>
-    <main role="main" class="pb-3">
+    <main role="main" class="">
         @RenderBody()
     </main>
 
     <footer>
         <p>Footer</p>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

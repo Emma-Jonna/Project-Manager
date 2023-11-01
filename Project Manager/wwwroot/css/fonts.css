@@ -1,0 +1,35 @@
+﻿@font-face {
+    font-family: "CourierPrime-Regular";
+    src: local("CourierPrime-Regular"), url("") format("woff2"), url("") format("wuff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "CourierPrime-Bold";
+    src: local("CourierPrime-Bold"), url("") format("woff2"), url("") format("wuff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "CourierPrime-Italic";
+    src: local("CourierPrime-Italic"), url("") format("woff2"), url("") format("wuff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "CourierPrime-BoldItalic";
+    src: local("CourierPrime-BoldItalic"), url("") format("woff2"), url("") format("wuff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "RhodiumLibre";
+    src: local("RhodiumLibre"), url("/lib/fonts/RhodiumLibre/RhodiumLibre-Regular.woff2") format("woff2"), url("/lib/fonts/RhodiumLibre/RhodiumLibre-Regular.woff") format("wuff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "SpecialElite";
+    src: local("SpecialElite"), url("/lib/fonts/SpecialElite/SpecialElite-Regular.woff2") format("woff2"), url("/lib/fonts/SpecialElite/SpecialElite-Regular.woff2") format("wuff");
+    font-weight: 400;
+}

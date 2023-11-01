@@ -1,2 +1,22 @@
-﻿body {
+﻿:root {
+    /*Font Sizes*/
+    /*    --p: 1rem;*/
+    /*Colors*/
+    --black: #271620;
+    --white: #FFE1D4;
+    --dark-red: #61192C;
+    --dark-purple: #4F3744;
+    --light-purple: #774C60;
+    --dark-pink: #B75D69;
+    --light-orange: #FF8C61;
+    --light-pink: #FFB499;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*font-family: 'Special Elite';*/
+    /*font-family: 'Rhodium Libre';*/
+    /*font-family: 'Courier Prime';*/
 }
