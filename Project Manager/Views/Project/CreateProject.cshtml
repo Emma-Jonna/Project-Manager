@@ -8,7 +8,9 @@
 
     @if (TempData["error"] != null)
     {
+        <div class="message-error">
         <p>@Html.Encode(TempData["error"])</p>
+        </div>
     }
 
     <form method="post" asp-controller="Project" asp-action="CreateNewProject">
@@ -104,7 +106,11 @@
     </form>
 </secion>
 
-<a asp-controller="Home" asp-action="Index">Go Back</a>
+<a asp-controller="Home" asp-action="Index">
+    <div class="go-back-button">
+        <p>Go Back</p>
+    </div>
+</a>
 
 @section Scripts {
     <script src="~/js/createProject.js" asp-append-version="true"></script>

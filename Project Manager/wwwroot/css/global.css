@@ -39,7 +39,7 @@ body {
 
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
@@ -50,6 +50,15 @@ nav {
     justify-content: space-between
 }
 
+main {
+    padding: 30px;
+}
+
 ul {
     list-style: none;
+}
+
+.go-back-button, .edit-button, .delete-button {
+    text-decoration: none;
+    display: inline-block;
 }

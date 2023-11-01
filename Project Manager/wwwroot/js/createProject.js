@@ -3,7 +3,6 @@ const addMaterialButton = document.querySelector(".add-material-button");
 const listItems = document.querySelectorAll(".materials-list li");
 const checkboxes = document.querySelectorAll("li [type=checkbox]");
 const defaultButton = document.querySelectorAll(".default-list-item-button");
-//const defaultButton = document.getElementsByClassName(".default-list-item-button");
 
 let materialIndex = 0;
 

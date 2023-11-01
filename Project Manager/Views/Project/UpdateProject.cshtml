@@ -138,7 +138,11 @@
     </form>
 </secion>
 
-<a asp-controller="Home" asp-action="Index">Go Back</a>
+<a asp-controller="Home" asp-action="Index">
+    <div class="go-back-button">
+        <p>Go Back</p>
+    </div>
+</a>
 
 @section Scripts {
     <script src="~/js/createProject.js" asp-append-version="true"></script>

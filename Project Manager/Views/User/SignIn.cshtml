@@ -4,11 +4,13 @@
 
 <section>
 
-<h2>SignIn</h2>
+    <h2>SignIn</h2>
 
     @if (TempData["error"] != null)
     {
-        <p>@Html.Encode(TempData["error"])</p>
+        <div class="message-error">
+            <p>@Html.Encode(TempData["error"])</p>
+        </div>
     }
 
     <form method="post" asp-controller="User" asp-action="SignInUser">

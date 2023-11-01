@@ -3,42 +3,98 @@
 }
 @model Project;
 
-<section>
-    <h2>@Model.Name</h2>
+<section class="project-info-wrapper">
+    <section class="project-info-container">
+        <h2>@Model.Name</h2>
 
-    @if (TempData["error"] != null)
-    {
-        <p>@Html.Encode(TempData["error"])</p>
-    }
+        @if (TempData["error"] != null)
+        {
+            <div class="message-error">
+                <p>@Html.Encode(TempData["error"])</p>
+            </div>
+        }
 
-    <p>@Model.Category.Name</p>
-    <p>@Model.Status.Name</p>
-    <p>@Model.Type.Name</p>
-    <p>@Model.Description</p>
+        <div>
+            <h3>Category</h3>
+            <p>@Model.Category.Name</p>
+        </div>
 
-    <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
-    <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
+        <div>
+            <h3>Status</h3>
+            <p>@Model.Status.Name</p>
+        </div>
 
-    @foreach (var item in Model.Material)
-    {
-        <p>@item.Name</p>
-    }
+        <div>
+            <h3>Type</h3>
+            <p>@Model.Type.Name</p>
+        </div>
 
-    <p>@Model.BeforeImage</p>
-    <p>@Model.AfterImage</p>
-    <p>@Model.Sketch</p>
-    <p>@Model.PatternLink</p>
+        <div>
+            <h3>Description</h3>
+            <p>@Model.Description</p>
+        </div>
 
-    <form method="post" asp-controller="Project" asp-action="DeleteProject">
-        <input name="projectId" value=@Model.Id hidden />
-        <button type="submit">Delete</button>
-    </form>
+        <div>
+            <h3>Start Date</h3>
+            <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
+        </div>
 
-    <form method="post" asp-controller="Project" asp-action="UpdateProject">
-        <input name="projectId" value="@Model.Id" hidden />
-        <button type="submit">Edit</button>
-    </form>
+        <div>
+            <h3>End Date</h3>
+            <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
+        </div>
 
-    <a asp-controller="Home" asp-action="Index">Go Back</a>
+        <div class="project-info-material-list">
+            <h3>Material List</h3>
 
+            <ul>
+                @foreach (var item in Model.Material)
+                {
+                    <li>
+                        <p>@item.Name</p>
+                        <p>@item.Amount</p>
+                        <p class="material-acquired-@item.Acquired"></p>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div>
+            <p>@Model.BeforeImage</p>
+        </div>
+
+        <div>
+            <p>@Model.AfterImage</p>
+        </div>
+
+        <div>
+            <p>@Model.Sketch</p>
+        </div>
+
+        <div>
+            <p>@Model.PatternLink</p>
+        </div>
+    </section>
+
+    <section class="project-button-container">
+        <div class="delete-button">
+            <form method="post" asp-controller="Project" asp-action="DeleteProject">
+                <input name="projectId" value=@Model.Id hidden />
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+
+        <div class="edit-button">
+            <form method="post" asp-controller="Project" asp-action="UpdateProject">
+                <input name="projectId" value="@Model.Id" hidden />
+                <button type="submit">Edit</button>
+            </form>
+        </div>
+
+        <a class="go-back-button" asp-controller="Home" asp-action="Index">
+            <div>
+                <p>Go Back</p>
+            </div>
+        </a>
+    </section>
 </section>

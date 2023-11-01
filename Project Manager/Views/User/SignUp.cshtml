@@ -5,21 +5,25 @@
 
 <section>
 
-<h2>SignUp</h2>
+    <h2>SignUp</h2>
 
     @if (TempData["success"] != null)
     {
+        <div class="message-success">
         <p>@Html.Encode(TempData["success"])</p>
+        </div>
     }
     else if (TempData["error"] != null)
     {
-        <p>@Html.Encode(TempData["error"])</p>
+        <div class="message-error">
+            <p>@Html.Encode(TempData["error"])</p>
+        </div>
     }
 
     <form method="post" asp-controller="User" asp-action="SignUpUser">
         <label for="Name">
             <p>Name</p>
-            <input name="Name" type="text" placeholder="Rune"/>
+            <input name="Name" type="text" placeholder="Rune" />
         </label>
         <label for="Email">
             <p>Email</p>
