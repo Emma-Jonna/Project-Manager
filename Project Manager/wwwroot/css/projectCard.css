@@ -17,3 +17,9 @@
 .create-new-project-button {
     display: inline-block;
 }
+
+.project-list-container {
+    display: flex;
+    flex-direction: column;    
+    gap: 30px;    
+}

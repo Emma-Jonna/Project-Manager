@@ -10,7 +10,7 @@
     @if (TempData["success"] != null)
     {
         <div class="message-success">
-        <p>@Html.Encode(TempData["success"])</p>
+            <p>@Html.Encode(TempData["success"])</p>
         </div>
     }
     else if (TempData["error"] != null)
@@ -25,17 +25,24 @@
             <p>Name</p>
             <input name="Name" type="text" placeholder="Rune" />
         </label>
+
         <label for="Email">
             <p>Email</p>
             <input name="Email" type="email" placeholder="rune@yrgo.se" />
         </label>
+
         <label for="Password">
             <p>Password</p>
             <input name="Password" type="password" />
         </label>
+
         <button type="submit" value="SignUpUser">Sign Up</button>
     </form>
 
-    <a asp-controller="User" asp-action="SignIn">Go Back</a>
+    <a asp-controller="User" asp-action="SignIn">
+        <div>
+            <p>Go Back</p>
+        </div>
+    </a>
 </section>
 

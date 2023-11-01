@@ -5,7 +5,7 @@
 
 <section class="project-info-wrapper">
     <section class="project-info-container">
-        <h2>@Model.Name</h2>
+        <h3>@Model.Name</h3>
 
         @if (TempData["error"] != null)
         {
@@ -15,37 +15,37 @@
         }
 
         <div>
-            <h3>Category</h3>
+            <h4>Category</h4>
             <p>@Model.Category.Name</p>
         </div>
 
         <div>
-            <h3>Status</h3>
+            <h4>Status</h4>
             <p>@Model.Status.Name</p>
         </div>
 
         <div>
-            <h3>Type</h3>
+            <h4>Type</h4>
             <p>@Model.Type.Name</p>
         </div>
 
         <div>
-            <h3>Description</h3>
+            <h4>Description</h4>
             <p>@Model.Description</p>
         </div>
 
         <div>
-            <h3>Start Date</h3>
+            <h4>Start Date</h4>
             <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
         </div>
 
         <div>
-            <h3>End Date</h3>
+            <h4>End Date</h4>
             <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
         </div>
 
         <div class="project-info-material-list">
-            <h3>Material List</h3>
+            <h4>Material List</h4>
 
             <ul>
                 @foreach (var item in Model.Material)
@@ -60,18 +60,22 @@
         </div>
 
         <div>
+            <h4>Before Image</h4>
             <p>@Model.BeforeImage</p>
         </div>
 
         <div>
+            <h4>After Image</h4>
             <p>@Model.AfterImage</p>
         </div>
 
         <div>
+            <h4>Sketch</h4>
             <p>@Model.Sketch</p>
         </div>
 
         <div>
+            <h4>Pattern</h4>
             <p>@Model.PatternLink</p>
         </div>
     </section>

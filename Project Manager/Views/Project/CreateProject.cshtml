@@ -3,114 +3,120 @@
 }
 @model CreateProject
 
-<secion>
-    <h1>CreateProject</h1>
+<secion class="create-project-wrapper">
+    <section>
 
-    @if (TempData["error"] != null)
-    {
-        <div class="message-error">
-        <p>@Html.Encode(TempData["error"])</p>
+        <h1>CreateProject</h1>
+
+        @if (TempData["error"] != null)
+        {
+            <div class="message-error">
+                <p>@Html.Encode(TempData["error"])</p>
+            </div>
+        }
+
+        <form method="post" asp-controller="Project" asp-action="CreateNewProject">
+            <label>
+                <h4>Project Name</h4>
+                <input name="Name" type="text" />
+            </label>
+
+            <label>
+                <h4>Project Category</h4>
+                <select name="CategoryId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Category)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Project Type</h4>
+                <select name="TypeId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Type)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Project Status</h4>
+                <select name="StatusId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Status)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Description</h4>
+                <textarea name="Description" rows="4" cols="50"></textarea>
+            </label>
+
+            <label>
+                <h4>Material List</h4>
+                <ul class="materials-list">
+                    <li id="list-0">
+                        <input type="text" name="Material[0].Name" class="material-name" />
+                        <input type="text" name="Material[0].Amount" class="material-amount" />
+                        <input type="checkbox" name="Material[0].Acquired" class="material-checkbox" />
+                        <div id="0" class="delete-button-container default-list-item-button">
+                            <p id="0">Delete</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="add-material-button">Add Material</div>
+            </label>
+
+            <label>
+                <h4>Start date</h4>
+                <input type="date" />
+            </label>
+
+            <label>
+                <h4>End date</h4>
+                <input type="date" />
+            </label>
+
+            <label>
+                <h4>Before Image</h4>
+                <input type="file" accept="image/*" />
+            </label>
+
+            <label>
+                <h4>After Image</h4>
+                <input type="file" accept="image/*" />
+            </label>
+
+            <label>
+                <h4>Sketch</h4>
+                <input type="file" accept="image/*" />
+            </label>
+
+            <label>
+                <h4>Pattern Link</h4>
+                <input />
+            </label>
+
+            <div>
+                <button type="submit" value="CreateNewProject">Create Project</button>
+            </div>
+        </form>
+    </section>
+
+    <a asp-controller="Home" asp-action="Index">
+        <div class="go-back-button">
+            <p>Go Back</p>
         </div>
-    }
-
-    <form method="post" asp-controller="Project" asp-action="CreateNewProject">
-        <label>
-            <p class="hello">Project Name</p>
-            <input name="Name" type="text" />
-        </label>
-
-        <label>
-            <p>Project Category</p>
-            <select name="CategoryId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Category)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Project Type</p>
-            <select name="TypeId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Type)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Project Status</p>
-            <select name="StatusId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Status)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Description</p>
-            <textarea name="Description" rows="4" cols="50"></textarea>
-        </label>
-
-        <label>
-            <p>Material List</p>
-            <ul class="materials-list">
-                <li id="list-0" >
-                    <input type="text" name="Material[0].Name" class="material-name" />
-                    <input type="text" name="Material[0].Amount" class="material-amount" />
-                    <input type="checkbox" name="Material[0].Acquired" class="material-checkbox" />
-                    <div id="0" class="delete-button-container default-list-item-button">
-                        <p id="0">Delete</p>
-                    </div>
-                </li>
-            </ul>
-            <div class="add-material-button">Add Material</div>
-        </label>
-
-        <label>
-            <p>Start date</p>
-            <input type="date" />
-        </label>
-
-        <label>
-            <p>End date</p>
-            <input type="date" />
-        </label>
-
-        <label>
-            <p>Before Image</p>
-            <input type="file" accept="image/*" />
-        </label>
-
-        <label>
-            <p>After Image</p>
-            <input type="file" accept="image/*" />
-        </label>
-
-        <label>
-            <p>Sketch</p>
-            <input type="file" accept="image/*" />
-        </label>
-
-        <label>
-            <p>Pattern Link</p>
-            <input />
-        </label>
-
-        <button type="submit" value="CreateNewProject">Create Project</button>
-    </form>
+    </a>
 </secion>
 
-<a asp-controller="Home" asp-action="Index">
-    <div class="go-back-button">
-        <p>Go Back</p>
-    </div>
-</a>
 
 @section Scripts {
     <script src="~/js/createProject.js" asp-append-version="true"></script>

@@ -239,6 +239,7 @@ namespace Project_Manager.Controllers
             var matchingIds = projectMaterialIds.Intersect(formMaterialsIds);
             var materialsToDelete = projectMaterialIds.Except(formMaterialsIds);
 
+
             foreach (var item in matchingIds)
             {
                 var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);

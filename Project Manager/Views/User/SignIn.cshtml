@@ -18,13 +18,19 @@
             <p>Email</p>
             <input name="Email" type="email" placeholder="rune@yrgo.se" />
         </label>
+
         <label for="Password">
             <p>Password</p>
             <input name="Password" type="password" />
         </label>
+
         <button type="submit" value="SignInUser">Sign In</button>
     </form>
 
-    <a asp-controller="User" asp-action="SignUp">Register Account</a>
+    <a asp-controller="User" asp-action="SignUp">
+        <div>
+            <p>Register Account</p>
+        </div>
+    </a>
 </section>
 

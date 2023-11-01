@@ -1,0 +1,26 @@
+﻿.update-project-wrapper, .create-project-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+    .update-project-wrapper form, .create-project-wrapper form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+        .update-project-wrapper form label {
+            display: inline-block;
+        }
+
+.materials-list li {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.add-material-button {
+    padding-top: 20px;
+}

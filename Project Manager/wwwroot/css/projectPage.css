@@ -4,11 +4,11 @@
 }
 
 .material-acquired-True {
-    background-color: red;
+    background-color: green;
 }
 
 .material-acquired-False {
-    background-color: green;
+    background-color: red;
 }
 
 .project-info-wrapper {

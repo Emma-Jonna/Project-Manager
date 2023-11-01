@@ -3,146 +3,150 @@
 }
 @model EditProject;
 
-<secion>
-    <h1>UpdateProject</h1>
+<secion class="update-project-wrapper">
+    <section>
+        <h2>UpdateProject</h2>
 
-    <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
-        <label>
-            <p class="hello">Name</p>
-            <input name="Name" value="@Model.Project.Name" />
-        </label>
+        <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
+            <label>
+                <h4>Name</h4>
+                <input name="Name" value="@Model.Project.Name" />
+            </label>
 
-        <label>
-            <p>Project Category</p>
-            <select name="CategoryId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Category)
-                {
-                    if (item.Id == Model.Project.CategoryId)
+            <label>
+                <h4>Project Category</h4>
+                <select name="CategoryId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Category)
                     {
-                        <option value="@item.Id" selected>@item.Name</option>
-                    }
-
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Project Type</p>
-            <select name="TypeId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Type)
-                {
-                    if (item.Id == Model.Project.TypeId)
-                    {
-                        <option value="@item.Id" selected>@item.Name</option>
-                    }
-
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Project Status</p>
-            <select name="StatusId">
-                <option value="0">...</option>
-                @foreach (var item in Model.Status)
-                {
-                    if (item.Id == Model.Project.StatusId)
-                    {
-                        <option value="@item.Id" selected>@item.Name</option>
-                    }
-
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </label>
-
-        <label>
-            <p>Description</p>
-            <textarea name="Description" rows="4" cols="50">@Model.Project.Description</textarea>
-        </label>
-
-        <label>
-            @{
-                var index = 0;
-                var materials = Model.Material.ToList();
-            }
-            <p>Material List</p>
-            <ul class="materials-list">
-
-                @for (int i = 0; i < materials.Count(); i++)
-                {
-                    <li id="list-@i" class="material-container" >
-                        <input name="Material[@i].Id" value="@materials[i].Id" hidden/>
-                        <input type="text" name="Material[@i].Name" class="material-name" value="@materials[i].Name" />
-                        <input type="text" name="Material[@i].Amount" class="material-amount" value="@materials[i].Amount" />
-
-                        @if (materials[i].Acquired == true)
+                        if (item.Id == Model.Project.CategoryId)
                         {
-                            <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" checked value="true" />
+                            <option value="@item.Id" selected>@item.Name</option>
                         }
-                        else if (materials[i].Acquired != true)
-                        {
-                            <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" value="false" />
-                        }
-                        <div id="@i" class="delete-button-container default-list-item-button">
-                            <p id="@i">Delete</p>
-                        </div>
-                    </li>
-                }
 
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Project Type</h4>
+                <select name="TypeId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Type)
+                    {
+                        if (item.Id == Model.Project.TypeId)
+                        {
+                            <option value="@item.Id" selected>@item.Name</option>
+                        }
+
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Project Status</h4>
+                <select name="StatusId">
+                    <option value="0">...</option>
+                    @foreach (var item in Model.Status)
+                    {
+                        if (item.Id == Model.Project.StatusId)
+                        {
+                            <option value="@item.Id" selected>@item.Name</option>
+                        }
+
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                <h4>Description</h4>
+                <textarea name="Description" rows="4" cols="50">@Model.Project.Description</textarea>
+            </label>
+
+            <label>
                 @{
-                    index++;
+                    var index = 0;
+                    var materials = Model.Material.ToList();
                 }
+                <h4>Material List</h4>
+                <ul class="materials-list">
 
-            </ul>
-            <div class="add-material-button">Add Material</div>
-        </label>
+                    @for (int i = 0; i < materials.Count(); i++)
+                    {
+                        <li id="list-@i" class="material-container">
+                            <input name="Material[@i].Id" value="@materials[i].Id" hidden />
+                            <input type="text" name="Material[@i].Name" class="material-name" value="@materials[i].Name" />
+                            <input type="text" name="Material[@i].Amount" class="material-amount" value="@materials[i].Amount" />
 
-        <label>
-            <p>Start date</p>
-            <input type="date" name="StartDate" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />
-        </label>
+                            @if (materials[i].Acquired == true)
+                            {
+                                <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" checked value="true" />
+                            }
+                            else if (materials[i].Acquired != true)
+                            {
+                                <input type="checkbox" name="Material[@i].Acquired" class="material-checkbox" value="false" />
+                            }
+                            <div id="@i" class="delete-button-container default-list-item-button">
+                                <p id="@i">Delete</p>
+                            </div>
+                        </li>
+                    }
 
-        <label>
-            <p>End date</p>
-            <input type="date" name="EndDate" value="@(Model.Project.EndDate.HasValue ? @Model.Project.EndDate.Value.ToString("yyyy-MM-dd") : "" )" />
-        </label>
+                    @{
+                        index++;
+                    }
 
-        <label>
-            <p>Before Image</p>
-            <input type="file" name="BeforeImage" value="@Model.Project.BeforeImage" accept="image/*"/>
-        </label>
+                </ul>
+                <div class="add-material-button">Add Material</div>
+            </label>
 
-        <label>
-            <p>After Image</p>
-            <input type="file" name="AfterImage" value="@Model.Project.AfterImage" accept="image/*" />
-        </label>
+            <label>
+                <h4>Start date</h4>
+                <input type="date" name="StartDate" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />
+            </label>
 
-        <label>
-            <p>Sketch</p>
-            <input type="file" name="Sketch" value="@Model.Project.Sketch" accept="image/*" />
-        </label>
+            <label>
+                <h4>End date</h4>
+                <input type="date" name="EndDate" value="@(Model.Project.EndDate.HasValue ? @Model.Project.EndDate.Value.ToString("yyyy-MM-dd") : "" )" />
+            </label>
 
-        <label>
-            <p>Pattern Link</p>
-            <input name="PatternLink" value="@Model.Project.PatternLink" />
-        </label>
+            <label>
+                <h4>Before Image</h4>
+                <input type="file" name="BeforeImage" value="@Model.Project.BeforeImage" accept="image/*" />
+            </label>
 
-        <input name="Id" value="@Model.Project.Id" hidden />
+            <label>
+                <h4>After Image</h4>
+                <input type="file" name="AfterImage" value="@Model.Project.AfterImage" accept="image/*" />
+            </label>
 
-        <button type="submit">Save Changes</button>
-    </form>
+            <label>
+                <h4>Sketch</h4>
+                <input type="file" name="Sketch" value="@Model.Project.Sketch" accept="image/*" />
+            </label>
+
+            <label>
+                <h4>Pattern Link</h4>
+                <input name="PatternLink" value="@Model.Project.PatternLink" />
+            </label>
+
+            <input name="Id" value="@Model.Project.Id" hidden />
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </section>
+
+    <a asp-controller="Home" asp-action="Index">
+        <div class="go-back-button">
+            <p>Go Back</p>
+        </div>
+    </a>
 </secion>
 
-<a asp-controller="Home" asp-action="Index">
-    <div class="go-back-button">
-        <p>Go Back</p>
-    </div>
-</a>
 
 @section Scripts {
     <script src="~/js/createProject.js" asp-append-version="true"></script>
