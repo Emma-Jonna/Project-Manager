@@ -70,11 +70,6 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("CreateProject");
             }
 
-            if (formData.PatternLink != null)
-            {
-                var extension = Path.GetExtension(formData.PatternLink);
-            }
-
             /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploded something
             {
                 ImageFile = HttpContext.Request.Form.Files.GetFile("file_Main");
