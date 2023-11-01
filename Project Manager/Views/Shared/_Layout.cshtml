@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="~/css/fonts.css"/>
     <link rel="stylesheet" href="~/css/typography.css" />
     <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/projectCard.css" />
 </head>
 <body>
     <header>
-        <nav class="">
-            <a class="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
+        <nav>            
             @*<a class="" asp-controller="Home" asp-action="Index">Dashboard</a>*@
             @if (User.Identity.IsAuthenticated)
             {

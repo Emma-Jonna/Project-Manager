@@ -1,0 +1,19 @@
+﻿project-cards-container {
+    display: flex;
+}
+
+.project-card-wrapper {
+    border: solid var(--black) 3px;
+    border-collapse: collapse;
+    padding: 16px;
+    display: inline-block;
+    border-radius: 16px;
+}
+
+    .project-card-wrapper a, nav a, .create-new-project-button{
+        text-decoration: none;
+    }
+
+.create-new-project-button {
+    display: inline-block;
+}

@@ -6,21 +6,21 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<section class="text-center">
+    <h1 class="">Welcome</h1>
 
     @if (TempData["success"] != null)
     {
         <p>@Html.Encode(TempData["success"])</p>
     }
 
-    <ul>
+    <ul class="project-cards-container">
         @foreach (var item in Model)
         {
-            <li>
+            <li class="project-card-wrapper">
                 <a asp-controller="Project" asp-action="index" asp-route-id="@item.Id">
                     <div class="project-card">
-                        <p>@item.Name</p>
+                        <h3>@item.Name</h3>
                         <p>@item.Status.Name</p>
                         <p>@item.Type.Name</p>
                         <p>@item.Category.Name</p>
@@ -28,5 +28,12 @@
                 </a>
             </li>
         }
-    </ul>    
-</div>
+    </ul>
+
+
+    <a class="create-new-project-button" asp-controller="Project" asp-action="CreateProject">        
+        <div>
+            <p>Create New Project</p>
+        </div>
+    </a>
+</section>
