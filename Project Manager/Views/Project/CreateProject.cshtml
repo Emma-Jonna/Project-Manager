@@ -24,7 +24,7 @@
             <label>
                 <h4>Project Category</h4>
                 <select name="CategoryId">
-                    <option value="0">...</option>
+                    <option value="0">Choose project category</option>
                     @foreach (var item in Model.Category)
                     {
                         <option value="@item.Id">@item.Name</option>
@@ -35,7 +35,7 @@
             <label>
                 <h4>Project Type</h4>
                 <select name="TypeId">
-                    <option value="0">...</option>
+                    <option value="0">Choose project type</option>
                     @foreach (var item in Model.Type)
                     {
                         <option value="@item.Id">@item.Name</option>
@@ -46,7 +46,7 @@
             <label>
                 <h4>Project Status</h4>
                 <select name="StatusId">
-                    <option value="0">...</option>
+                    <option value="0">Choose project status</option>
                     @foreach (var item in Model.Status)
                     {
                         <option value="@item.Id">@item.Name</option>
@@ -101,7 +101,7 @@
 
             <label>
                 <h4>Pattern Link</h4>
-                <input />
+                <input type="file" accept="application/pdf" />
             </label>
 
             <div>

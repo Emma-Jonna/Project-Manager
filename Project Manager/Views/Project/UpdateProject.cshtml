@@ -15,8 +15,7 @@
 
             <label>
                 <h4>Project Category</h4>
-                <select name="CategoryId">
-                    <option value="0">...</option>
+                <select name="CategoryId">                    
                     @foreach (var item in Model.Category)
                     {
                         if (item.Id == Model.Project.CategoryId)
@@ -31,8 +30,7 @@
 
             <label>
                 <h4>Project Type</h4>
-                <select name="TypeId">
-                    <option value="0">...</option>
+                <select name="TypeId">                    
                     @foreach (var item in Model.Type)
                     {
                         if (item.Id == Model.Project.TypeId)
@@ -47,8 +45,7 @@
 
             <label>
                 <h4>Project Status</h4>
-                <select name="StatusId">
-                    <option value="0">...</option>
+                <select name="StatusId">                    
                     @foreach (var item in Model.Status)
                     {
                         if (item.Id == Model.Project.StatusId)

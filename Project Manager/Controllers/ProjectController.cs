@@ -186,7 +186,7 @@ namespace Project_Manager.Controllers
 
             if (formData.Id == 0)
             {
-                TempData["error"] = "Something Went Wrong Please Try Again1";
+                TempData["error"] = "Something Went Wrong Please Try Again";
 
                 return RedirectToAction("Index", "Home");
             }
@@ -199,20 +199,20 @@ namespace Project_Manager.Controllers
 
             if (project.Id == 0)
             {
-                TempData["error"] = "Something Went Wrong Please Try Again1";
+                TempData["error"] = "Something Went Wrong Please Try Again";
 
                 return RedirectToAction("Index", "Home");
             }
 
             if (formData.Name == null || formData.CategoryId == 0 || formData.TypeId == 0 || formData.StatusId == 0 || formData.Description == null)
             {
-                TempData["error"] = "Something Went Wrong Please Try Again1";
+                TempData["error"] = "All input fields needs too be filled in";
 
                 return RedirectToAction("index", new { id = projectId });
             }
             else if (formData.EndDate.HasValue && formData.StartDate == null)
             {
-                TempData["error"] = "Something Went Wrong Please Try Again2";
+                TempData["error"] = "You need to add a start date if you add end date";
 
                 return RedirectToAction("Index", new { id = projectId });
             }
@@ -232,13 +232,8 @@ namespace Project_Manager.Controllers
             db.Project.Update(project);
             db.SaveChanges();
 
-            //Materials from form
             var formMaterialList = formData.Material.ToList();
-
-            //Material ids from form
             var formMaterialsIds = new List<int>();
-
-            //Current project material ids
             var projectMaterialIds = db.Material.Where(p => p.ProjectId == project.Id).Select(x => x.Id).ToList();
 
             foreach (var item in formMaterialList)
@@ -248,10 +243,8 @@ namespace Project_Manager.Controllers
 
             foreach (var item in projectMaterialIds)
             {
-                Console.WriteLine("project material id: " + item + "does id exist int formids list: " + formMaterialsIds.Contains(item));
                 if (!formMaterialsIds.Contains(item))
                 {
-                    //Console.WriteLine("Not in form" + item);
                     var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
 
                     if (materialInDatabase != null)
