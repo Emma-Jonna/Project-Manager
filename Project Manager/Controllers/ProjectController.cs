@@ -232,55 +232,43 @@ namespace Project_Manager.Controllers
             db.Project.Update(project);
             db.SaveChanges();
 
+            //Materials from form
             var formMaterialList = formData.Material.ToList();
-            var formMaterialsIds = formData.Material.Select(x => x.Id).ToList();
+
+            //Material ids from form
+            var formMaterialsIds = new List<int>();
+
+            //Current project material ids
             var projectMaterialIds = db.Material.Where(p => p.ProjectId == project.Id).Select(x => x.Id).ToList();
 
-            var matchingIds = projectMaterialIds.Intersect(formMaterialsIds);
-            var materialsToDelete = projectMaterialIds.Except(formMaterialsIds);
-
-
-            foreach (var item in matchingIds)
+            foreach (var item in formMaterialList)
             {
-                var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
-                var materialInForm = formMaterialList.FirstOrDefault(m => m.Id == item);
-
-                if (materialInDatabase != null && materialInForm != null)
-                {
-                    materialInDatabase.Name = materialInForm.Name;
-                    materialInDatabase.Amount = materialInForm.Amount;
-
-                    if (materialInForm.Acquired == true)
-                    {
-                        materialInDatabase.Acquired = true;
-                    }
-                    else if (materialInForm.Acquired != true)
-                    {
-                        materialInDatabase.Acquired = false;
-                    }
-
-                    db.Material.Update(materialInDatabase);
-                    db.SaveChanges();
-                }
+                formMaterialsIds.Add(item.Id);
             }
 
-            foreach (var item in materialsToDelete)
+            foreach (var item in projectMaterialIds)
             {
-                var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
-
-                if (materialInDatabase != null)
+                Console.WriteLine("project material id: " + item + "does id exist int formids list: " + formMaterialsIds.Contains(item));
+                if (!formMaterialsIds.Contains(item))
                 {
-                    db.Material.Remove(materialInDatabase);
-                    db.SaveChanges();
+                    //Console.WriteLine("Not in form" + item);
+                    var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item);
 
+                    if (materialInDatabase != null)
+                    {
+                        db.Material.Remove(materialInDatabase);
+                        db.SaveChanges();
+
+                    }
                 }
             }
 
             foreach (var item in formMaterialList)
             {
-                var materialInForm = db.Material.FirstOrDefault(m => m.Id == item.Id);
+                var materialInDatabase = db.Material.FirstOrDefault(m => m.Id == item.Id);
 
-                if (materialInForm == null)
+                //Adding material
+                if (materialInDatabase == null || item.Id == 0)
                 {
                     var newMaterial = new Material()
                     {
@@ -291,6 +279,23 @@ namespace Project_Manager.Controllers
                     };
 
                     db.Material.Add(newMaterial);
+                    db.SaveChanges();
+                } //Update existing material
+                else if (materialInDatabase != null)
+                {
+                    materialInDatabase.Name = item.Name;
+                    materialInDatabase.Amount = item.Amount;
+
+                    if (item.Acquired == true)
+                    {
+                        materialInDatabase.Acquired = true;
+                    }
+                    else
+                    {
+                        materialInDatabase.Acquired = false;
+                    }
+
+                    db.Material.Update(materialInDatabase);
                     db.SaveChanges();
                 }
             }
