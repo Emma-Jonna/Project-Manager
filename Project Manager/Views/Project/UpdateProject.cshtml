@@ -15,45 +15,54 @@
 
             <label>
                 <h4>Project Category</h4>
-                <select name="CategoryId">                    
+                <select name="CategoryId">
                     @foreach (var item in Model.Category)
                     {
                         if (item.Id == Model.Project.CategoryId)
                         {
                             <option value="@item.Id" selected>@item.Name</option>
                         }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
 
-                        <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </label>
 
             <label>
                 <h4>Project Type</h4>
-                <select name="TypeId">                    
+                <select name="TypeId">
                     @foreach (var item in Model.Type)
                     {
                         if (item.Id == Model.Project.TypeId)
                         {
                             <option value="@item.Id" selected>@item.Name</option>
                         }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
 
-                        <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </label>
 
             <label>
                 <h4>Project Status</h4>
-                <select name="StatusId">                    
+                <select name="StatusId">
                     @foreach (var item in Model.Status)
                     {
                         if (item.Id == Model.Project.StatusId)
                         {
                             <option value="@item.Id" selected>@item.Name</option>
                         }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
 
-                        <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </label>
@@ -113,24 +122,22 @@
             <label>
                 <h4>Before Image</h4>
                 <img src="@Model.Project.BeforeImage" />
-                <input type="file" name="BeforeImage" value="beforeImage" accept=".jpg, jpeg, .png" />
+                <input type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>After Image</h4>
-                <img src="@Model.Project.AfterImage" />
                 <input type="file" name="AfterImage" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>Sketch</h4>
-                <img src="@Model.Project.Sketch" />
-                <input type="file" name="Sketch" value="@Model.Project.Sketch" accept=".jpg, jpeg, .png" />
+                <input type="file" name="Sketch" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>Pattern Link</h4>
-                <input type="file" name="PatternLink" value="@Model.Project.PatternLink" accept=".pdf" />
+                <input type="file" name="PatternLink" accept=".pdf" />
             </label>
 
             <input name="Id" value="@Model.Project.Id" hidden />

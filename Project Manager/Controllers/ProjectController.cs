@@ -257,7 +257,7 @@ namespace Project_Manager.Controllers
                 }
 
 
-                if (!string.IsNullOrEmpty(formData.BeforeImage))
+                /*if (!string.IsNullOrEmpty(formData.BeforeImage))
                 {
                     //var dataStream = new MemoryStream();
                     //dataStream.CopyTo(formData.BeforeImage);
@@ -286,7 +286,7 @@ namespace Project_Manager.Controllers
                     //formData.BeforeImage.CopyTo(mStream);
                     //userIdentity.Pfp = mStream.ToArray();
                     //}
-                }
+                }*/
 
                 /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploaded something
                 {
