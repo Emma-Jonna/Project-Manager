@@ -71,15 +71,11 @@ const ChangeElementsIds = (array) => {
 }
 
 const CheckCheckBox = (event) => {
-    console.log(event.target.checked);
-    //console.log(event.target);
     if (event.target.checked) {        
         event.target.value = true;
-        //event.target.checked = true;
         event.target.setAttribute('checked', true);
     } else if (!event.target.checked){        
         event.target.value = false;
-        //event.target.checked = false;
         event.target.removeAttribute('checked', false);
     }
 }
@@ -135,5 +131,5 @@ ChangeElementsIds(array);
 defaultButton.forEach((button) => button.addEventListener('click', DeleteMaterial));
 checkboxes.forEach((checkbox) => checkbox.addEventListener('click', CheckCheckBox));
 
-console.log(defaultButton);
-console.log(array);
+//console.log(defaultButton);
+//console.log(array);

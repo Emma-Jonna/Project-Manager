@@ -112,22 +112,25 @@
 
             <label>
                 <h4>Before Image</h4>
-                <input type="file" name="BeforeImage" value="@Model.Project.BeforeImage" accept="image/*" />
+                <img src="@Model.Project.BeforeImage" />
+                <input type="file" name="BeforeImage" value="beforeImage" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>After Image</h4>
-                <input type="file" name="AfterImage" value="@Model.Project.AfterImage" accept="image/*" />
+                <img src="@Model.Project.AfterImage" />
+                <input type="file" name="AfterImage" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>Sketch</h4>
-                <input type="file" name="Sketch" value="@Model.Project.Sketch" accept="image/*" />
+                <img src="@Model.Project.Sketch" />
+                <input type="file" name="Sketch" value="@Model.Project.Sketch" accept=".jpg, jpeg, .png" />
             </label>
 
             <label>
                 <h4>Pattern Link</h4>
-                <input name="PatternLink" value="@Model.Project.PatternLink" />
+                <input type="file" name="PatternLink" value="@Model.Project.PatternLink" accept=".pdf" />
             </label>
 
             <input name="Id" value="@Model.Project.Id" hidden />
