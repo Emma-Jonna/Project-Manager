@@ -13,6 +13,12 @@
     {
         <p>@Html.Encode(TempData["success"])</p>
     }
+    else if (TempData["error"] != null)
+    {
+        <div class="message-error">
+            <p>@Html.Encode(TempData["error"])</p>
+        </div>
+    }
 
     <ul class="project-cards-container">
         @foreach (var item in Model)
@@ -31,7 +37,7 @@
     </ul>
 
 
-    <a class="create-new-project-button" asp-controller="Project" asp-action="CreateProject">        
+    <a class="create-new-project-button" asp-controller="Project" asp-action="CreateProject">
         <div>
             <p>Create New Project</p>
         </div>
