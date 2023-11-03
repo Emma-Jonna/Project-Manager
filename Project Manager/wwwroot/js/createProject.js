@@ -7,14 +7,14 @@ const defaultButton = document.querySelectorAll(".default-list-item-button");
 let materialIndex = 0;
 
 addMaterialButton.addEventListener("click", () => {
-    
+
     CreateListItem();
 
     materialIndex++;
 });
 
 const DeleteMaterial = (event) => {
-    console.log(event);
+
     ChangeListItemsIds(event);
 }
 
@@ -45,6 +45,7 @@ const ChangeElementsIds = (array) => {
         for (let i = 0; i < element.children.length; i++) {
 
             let inputClassName = element.children[i].classList.value;
+            console.log(inputClassName);
 
             if (inputClassName == "material-name") {
 
@@ -58,9 +59,14 @@ const ChangeElementsIds = (array) => {
 
                 element.children[i].name = `Material[${materialIndex}].Acquired`;
 
-            } else if (inputClassName == "delete-button-container") {
+            } else if (inputClassName == "material-id") {
 
-                element.children[i].id = materialIndex;
+                element.children[i].name = `Material[${materialIndex}].Id`;
+
+            }
+            else if (inputClassName.includes("delete-button-container")) {
+
+                element.children[i].id = materialIndex;               
 
                 element.children[i].children[0].id = materialIndex;
             }
@@ -71,10 +77,10 @@ const ChangeElementsIds = (array) => {
 }
 
 const CheckCheckBox = (event) => {
-    if (event.target.checked) {        
+    if (event.target.checked) {
         event.target.value = true;
         event.target.setAttribute('checked', true);
-    } else if (!event.target.checked){        
+    } else if (!event.target.checked) {
         event.target.value = false;
         event.target.removeAttribute('checked', false);
     }

@@ -83,7 +83,7 @@
                     @for (int i = 0; i < materials.Count(); i++)
                     {
                         <li id="list-@i" class="material-container">
-                            <input name="Material[@i].Id" value="@materials[i].Id" hidden />
+                            <input name="Material[@i].Id" value="@materials[i].Id" class="material-id" hidden />
                             <input type="text" name="Material[@i].Name" class="material-name" value="@materials[i].Name" />
                             <input type="text" name="Material[@i].Amount" class="material-amount" value="@materials[i].Amount" />
 
