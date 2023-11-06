@@ -81,6 +81,7 @@
     </section>
 
     <section class="project-button-container">
+        <div>
         <div class="delete-button">
             <form method="post" asp-controller="Project" asp-action="DeleteProject">
                 <input name="projectId" value=@Model.Id hidden />
@@ -93,6 +94,7 @@
                 <input name="projectId" value="@Model.Id" hidden />
                 <button type="submit">Edit</button>
             </form>
+        </div>
         </div>
 
         <a class="go-back-button" asp-controller="Home" asp-action="Index">

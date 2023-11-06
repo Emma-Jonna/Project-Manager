@@ -31,35 +31,25 @@
 
 html {
     height: 100%;
+    width: 100%;
 }
 
 body {
-    height: 100%;    
-}
-
-
-footer {
-    position: relative;
-    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 nav {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between
+    background-color: hotpink;
 }
 
 main {
-    padding: 30px;
-    /*height: 100%;*/
+    background-color: aqua;
 }
 
-ul {
-    list-style: none;
-}
+footer {
 
-.go-back-button, .edit-button, .delete-button {
-    text-decoration: none;
-    display: inline-block;
+background-color: red;
 }

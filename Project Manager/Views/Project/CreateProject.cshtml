@@ -3,121 +3,124 @@
 }
 @model CreateProject
 
-<secion class="create-project-wrapper">
-    <section>
+<secion class="create-project-section">
+    <div class="create-project-wrapper">
+        <section>
 
-        <h1>CreateProject</h1>
+            <h1>CreateProject</h1>
 
-        @if (TempData["error"] != null)
-        {
-            <div class="message-error">
-                <p>@Html.Encode(TempData["error"])</p>
+            @if (TempData["error"] != null)
+            {
+                <div class="message-error">
+                    <p>@Html.Encode(TempData["error"])</p>
+                </div>
+            }
+
+            <form method="post" asp-controller="Project" asp-action="CreateNewProject">
+                <label>
+                    <h4>Project Name</h4>
+                    <input name="Name" type="text" />
+                </label>
+
+                <label>
+                    <h4>Project Category</h4>
+                    <select name="CategoryId">
+                        <option value="0">Choose project category</option>
+                        @foreach (var item in Model.Category)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </label>
+
+                <label>
+                    <h4>Project Type</h4>
+                    <select name="TypeId">
+                        <option value="0">Choose project type</option>
+                        @foreach (var item in Model.Type)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </label>
+
+                <label>
+                    <h4>Project Status</h4>
+                    <select name="StatusId">
+                        <option value="0">Choose project status</option>
+                        @foreach (var item in Model.Status)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </label>
+
+                <label>
+                    <h4>Description</h4>
+                    <textarea name="Description" rows="4" cols="50"></textarea>
+                </label>
+
+                <label>
+                    <h4>Material List</h4>
+                    <ul class="materials-list">
+                        <li id="list-0">
+                            <input type="text" name="Material[0].Name" class="material-name" />
+                            <input type="text" name="Material[0].Amount" class="material-amount" />
+                            <input type="checkbox" name="Material[0].Acquired" class="material-checkbox" />
+                            <div id="0" class="delete-button-container default-list-item-button">
+                                <p id="0">Delete</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-material-button">Add Material</div>
+                </label>
+
+                <label>
+                    <h4>Start date</h4>
+                    <input type="date" />
+                </label>
+
+                <label>
+                    <h4>End date</h4>
+                    <input type="date" />
+                </label>
+
+                <label class="before-image-container">
+                    <h4>Before Image</h4>
+                    <img src="" hidden />
+                    <input id="before-image-file" type="file" name="BeforeImage" accept=".jpg, jpeg, .png" />
+                </label>
+
+                <label class="after-image-container">
+                    <h4>After Image</h4>
+                    <img src="" hidden />
+                    <input id="after-image-file" type="file" name="AfterImage" accept=".jpg, jpeg, .png" />
+                </label>
+
+                <label class="sketch-image-container">
+                    <h4>Sketch</h4>
+                    <img src="" hidden />
+                    <input id="sketch-image-file" type="file" name="Sketch" accept=".jpg, jpeg, .png" />
+                </label>
+
+                <label class="pattern-container">
+                    <h4>Pattern Link</h4>
+                    <input id="pattern-file" type="file" name="PatternLink" accept=".pdf" />
+                </label>
+
+                <div>
+                    <button type="submit" value="CreateNewProject">Create Project</button>
+                </div>
+            </form>
+        </section>
+
+        <a asp-controller="Home" asp-action="Index">
+            <div class="go-back-button">
+                <p>Go Back</p>
             </div>
-        }
+        </a>
 
-        <form method="post" asp-controller="Project" asp-action="CreateNewProject">
-            <label>
-                <h4>Project Name</h4>
-                <input name="Name" type="text" />
-            </label>
-
-            <label>
-                <h4>Project Category</h4>
-                <select name="CategoryId">
-                    <option value="0">Choose project category</option>
-                    @foreach (var item in Model.Category)
-                    {
-                        <option value="@item.Id">@item.Name</option>
-                    }
-                </select>
-            </label>
-
-            <label>
-                <h4>Project Type</h4>
-                <select name="TypeId">
-                    <option value="0">Choose project type</option>
-                    @foreach (var item in Model.Type)
-                    {
-                        <option value="@item.Id">@item.Name</option>
-                    }
-                </select>
-            </label>
-
-            <label>
-                <h4>Project Status</h4>
-                <select name="StatusId">
-                    <option value="0">Choose project status</option>
-                    @foreach (var item in Model.Status)
-                    {
-                        <option value="@item.Id">@item.Name</option>
-                    }
-                </select>
-            </label>
-
-            <label>
-                <h4>Description</h4>
-                <textarea name="Description" rows="4" cols="50"></textarea>
-            </label>
-
-            <label>
-                <h4>Material List</h4>
-                <ul class="materials-list">
-                    <li id="list-0">
-                        <input type="text" name="Material[0].Name" class="material-name" />
-                        <input type="text" name="Material[0].Amount" class="material-amount" />
-                        <input type="checkbox" name="Material[0].Acquired" class="material-checkbox" />
-                        <div id="0" class="delete-button-container default-list-item-button">
-                            <p id="0">Delete</p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="add-material-button">Add Material</div>
-            </label>
-
-            <label>
-                <h4>Start date</h4>
-                <input type="date" />
-            </label>
-
-            <label>
-                <h4>End date</h4>
-                <input type="date" />
-            </label>
-
-            <label class="before-image-container">
-                <h4>Before Image</h4>
-                <img src="" hidden />
-                <input id="before-image-file" type="file" name="BeforeImage" accept=".jpg, jpeg, .png" />
-            </label>
-
-            <label class="after-image-container">
-                <h4>After Image</h4>
-                <img src="" hidden />
-                <input id="after-image-file" type="file" name="AfterImage" accept=".jpg, jpeg, .png" />
-            </label>
-
-            <label class="sketch-image-container">
-                <h4>Sketch</h4>
-                <img src="" hidden />
-                <input id="sketch-image-file" type="file" name="Sketch" accept=".jpg, jpeg, .png" />
-            </label>
-
-            <label class="pattern-container">
-                <h4>Pattern Link</h4>
-                <input id="pattern-file" type="file" name="PatternLink" accept=".pdf" />
-            </label>
-
-            <div>
-                <button type="submit" value="CreateNewProject">Create Project</button>
-            </div>
-        </form>
-    </section>
-
-    <a asp-controller="Home" asp-action="Index">
-        <div class="go-back-button">
-            <p>Go Back</p>
-        </div>
-    </a>
+    </div>
 </secion>
 
 
