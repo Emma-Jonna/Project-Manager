@@ -191,10 +191,7 @@ namespace Project_Manager.Controllers
         {
             var materials = formData.Material.ToList();
 
-            foreach (var item in materials)
-            {
-                Console.WriteLine(item.Acquired);
-            }
+            //Console.WriteLine(BeforeImageFile.FileName);
 
             if (User.FindFirst("UserId") == null)
             {

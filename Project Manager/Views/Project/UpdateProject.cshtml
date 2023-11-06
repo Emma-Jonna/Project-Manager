@@ -119,25 +119,27 @@
                 <input type="date" name="Project.EndDate" value="@(Model.Project.EndDate.HasValue ? @Model.Project.EndDate.Value.ToString("yyyy-MM-dd") : "" )" />
             </label>
 
-            <label>
+            <label class="before-image-container">
                 <h4>Before Image</h4>
-                @*<img src="@Model.Project.BeforeImage" />*@
-                <input type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
+                <img src="" hidden/>
+                <input id="before-image-file" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
             </label>
 
-            <label>
+            <label class="after-image-container">
                 <h4>After Image</h4>
-                <input type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
+                <img src="" hidden />
+                <input id="after-image-file" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
             </label>
 
-            <label>
+            <label class="sketch-image-container">
                 <h4>Sketch</h4>
-                <input type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
+                <img src="" hidden />
+                <input id="sketch-image-file" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
             </label>
 
-            <label>
-                <h4>Pattern Link</h4>
-                <input type="file" name="PatternFile" accept=".pdf" />
+            <label class="pattern-container">
+                <h4>Pattern Link</h4>                
+                <input id="pattern-file" type="file" name="PatternFile" accept=".pdf" />
             </label>
 
             <input name="Project.Id" value="@Model.Project.Id" hidden />
@@ -157,4 +159,5 @@
 
 @section Scripts {
     <script src="~/js/createProject.js" asp-append-version="true"></script>
+    <script src="~/js/previewImages.js" asp-append-version="true"></script>
 }

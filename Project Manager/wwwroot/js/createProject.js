@@ -45,7 +45,7 @@ const ChangeElementsIds = (array) => {
         for (let i = 0; i < element.children.length; i++) {
 
             let inputClassName = element.children[i].classList.value;
-            console.log(inputClassName);
+            //console.log(inputClassName);
 
             if (inputClassName == "material-name") {
 
