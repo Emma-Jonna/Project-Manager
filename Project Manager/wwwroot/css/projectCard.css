@@ -1,1 +1,28 @@
-﻿
+﻿.project-cards-container {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+    .project-cards-container li {
+        background-color: lightpink;
+        display: inline-block;
+        border: solid black 3px;
+        border-radius: 16px;
+        padding: 10px;
+        white-space: nowrap;        
+    }
+
+.project-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*    align-items: center;*/
+    gap: 2rem;
+}
+
+h1 {
+    text-align: center;
+}

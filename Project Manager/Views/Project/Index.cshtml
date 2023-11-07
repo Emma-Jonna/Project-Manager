@@ -82,17 +82,17 @@
 
     <section class="project-button-container">
         <div>
-        <div class="delete-button">
+        <div class="delete-project">
             <form method="post" asp-controller="Project" asp-action="DeleteProject">
                 <input name="projectId" value=@Model.Id hidden />
-                <button type="submit">Delete</button>
+                    <button class="delete-project-button" type="submit">Delete</button>
             </form>
         </div>
 
-        <div class="edit-button">
+        <div class="edit-project">
             <form method="post" asp-controller="Project" asp-action="UpdateProject">
                 <input name="projectId" value="@Model.Id" hidden />
-                <button type="submit">Edit</button>
+                    <button class="edit-project-button" type="submit">Edit</button>
             </form>
         </div>
         </div>

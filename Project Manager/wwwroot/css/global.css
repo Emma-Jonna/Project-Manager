@@ -43,13 +43,18 @@ body {
 
 nav {
     background-color: hotpink;
+/*    padding: 12px;*/
 }
 
 main {
     background-color: aqua;
+    padding: 2rem;
 }
 
 footer {
+    background-color: red;
+}
 
-background-color: red;
+a {
+    text-decoration: none;
 }

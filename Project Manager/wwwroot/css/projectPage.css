@@ -1,6 +1,6 @@
 ﻿.material-acquired-True, .material-acquired-False {
-    width: 30px;
-    height: 30px;
+/*    width: 30px;*/
+/*    height: 30px;*/
 }
 
 .material-acquired-True {
@@ -12,20 +12,20 @@
 }
 
 .project-info-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 50px;*/
 }
 
 .project-info-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 30px;*/
 }
 
 .project-info-material-list li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    gap: 20px;*/
 }

@@ -1,0 +1,126 @@
+﻿.create-new-project-button {
+    background-color: hotpink;
+    width: 120px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;
+    text-align: center;
+}
+
+nav a {
+    background-color: green;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;    
+}
+
+.register-redirect-button {
+    background-color: lightblue;
+    width: 130px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;
+    text-align: center;
+}
+
+.sign-in-button {
+    background-color: mediumpurple;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.sign-up-button {
+    background-color: rosybrown;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.go-back-button {
+    background-color: peru;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.create-project-button {
+    background-color: sandybrown;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;    
+}
+
+.delete-button-container {
+    background-color: lavender;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.add-material-button {
+    background-color: rebeccapurple;
+    width: 130px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid black 2px;
+    text-align: center;
+}
+
+.delete-project-button {
+    background-color: orangered;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.edit-project-button {
+    background-color: indianred;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.save-project-changes-button {
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.delete-button-container:hover, .add-material-button:hover, .edit-project-button:hover, .delete-project-button:hover, .sign-up-button:hover, .sign-in-button:hover, .save-project-changes-button:hover {
+    cursor: pointer;
+}
