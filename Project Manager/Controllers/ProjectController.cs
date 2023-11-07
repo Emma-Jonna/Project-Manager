@@ -227,7 +227,7 @@ namespace Project_Manager.Controllers
             }
             else if (formData.Project.EndDate.HasValue && formData.Project.StartDate == null)
             {
-                TempData["error"] = "You need to add a start date if you add end date";
+                TempData["error"] = "If you add an end date you need to add a start date";
 
                 return RedirectToAction("Index", new { id = projectId });
             }

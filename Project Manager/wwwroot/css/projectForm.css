@@ -1,21 +1,32 @@
 ﻿.update-project-wrapper, .create-project-wrapper {
-/*    display: flex;
+    /*    display: flex;
     flex-direction: column;
     gap: 30px;*/
 }
 
     .update-project-wrapper form, .create-project-wrapper form {
-/*        display: flex;
+        /*        display: flex;
         flex-direction: column;
         gap: 20px;*/
     }
 
         .update-project-wrapper form label {
-/*            display: inline-block;*/
+            /*            display: inline-block;*/
         }
+
+.update-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
 .materials-list li {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 20px;
+}
+
+.material-container input {
+    height: 20px;
 }

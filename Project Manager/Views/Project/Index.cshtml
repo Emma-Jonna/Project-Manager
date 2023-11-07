@@ -6,14 +6,14 @@
 <section class="project-info-page">
     <section class="project-info-wrapper">
         <section class="project-info-container">
-            <h3>@Model.Name</h3>
-
             @if (TempData["error"] != null)
             {
                 <div class="message-error">
                     <p>@Html.Encode(TempData["error"])</p>
                 </div>
             }
+
+            <h3>@Model.Name</h3>
 
             <div>
                 <h4>Category</h4>
@@ -30,19 +30,19 @@
                 <p>@Model.Type.Name</p>
             </div>
 
-            <div>
+            <div class="project-info-description">
                 <h4>Description</h4>
                 <p>@Model.Description</p>
             </div>
 
             <div>
                 <h4>Start Date</h4>
-                <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
+                <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "No start date added")</p>
             </div>
 
             <div>
                 <h4>End Date</h4>
-                <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
+                <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "No end date added")</p>
             </div>
 
             <div class="project-info-material-list">

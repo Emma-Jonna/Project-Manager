@@ -7,7 +7,7 @@
     <section>
         <h2>UpdateProject</h2>
 
-        <form method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
+        <form class="update-project-form" method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
             <label>
                 <h4>Name</h4>
                 <input name="Project.Name" value="@Model.Project.Name" />
@@ -149,9 +149,14 @@
         </form>
     </section>
 
-    <a class="go-back-button" asp-controller="Home" asp-action="Index">
+    @* <a class="go-back-button" asp-controller="Home" asp-action="Index">
         <div>
             <p>Go Back</p>
+        </div>
+    </a> *@
+    <a class="go-back-button" asp-controller="Project" asp-action="index" asp-route-id="@Model.Project.Id">
+        <div>
+            <p>Cancel</p>
         </div>
     </a>
 </secion>

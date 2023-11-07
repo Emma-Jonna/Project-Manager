@@ -41,7 +41,11 @@
     flex-direction: column;
     gap: 1rem;
     border: solid black 2px;
-    padding: 4rem;
+    padding: 3rem 7rem 3rem 7rem;
+}
+
+project-info-material-list h4 {
+    margin-bottom: 1rem;
 }
 
 .project-info-material-list ul {
@@ -55,7 +59,6 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    /*    padding-left: 3rem;*/
     list-style-image: none;
     list-style-position: inside;
     list-style-type: circle;
@@ -66,4 +69,8 @@
     width: 5px;
     background-color: black;
     border-radius: 50%;
+}
+
+.project-info-description p{
+    white-space: pre-wrap;
 }
