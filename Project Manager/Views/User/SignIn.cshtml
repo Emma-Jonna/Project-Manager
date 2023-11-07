@@ -2,7 +2,7 @@
     ViewData["Title"] = "SignIn";
 }
 
-<section>
+<section class="sign-in-page">
 
     <h2>SignIn</h2>
 
@@ -13,7 +13,7 @@
         </div>
     }
 
-    <form method="post" asp-controller="User" asp-action="SignInUser">
+    <form class="sign-in-form" method="post" asp-controller="User" asp-action="SignInUser">
         <label for="Email">
             <p>Email</p>
             <input name="Email" type="email" placeholder="rune@yrgo.se" />

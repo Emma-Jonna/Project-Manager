@@ -3,104 +3,108 @@
 }
 @model Project;
 
-<section class="project-info-wrapper">
-    <section class="project-info-container">
-        <h3>@Model.Name</h3>
+<section class="project-info-page">
+    <section class="project-info-wrapper">
+        <section class="project-info-container">
+            <h3>@Model.Name</h3>
 
-        @if (TempData["error"] != null)
-        {
-            <div class="message-error">
-                <p>@Html.Encode(TempData["error"])</p>
-            </div>
-        }
+            @if (TempData["error"] != null)
+            {
+                <div class="message-error">
+                    <p>@Html.Encode(TempData["error"])</p>
+                </div>
+            }
 
-        <div>
-            <h4>Category</h4>
-            <p>@Model.Category.Name</p>
-        </div>
-
-        <div>
-            <h4>Status</h4>
-            <p>@Model.Status.Name</p>
-        </div>
-
-        <div>
-            <h4>Type</h4>
-            <p>@Model.Type.Name</p>
-        </div>
-
-        <div>
-            <h4>Description</h4>
-            <p>@Model.Description</p>
-        </div>
-
-        <div>
-            <h4>Start Date</h4>
-            <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
-        </div>
-
-        <div>
-            <h4>End Date</h4>
-            <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
-        </div>
-
-        <div class="project-info-material-list">
-            <h4>Material List</h4>
-
-            <ul>
-                @foreach (var item in Model.Material)
-                {
-                    <li>
-                        <p>@item.Name</p>
-                        <p>@item.Amount</p>
-                        <p class="material-acquired-@item.Acquired"></p>
-                    </li>
-                }
-            </ul>
-        </div>
-
-        <div>
-            <h4>Before Image</h4>
-            <p>@Model.BeforeImage</p>
-        </div>
-
-        <div>
-            <h4>After Image</h4>
-            <p>@Model.AfterImage</p>
-        </div>
-
-        <div>
-            <h4>Sketch</h4>
-            <p>@Model.Sketch</p>
-        </div>
-
-        <div>
-            <h4>Pattern</h4>
-            <p>@Model.PatternLink</p>
-        </div>
-    </section>
-
-    <section class="project-button-container">
-        <div>
-        <div class="delete-project">
-            <form method="post" asp-controller="Project" asp-action="DeleteProject">
-                <input name="projectId" value=@Model.Id hidden />
-                    <button class="delete-project-button" type="submit">Delete</button>
-            </form>
-        </div>
-
-        <div class="edit-project">
-            <form method="post" asp-controller="Project" asp-action="UpdateProject">
-                <input name="projectId" value="@Model.Id" hidden />
-                    <button class="edit-project-button" type="submit">Edit</button>
-            </form>
-        </div>
-        </div>
-
-        <a class="go-back-button" asp-controller="Home" asp-action="Index">
             <div>
-                <p>Go Back</p>
+                <h4>Category</h4>
+                <p>@Model.Category.Name</p>
             </div>
-        </a>
+
+            <div>
+                <h4>Status</h4>
+                <p>@Model.Status.Name</p>
+            </div>
+
+            <div>
+                <h4>Type</h4>
+                <p>@Model.Type.Name</p>
+            </div>
+
+            <div>
+                <h4>Description</h4>
+                <p>@Model.Description</p>
+            </div>
+
+            <div>
+                <h4>Start Date</h4>
+                <p>@(Model.StartDate.HasValue ? @Model.StartDate.Value.ToString("dd-MM-yyyy") : "")</p>
+            </div>
+
+            <div>
+                <h4>End Date</h4>
+                <p>@(Model.EndDate.HasValue ? @Model.EndDate.Value.ToString("dd-MM-yyyy") : "")</p>
+            </div>
+
+            <div class="project-info-material-list">
+                <h4>Material List</h4>
+
+                <ul>
+                    @foreach (var item in Model.Material)
+                    {
+                        <li>
+                            <div></div>
+                            <p>@item.Name</p>
+                            <p>@item.Amount</p>
+                            <p class="material-acquired-@item.Acquired"></p>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div>
+                <h4>Before Image</h4>
+                <p>@Model.BeforeImage</p>
+            </div>
+
+            <div>
+                <h4>After Image</h4>
+                <p>@Model.AfterImage</p>
+            </div>
+
+            <div>
+                <h4>Sketch</h4>
+                <p>@Model.Sketch</p>
+            </div>
+
+            <div>
+                <h4>Pattern</h4>
+                <p>@Model.PatternLink</p>
+            </div>
+        </section>
+
+        <section class="project-button-container">
+            <div>
+                <div class="edit-project">
+                    <form method="post" asp-controller="Project" asp-action="UpdateProject">
+                        <input name="projectId" value="@Model.Id" hidden />
+                        <button class="edit-project-button" type="submit">Edit</button>
+                    </form>
+                </div>
+
+                <div class="delete-project">
+                    <form method="post" asp-controller="Project" asp-action="DeleteProject">
+                        <input name="projectId" value=@Model.Id hidden />
+                        <button class="delete-project-button" type="submit">Delete</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <a class="go-back-button" asp-controller="Home" asp-action="Index">
+                <div>
+                    <p>Go Back</p>
+                </div>
+            </a>
+        </section>
     </section>
 </section>

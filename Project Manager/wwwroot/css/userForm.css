@@ -1,0 +1,14 @@
+﻿.sign-in-page, .sign-up-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 50px;
+}
+
+.sign-in-form, .sign-up-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

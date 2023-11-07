@@ -19,6 +19,7 @@ nav a {
     justify-content: center;
     border-radius: 8px;
     border: solid black 2px;    
+    margin: 16px;
 }
 
 .register-redirect-button {
@@ -40,6 +41,7 @@ nav a {
     display: inline-block;
     border-radius: 8px;
     border: solid black 2px;
+    align-self: center;
 }
 
 .sign-up-button {
@@ -49,6 +51,7 @@ nav a {
     display: inline-block;
     border-radius: 8px;
     border: solid black 2px;
+    align-self: center;
 }
 
 .go-back-button {
@@ -78,7 +81,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 4px;
     border: solid black 2px;
 }
 
@@ -89,7 +92,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 4px;
     border: solid black 2px;
     text-align: center;
 }

@@ -2,7 +2,7 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
@@ -11,15 +11,14 @@
         display: inline-block;
         border: solid black 3px;
         border-radius: 16px;
-        padding: 10px;
+        padding: 1rem;
         white-space: nowrap;        
     }
 
 .project-list-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /*    align-items: center;*/
+    justify-content: center;    
     gap: 2rem;
 }
 
