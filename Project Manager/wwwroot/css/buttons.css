@@ -5,8 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -17,20 +17,20 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    border: solid black 2px;    
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;    */
     margin: 16px;
 }
 
 .register-redirect-button {
     background-color: lightblue;
-    width: 130px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -39,8 +39,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
     align-self: center;
 }
 
@@ -49,8 +49,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
     align-self: center;
 }
 
@@ -61,8 +61,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
 }
 
 .create-project-button {
@@ -70,8 +70,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;    
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;    */
 }
 
 .delete-button-container {
@@ -81,19 +81,19 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    border: solid black 2px;
+/*    border-radius: 4px;*/
+/*    border: solid black 2px;*/
 }
 
 .add-material-button {
     background-color: rebeccapurple;
-    width: 130px;
+    width: 100px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    border: solid black 2px;
+/*    border-radius: 4px;*/
+/*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -102,8 +102,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;    */
+/*    border: solid black 2px;*/
 }
 
 .edit-project-button {
@@ -111,8 +111,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
 }
 
 .save-project-changes-button {
@@ -120,8 +120,8 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-    border-radius: 8px;
-    border: solid black 2px;
+/*    border-radius: 8px;*/
+/*    border: solid black 2px;*/
 }
 
 .delete-button-container:hover, .add-material-button:hover, .edit-project-button:hover, .delete-project-button:hover, .sign-up-button:hover, .sign-in-button:hover, .save-project-changes-button:hover {

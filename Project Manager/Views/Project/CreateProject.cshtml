@@ -3,8 +3,8 @@
 }
 @model CreateProject
 
-<secion class="create-project-section">
-    <div class="create-project-wrapper">
+<secion class="create-project-page">
+    <section class="create-project-wrapper">
         <section>
 
             <h1>CreateProject</h1>
@@ -16,7 +16,7 @@
                 </div>
             }
 
-            <form method="post" asp-controller="Project" asp-action="CreateNewProject">
+            <form class="create-project-form" method="post" asp-controller="Project" asp-action="CreateNewProject">
                 <label>
                     <h4>Project Name</h4>
                     <input name="Name" type="text" />
@@ -72,7 +72,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="add-material-button">Add Material</div>
+                    <div class="add-material-button">Add New Material</div>
                 </label>
 
                 <label>
@@ -120,7 +120,7 @@
             </div>
         </a>
 
-    </div>
+    </section>
 </secion>
 
 

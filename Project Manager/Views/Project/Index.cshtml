@@ -55,7 +55,15 @@
                             <div></div>
                             <p>@item.Name</p>
                             <p>@item.Amount</p>
-                            <p class="material-acquired-@item.Acquired"></p>
+                            @if (item.Acquired == true)
+                            {
+                                <img src="">
+                            }
+                            else if (item.Acquired == false)
+                            {
+                                <img src="">
+                            }
+                            @* <p class="material-acquired-@item.Acquired"></p> *@
                         </li>
                     }
                 </ul>
