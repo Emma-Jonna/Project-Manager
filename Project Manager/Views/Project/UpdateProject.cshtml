@@ -8,7 +8,7 @@
         <section>
             <h2>UpdateProject</h2>
 
-            <form class="update-project-form" method="post" asp-controller="Project" asp-action="UpdateProjectInfo">
+            <form class="update-project-form" method="post" asp-controller="Project" asp-action="UpdateProjectInfo" enctype="multipart/form-data">
                 <label>
                     <h4>Name</h4>
                     <input name="Project.Name" value="@Model.Project.Name" />
@@ -135,7 +135,8 @@
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
                     <img src="" hidden />
-                    <input id="sketch-image-file" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
+                    @* <input id="sketch-image-file" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" /> *@
+                    @Html.EditorFor(model=>model.SketchImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}})
                 </label>
 
                 <label class="pattern-container">

@@ -12,5 +12,12 @@ namespace Project_Manager.Models
 
         public virtual ICollection<Material> Material { get; set; } = new List<Material>();
 
+        public IFormFile BeforeImageFile { get; set; }
+
+        public IFormFile AfterImageFile { get; set; }
+
+        public IFormFile SketchImageFile { get; set; }
+
+        public IFormFile PatternFile { get; set; }
     }
 }

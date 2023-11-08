@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Project_Manager.App;
 
 namespace Project_Manager
 {
@@ -6,6 +7,8 @@ namespace Project_Manager
     {
         public static void Main(string[] args)
         {
+            AppHelper.GetImageFolder();
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(

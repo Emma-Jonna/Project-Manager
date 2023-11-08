@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Project_Manager.App;
 using Project_Manager.Models;
 using System.Text.RegularExpressions;
 
@@ -29,6 +30,40 @@ namespace Project_Manager.Controllers
 
             return View(project);
         }
+
+        public ActionResult ConvertFileToImageSource(string fileName)
+        {
+
+            var eventBytes = System.IO.File.ReadAllBytes(fileName);
+
+            var ext = Path.GetExtension(fileName).Substring(1).ToLower();
+            switch (ext)
+            {
+                case "jpg":
+                case "jpeg":
+                    {
+                        return File(eventBytes, "image/jpeg");
+                    }
+
+                case "png":
+                    {
+                        return File(eventBytes, "image/png");
+                    }
+
+                case "mov":
+                    {
+                        return File(eventBytes, "video/quicktime");
+                    }
+
+                case "mp4":
+                    {
+                        return File(eventBytes, "video/mp4");
+                    }
+            }
+
+            return File(eventBytes, "application/octet-stream");
+        }
+
 
         [Authorize]
         public IActionResult CreateProject()
@@ -193,6 +228,14 @@ namespace Project_Manager.Controllers
 
             //Console.WriteLine(BeforeImageFile.FileName);
 
+            //formData.SketchImageFile.FileName;
+            var sketchImageFile = Path.Combine(AppHelper.GetImageFolder(), $"{formData.Project.Id}_SketchImageFile.png");
+
+            using (var stream = System.IO.File.Create(sketchImageFile))
+            {
+                formData.SketchImageFile.CopyToAsync(stream);
+            }
+
             if (User.FindFirst("UserId") == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -332,11 +375,11 @@ namespace Project_Manager.Controllers
             {
                 project.PatternLink = formData.PatternLink;
             }
-            if (project.Sketch != formData.Sketch)
+            */
+            if (project.Sketch != sketchImageFile)
             {
-                project.Sketch = formData.Sketch;
-            }*/
-
+                project.Sketch = sketchImageFile;
+            }
             project.Name = formData.Project.Name;
             project.CategoryId = formData.Project.CategoryId;
             project.TypeId = formData.Project.TypeId;

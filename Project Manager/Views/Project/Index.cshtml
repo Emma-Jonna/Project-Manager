@@ -80,7 +80,16 @@
 
             <div>
                 <h4>Sketch</h4>
-                <p>@Model.Sketch</p>
+
+                @{
+                    if (File.Exists(Model.Sketch))
+                    {
+                        var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Sketch}";
+
+                        <img src="@sketchImageData" style="height: 100px" />
+                        <p>@Model.Sketch</p>
+                    }
+                }
             </div>
 
             <div>
