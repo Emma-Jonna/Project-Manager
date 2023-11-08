@@ -16,6 +16,7 @@
     <Folder Include="wwwroot\lib\fonts\CourierPrime\" />
     <Folder Include="wwwroot\lib\fonts\SpecialElite\" />
     <Folder Include="wwwroot\lib\fonts\RhodiumLibre\" />
+    <Folder Include="wwwroot\lib\icons\" />
   </ItemGroup>
 
 </Project>

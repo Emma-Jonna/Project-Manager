@@ -5,8 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -17,8 +17,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;    */
+    border-radius: 4px;
+    /*    border: solid black 2px;    */
     margin: 16px;
 }
 
@@ -29,8 +29,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -39,9 +39,10 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
     align-self: center;
+    border: none;
 }
 
 .sign-up-button {
@@ -49,9 +50,10 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
     align-self: center;
+    border: none;
 }
 
 .go-back-button {
@@ -61,8 +63,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
 }
 
 .create-project-button {
@@ -70,8 +72,9 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;    */
+    border-radius: 4px;
+    /*    border: solid black 2px;    */
+    border: none;
 }
 
 .delete-button-container {
@@ -81,8 +84,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 4px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
 }
 
 .add-material-button {
@@ -92,8 +95,8 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border-radius: 4px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
     text-align: center;
 }
 
@@ -102,8 +105,9 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;    */
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
+    border: none;
 }
 
 .edit-project-button {
@@ -111,8 +115,9 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
+    border: none;
 }
 
 .save-project-changes-button {
@@ -120,10 +125,11 @@ nav a {
     width: 100px;
     height: 40px;
     display: inline-block;
-/*    border-radius: 8px;*/
-/*    border: solid black 2px;*/
+    border-radius: 4px;
+    /*    border: solid black 2px;*/
+    border: none;
 }
 
-.delete-button-container:hover, .add-material-button:hover, .edit-project-button:hover, .delete-project-button:hover, .sign-up-button:hover, .sign-in-button:hover, .save-project-changes-button:hover {
-    cursor: pointer;
-}
+    .delete-button-container:hover, .add-material-button:hover, .edit-project-button:hover, .delete-project-button:hover, .sign-up-button:hover, .sign-in-button:hover, .save-project-changes-button:hover, .create-project-button:hover {
+        cursor: pointer;
+    }

@@ -10,7 +10,7 @@
         background-color: lightpink;
         display: inline-block;
         border: solid black 3px;
-        border-radius: 16px;
+        border-radius: 4px;
         padding: 1rem;
         white-space: nowrap;        
     }
@@ -18,10 +18,7 @@
 .project-list-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;    
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
-}
-
-h1 {
-    text-align: center;
 }

@@ -12,3 +12,10 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.sign-in-form input, .sign-up-form input{
+    width: 250px;
+    height: 30px;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+}

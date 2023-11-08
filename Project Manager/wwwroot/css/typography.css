@@ -1,4 +1,18 @@
 ﻿h1, h2, h3 {
-    /*font-family: 'Special Elite';*/
+/*    font-family: 'Special Elite';*/
     font-family: 'Rhodium Libre';
+}
+
+.sign-in-page h2, .sign-up-page h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.sign-in-form p, .sign-up-form p {
+    font-family: CourierPrime-Bold;
+    font-size: 1.4rem;
+}
+
+.sign-in-button, .register-redirect-button, .sign-up-button, .go-back-button {
+    font-size: 1rem;
 }

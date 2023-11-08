@@ -62,11 +62,13 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("SignIn");
             }
 
+            Console.WriteLine(formData.Email + formData.Password);
             var db = new project_manager_dbContext();
 
             var user = db.User.ToList();
 
-            var findUser = db.User.FirstOrDefault(u => u.Email == formData.Email || u.Password == formData.Password);
+            var findUser = db.User.FirstOrDefault(u => u.Email == formData.Email && u.Password == formData.Password);
+            Console.WriteLine(findUser.Id + findUser.Name);
 
             if (findUser == null)
             {

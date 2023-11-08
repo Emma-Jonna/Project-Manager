@@ -57,13 +57,12 @@
                             <p>@item.Amount</p>
                             @if (item.Acquired == true)
                             {
-                                <img src="">
+                                <img class="material-acquired-@item.Acquired" src="~/lib/icons/check.svg">
                             }
                             else if (item.Acquired == false)
                             {
-                                <img src="">
+                                <img class="material-acquired-@item.Acquired" src="~/lib/icons/cross.svg">
                             }
-                            @* <p class="material-acquired-@item.Acquired"></p> *@
                         </li>
                     }
                 </ul>

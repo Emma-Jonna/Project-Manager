@@ -17,6 +17,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Courier Prime';
+    color: var(--black);
     /*font-family: 'Special Elite';*/
     /*font-family: 'Rhodium Libre';*/
     /*color: var(--black);*/
