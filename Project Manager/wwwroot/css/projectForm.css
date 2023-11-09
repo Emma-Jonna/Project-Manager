@@ -37,3 +37,7 @@
 .material-container input {
     height: 20px;
 }
+
+.before-image-preview, .after-image-preview, .sketch-image-preview {
+    width: 100px;
+}

@@ -37,9 +37,13 @@ namespace Project_Manager.Controllers
             var eventBytes = System.IO.File.ReadAllBytes(fileName);
 
             var ext = Path.GetExtension(fileName).Substring(1).ToLower();
+
             switch (ext)
             {
                 case "jpg":
+                    {
+                        return File(eventBytes, "image/jpg");
+                    }
                 case "jpeg":
                     {
                         return File(eventBytes, "image/jpeg");
@@ -49,15 +53,9 @@ namespace Project_Manager.Controllers
                     {
                         return File(eventBytes, "image/png");
                     }
-
-                case "mov":
+                case "pdf":
                     {
-                        return File(eventBytes, "video/quicktime");
-                    }
-
-                case "mp4":
-                    {
-                        return File(eventBytes, "video/mp4");
+                        return File(eventBytes, "application/pdf");
                     }
             }
 
@@ -106,7 +104,7 @@ namespace Project_Manager.Controllers
                 return RedirectToAction("CreateProject");
             }
 
-            if (!string.IsNullOrEmpty(formData.BeforeImage))
+            /*if (!string.IsNullOrEmpty(formData.BeforeImage))
             {
                 //var dataStream = new MemoryStream();
                 //dataStream.CopyTo(formData.BeforeImage);
@@ -116,28 +114,6 @@ namespace Project_Manager.Controllers
                 {
                     //formData.BeforeImage.CopyTo(mStream);
                     //userIdentity.Pfp = mStream.ToArray();
-                }
-            }
-
-            /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploaded something
-            {
-                ImageFile = HttpContext.Request.Form.Files.GetFile("file_Main");
-                if (ImageFile != null)
-                {
-                    var extension = Path.GetExtension(ImageFile.FileName);//get file name
-                    if (ImageExtensions.Contains(extension.ToUpperInvariant()))
-                    {
-                        using var dataStream = new MemoryStream();
-                        await ImageFile.CopyToAsync(dataStream);
-                        byte[] imageBytes = dataStream.ToArray(); // you can save this to your byte array variable and remove the 2 lines below
-                        string base64String = Convert.ToBase64String(imageBytes);
-                        User.UserPicture = base64String; // to save the image as base64String 
-                    }
-                    else
-                    {
-                        Msg = "image format must be in JPG, BMP or PNG"; //Custom error message
-                        return Page();
-                    }
                 }
             }*/
 
@@ -226,15 +202,7 @@ namespace Project_Manager.Controllers
         {
             var materials = formData.Material.ToList();
 
-            //Console.WriteLine(BeforeImageFile.FileName);
-
-            //formData.SketchImageFile.FileName;
-            var sketchImageFile = Path.Combine(AppHelper.GetImageFolder(), $"{formData.Project.Id}_SketchImageFile.png");
-
-            using (var stream = System.IO.File.Create(sketchImageFile))
-            {
-                formData.SketchImageFile.CopyToAsync(stream);
-            }
+            //Console.WriteLine(formData.PatternFile.FileName);
 
             if (User.FindFirst("UserId") == null)
             {
@@ -274,44 +242,64 @@ namespace Project_Manager.Controllers
 
                 return RedirectToAction("Index", new { id = projectId });
             }
-            /*else if (!String.IsNullOrEmpty(formData.PatternLink))
+            else if (formData.PatternFile != null)
             {
-                if (!formData.PatternLink.Contains(".pdf"))
-                {
-                    TempData["error"] = "Wrong file type";
-
-                    return RedirectToAction("Index", new { id = projectId });
-                }
-            }*/
-            /*else if (!String.IsNullOrEmpty(formData.Sketch))
-            {
-                if (!acceptedImageFiles.IsMatch(formData.Sketch))
-                {
-                    TempData["error"] = "Wrong file type";
-
-                    return RedirectToAction("Index", new { id = projectId });
-                }
-            }*/
-            /*else if (!String.IsNullOrEmpty(formData.BeforeImage))
-            {
-                if (!acceptedImageFiles.IsMatch(formData.BeforeImage))
+                if (!formData.PatternFile.FileName.Contains(".pdf"))
                 {
                     TempData["error"] = "Wrong file type";
 
                     return RedirectToAction("Index", new { id = projectId });
                 }
 
+                project.PatternLink = CreateFilePath(formData.PatternFile, formData.Project.Id, "PatternFile");
+                db.Project.Update(project);
+                db.SaveChanges();
+            }
+            else if (formData.SketchImageFile != null)
+            {
+                if (!acceptedImageFiles.IsMatch(formData.SketchImageFile.FileName))
+                {
+                    TempData["error"] = "Wrong file type";
 
-                *//*if (!string.IsNullOrEmpty(formData.BeforeImage))
+                    return RedirectToAction("Index", new { id = projectId });
+                }
+
+                project.Sketch = CreateFilePath(formData.SketchImageFile, formData.Project.Id, "SketchImageFile");
+                db.Project.Update(project);
+                db.SaveChanges();
+            }
+            else if (formData.BeforeImageFile != null)
+            {
+                if (!acceptedImageFiles.IsMatch(formData.BeforeImageFile.FileName))
+                {
+                    TempData["error"] = "Wrong file type";
+
+                    return RedirectToAction("Index", new { id = projectId });
+                }
+
+                project.BeforeImage = CreateFilePath(formData.BeforeImageFile, formData.Project.Id, "BeforeImageFile");
+                db.Project.Update(project);
+                db.SaveChanges();
+
+                /*var sketchImageFile = Path.Combine(AppHelper.GetImageFolder(), $"{formData.Project.Id}_SketchImageFile{Path.GetExtension(formData.SketchImageFile.FileName)}");
+
+                using (var stream = System.IO.File.Create(sketchImageFile))
+                {
+                    formData.SketchImageFile.CopyToAsync(stream);
+                }*/
+
+                //project.BeforeImage = formData.BeforeImageFile.FileName;
+
+                /*if (!string.IsNullOrEmpty(formData.BeforeImageFile.FileName))
                 {
                     //var dataStream = new MemoryStream();
                     //dataStream.CopyTo(formData.BeforeImage);
-                    var imageUrl = formData.BeforeImage;
-                    var image = Request.Form.Files["BeforeImage"];
+                    //var imageUrl = formData.BeforeImageFile.FileName;
+                    //var image = Request.Form.Files["BeforeImage"];
 
                     //using MemoryStream ms = new MemoryStream();
-                    using MemoryStream ms = new MemoryStream();
-                    imageUrl.CopyTo(ms);
+                    //using MemoryStream ms = new MemoryStream();
+                    //imageUrl.CopyTo(ms);
                     //image.CopyTo(ms);
 
                     //using var dataStream = new MemoryStream();
@@ -319,67 +307,54 @@ namespace Project_Manager.Controllers
 
                     //var extension = Path.GetExtension(imageUrl);
 
-                    using (MemoryStream mStream = new())
+                    *//*using (MemoryStream mStream = new())
                     {
-                    formData.BeforeImage.CopyTo(mStream);
-                    userIdentity.Pfp = mStream.ToArray();
-                    }
+                        formData.BeforeImage.CopyTo(mStream);
+                        userIdentity.Pfp = mStream.ToArray();
+                    }*//*                    
+                    
                 }*/
 
-            /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploaded something
-            {
-                ImageFile = HttpContext.Request.Form.Files.GetFile("file_Main");
-                if (ImageFile != null)
+                /*if (HttpContext.Request.Form.Files.Count > 0)// check if the user uploaded something
                 {
-                    var extension = Path.GetExtension(ImageFile.FileName);//get file name
-                    if (ImageExtensions.Contains(extension.ToUpperInvariant()))
+                    ImageFile = HttpContext.Request.Form.Files.GetFile("file_Main");
+                    if (ImageFile != null)
                     {
-                        using var dataStream = new MemoryStream();
-                        await ImageFile.CopyToAsync(dataStream);
-                        byte[] imageBytes = dataStream.ToArray(); // you can save this to your byte array variable and remove the 2 lines below
-                        string base64String = Convert.ToBase64String(imageBytes);
-                        User.UserPicture = base64String; // to save the image as base64String 
+                        var extension = Path.GetExtension(ImageFile.FileName);//get file name
+                        if (ImageExtensions.Contains(extension.ToUpperInvariant()))
+                        {
+                            using var dataStream = new MemoryStream();
+                            await ImageFile.CopyToAsync(dataStream);
+                            byte[] imageBytes = dataStream.ToArray(); // you can save this to your byte array variable and remove the 2 lines below
+                            string base64String = Convert.ToBase64String(imageBytes);
+                            User.UserPicture = base64String; // to save the image as base64String 
+                        }
+                        else
+                        {
+                            Msg = "image format must be in JPG, BMP or PNG"; //Custom error message
+                            return Page();
+                        }
                     }
-                    else
-                    {
-                        Msg = "image format must be in JPG, BMP or PNG"; //Custom error message
-                        return Page();
-                    }
-                }
-            }*//*
-        }*/
-            /*else if (!String.IsNullOrEmpty(formData.AfterImage))
+                }*//*
+            }*/
+            }
+            else if (formData.AfterImageFile != null)
             {
-                if (String.IsNullOrEmpty(formData.BeforeImage) && !String.IsNullOrEmpty(formData.AfterImage))
-                {
-                    TempData["error"] = "If you upload a after image you need to upload an before image";
-                    return RedirectToAction("Index", new { id = projectId });
-                }
+                /*                if (formData.BeforeImageFile == null)
+                                {
+                                    TempData["error"] = "If you upload a after image you need to upload an before image";
+                                    return RedirectToAction("Index", new { id = projectId });
+                                }*/
 
-                if (!acceptedImageFiles.IsMatch(formData.AfterImage))
+                if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
                 {
                     TempData["error"] = "Wrong file type";
                     return RedirectToAction("Index", new { id = projectId });
                 }
-            }*/
 
-            /*if (project.BeforeImage != formData.BeforeImage)
-            {
-                project.BeforeImage = formData.BeforeImage;
+                project.AfterImage = CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
             }
-            if (project.AfterImage != formData.AfterImage)
-            {
-                project.AfterImage = formData.AfterImage;
-            }
-            if (project.PatternLink != formData.PatternLink)
-            {
-                project.PatternLink = formData.PatternLink;
-            }
-            */
-            if (project.Sketch != sketchImageFile)
-            {
-                project.Sketch = sketchImageFile;
-            }
+
             project.Name = formData.Project.Name;
             project.CategoryId = formData.Project.CategoryId;
             project.TypeId = formData.Project.TypeId;
@@ -502,6 +477,18 @@ namespace Project_Manager.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public string CreateFilePath(IFormFile file, int projectId, string fileName)
+        {
+            var imageFile = Path.Combine(AppHelper.GetImageFolder(), $"{projectId}_{fileName}{Path.GetExtension(file.FileName)}");
+
+            using (var stream = System.IO.File.Create(imageFile))
+            {
+                file.CopyToAsync(stream);
+            }
+
+            return imageFile;
         }
     }
 }

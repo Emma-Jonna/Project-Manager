@@ -122,26 +122,31 @@
 
                 <label class="before-image-container">
                     <h4>Before Image</h4>
-                    <img src="" hidden />
-                    <input id="before-image-file" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
+                    <img src="" hidden class="before-image-preview"/>
+                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
+                    @* @Html.EditorFor(model=>model.BeforeImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
                 </label>
 
                 <label class="after-image-container">
                     <h4>After Image</h4>
-                    <img src="" hidden />
-                    <input id="after-image-file" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
+                    <img src="" hidden class="after-image-preview" />
+                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
+                    @* @Html.EditorFor(model=>model.AfterImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
                 </label>
 
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
-                    <img src="" hidden />
-                    @* <input id="sketch-image-file" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" /> *@
-                    @Html.EditorFor(model=>model.SketchImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}})
+                    <img src="" hidden class="sketch-image-preview" />
+                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
+                    @* @Html.EditorFor(model=>model.SketchImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
                 </label>
 
                 <label class="pattern-container">
                     <h4>Pattern Link</h4>
-                    <input id="pattern-file" type="file" name="PatternFile" accept=".pdf" />
+                    <input id="PatternFile" type="file" name="PatternFile" accept=".pdf" />
+                    <div>
+                        @* @Html.EditorFor(model=>model.PatternFile, new {htmlAttributes = new {@accept = ".pdf"}}) *@
+                    </div>
                 </label>
 
                 <input name="Project.Id" value="@Model.Project.Id" hidden />
@@ -151,11 +156,6 @@
             </form>
         </section>
 
-        @* <a class="go-back-button" asp-controller="Home" asp-action="Index">
-        <div>
-        <p>Go Back</p>
-        </div>
-        </a> *@
         <a class="go-back-button" asp-controller="Project" asp-action="index" asp-route-id="@Model.Project.Id">
             <div>
                 <p>Cancel</p>

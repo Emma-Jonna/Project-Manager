@@ -68,32 +68,56 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="project-before-image-container">
                 <h4>Before Image</h4>
-                <p>@Model.BeforeImage</p>
+                @{
+                    if (File.Exists(Model.BeforeImage))
+                    {
+                        var beforeImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.BeforeImage}";
+
+                        <img src="@beforeImageData" style="height: 100px" />
+                    }
+                    <p>@Model.BeforeImage</p>
+                }
             </div>
 
-            <div>
+            <div class="project-after-image-container">
                 <h4>After Image</h4>
-                <p>@Model.AfterImage</p>
+                @{
+                    if (File.Exists(Model.AfterImage))
+                    {
+                        var afterImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.AfterImage}";
+
+                        <img src="@afterImageData" style="height: 100px" />
+                    }
+                    <p>@Model.AfterImage</p>
+                }                
             </div>
 
-            <div>
+            <div class="project-sketch-container">
                 <h4>Sketch</h4>
-
                 @{
                     if (File.Exists(Model.Sketch))
                     {
                         var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Sketch}";
 
                         <img src="@sketchImageData" style="height: 100px" />
-                        <p>@Model.Sketch</p>
                     }
+                    <p>@Model.Sketch</p>
                 }
             </div>
 
-            <div>
+            <div class="project-pattern-link-container">
                 <h4>Pattern</h4>
+                @{
+                    if (File.Exists(Model.PatternLink))
+                    {
+                        var patternLinkData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.PatternLink}";
+
+                        <a href="@patternLinkData">Link To Pattern</a>
+                        // <iframe src="@patternLinkData" width="800px" height="2100px" type="application/pdf" />
+                    }                    
+                }
                 <p>@Model.PatternLink</p>
             </div>
         </section>

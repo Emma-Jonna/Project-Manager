@@ -45,11 +45,6 @@
         </ul>
     }
 
-    @{
-       var q = AppDomain.CurrentDomain.GetData("DataDirectory")?.ToString();
-    }
-    <p>@q</p>
-
     <a class="create-new-project-button" asp-controller="Project" asp-action="CreateProject">
         <div>
             <p>Create New Project</p>

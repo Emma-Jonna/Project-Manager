@@ -1,7 +1,7 @@
-const beforeImageInput = document.getElementById("before-image-file");
-const afterImageInput = document.getElementById("after-image-file");
-const sketchImageInput = document.getElementById("sketch-image-file");
-const patternInput = document.getElementById("pattern-file");
+const beforeImageInput = document.getElementById("BeforeImageFile");
+const afterImageInput = document.getElementById("AfterImageFile");
+const sketchImageInput = document.getElementById("SketchImageFile");
+const patternInput = document.getElementById("PatternFile");
 
 const changeImageFile = (element) => {
 
