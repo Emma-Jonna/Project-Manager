@@ -19,12 +19,12 @@
             <form class="create-project-form" method="post" asp-controller="Project" asp-action="CreateNewProject">
                 <label>
                     <h4>Project Name</h4>
-                    <input name="Name" type="text" />
+                    <input name="Project.Name" type="text" />
                 </label>
 
                 <label>
                     <h4>Project Category</h4>
-                    <select name="CategoryId">
+                    <select name="Project.CategoryId">
                         <option value="0">Choose project category</option>
                         @foreach (var item in Model.Category)
                         {
@@ -35,7 +35,7 @@
 
                 <label>
                     <h4>Project Type</h4>
-                    <select name="TypeId">
+                    <select name="Project.TypeId">
                         <option value="0">Choose project type</option>
                         @foreach (var item in Model.Type)
                         {
@@ -46,7 +46,7 @@
 
                 <label>
                     <h4>Project Status</h4>
-                    <select name="StatusId">
+                    <select name="Project.StatusId">
                         <option value="0">Choose project status</option>
                         @foreach (var item in Model.Status)
                         {
@@ -57,7 +57,7 @@
 
                 <label>
                     <h4>Description</h4>
-                    <textarea name="Description" rows="4" cols="50"></textarea>
+                    <textarea name="Project.Description" rows="4" cols="50"></textarea>
                 </label>
 
                 <label>
@@ -77,35 +77,35 @@
 
                 <label>
                     <h4>Start date</h4>
-                    <input type="date" />
+                    <input type="date" name="Project.StartDate" />
                 </label>
 
                 <label>
                     <h4>End date</h4>
-                    <input type="date" />
+                    <input type="date" name="Project.EndDate" />
                 </label>
 
                 <label class="before-image-container">
                     <h4>Before Image</h4>
                     <img src="" hidden />
-                    <input id="before-image-file" type="file" name="BeforeImage" accept=".jpg, jpeg, .png" />
+                    <input id="before-image-file" type="file" name="Project.BeforeImage" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="after-image-container">
                     <h4>After Image</h4>
                     <img src="" hidden />
-                    <input id="after-image-file" type="file" name="AfterImage" accept=".jpg, jpeg, .png" />
+                    <input id="after-image-file" type="file" name="Project.AfterImage" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
                     <img src="" hidden />
-                    <input id="sketch-image-file" type="file" name="Sketch" accept=".jpg, jpeg, .png" />
+                    <input id="sketch-image-file" type="file" name="Project.Sketch" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="pattern-container">
                     <h4>Pattern Link</h4>
-                    <input id="pattern-file" type="file" name="PatternLink" accept=".pdf" />
+                    <input id="pattern-file" type="file" name="Project.PatternLink" accept=".pdf" />
                 </label>
 
                 <div>
