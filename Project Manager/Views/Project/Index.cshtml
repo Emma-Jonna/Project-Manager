@@ -5,6 +5,9 @@
 
 <section class="project-info-page">
     <section class="project-info-wrapper">
+        <div class="message-error">
+            <p>If you add an end date you need to add a start date</p>
+        </div>
         <section class="project-info-container">
             @if (TempData["error"] != null)
             {
@@ -12,6 +15,7 @@
                     <p>@Html.Encode(TempData["error"])</p>
                 </div>
             }
+
 
             <h3>@Model.Name</h3>
 
@@ -91,7 +95,7 @@
                         <img src="@afterImageData" style="height: 100px" />
                     }
                     <p>@Model.AfterImage</p>
-                }                
+                }
             </div>
 
             <div class="project-sketch-container">
@@ -115,8 +119,8 @@
                         var patternLinkData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.PatternLink}";
 
                         <a href="@patternLinkData">Link To Pattern</a>
-                        // <iframe src="@patternLinkData" width="800px" height="2100px" type="application/pdf" />
-                    }                    
+                        <embed src="@patternLinkData" />
+                    }
                 }
                 <p>@Model.PatternLink</p>
             </div>

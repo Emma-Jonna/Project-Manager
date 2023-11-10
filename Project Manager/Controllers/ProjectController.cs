@@ -253,8 +253,6 @@ namespace Project_Manager.Controllers
                 }
 
                 project.BeforeImage = CreateFilePath(formData.BeforeImageFile, formData.Project.Id, "BeforeImageFile");
-                db.Project.Update(project);
-                db.SaveChanges();
             }
             if (formData.AfterImageFile != null)
             {
@@ -265,8 +263,6 @@ namespace Project_Manager.Controllers
                 }
 
                 project.AfterImage = CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
-                db.Project.Update(project);
-                db.SaveChanges();
             }
             if (formData.SketchImageFile != null)
             {
@@ -276,8 +272,6 @@ namespace Project_Manager.Controllers
                 }
 
                 project.Sketch = CreateFilePath(formData.SketchImageFile, formData.Project.Id, "SketchImageFile");
-                db.Project.Update(project);
-                db.SaveChanges();
             }
             if (formData.PatternFile != null)
             {
@@ -287,8 +281,6 @@ namespace Project_Manager.Controllers
                 }
 
                 project.PatternLink = CreateFilePath(formData.PatternFile, formData.Project.Id, "PatternFile");
-                db.Project.Update(project);
-                db.SaveChanges();
             }
 
             project.Name = formData.Project.Name;
@@ -427,6 +419,11 @@ namespace Project_Manager.Controllers
 
             using (var stream = System.IO.File.Create(imageFile))
             {
+                if (Path.GetExtension(file.FileName) == ".pdf")
+                {
+                    stream.Position = 0;
+                }
+
                 file.CopyToAsync(stream);
             }
 
