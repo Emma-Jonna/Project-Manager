@@ -16,7 +16,7 @@
                 </div>
             }
 
-            <form class="create-project-form" method="post" asp-controller="Project" asp-action="CreateNewProject">
+            <form class="create-project-form" method="post" asp-controller="Project" asp-action="CreateNewProject" enctype="multipart/form-data">
                 <label>
                     <h4>Project Name</h4>
                     <input name="Project.Name" type="text" />
@@ -87,25 +87,25 @@
 
                 <label class="before-image-container">
                     <h4>Before Image</h4>
-                    <img src="" hidden />
-                    <input id="before-image-file" type="file" name="Project.BeforeImage" accept=".jpg, jpeg, .png" />
+                    <img src="" hidden class="before-image-preview" />
+                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="after-image-container">
                     <h4>After Image</h4>
-                    <img src="" hidden />
-                    <input id="after-image-file" type="file" name="Project.AfterImage" accept=".jpg, jpeg, .png" />
+                    <img src="" hidden class="after-image-preview" />
+                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
-                    <img src="" hidden />
-                    <input id="sketch-image-file" type="file" name="Project.Sketch" accept=".jpg, jpeg, .png" />
+                    <img src="" hidden class="sketch-image-preview" />
+                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
                 </label>
 
                 <label class="pattern-container">
                     <h4>Pattern Link</h4>
-                    <input id="pattern-file" type="file" name="Project.PatternLink" accept=".pdf" />
+                    <input id="PatternFile" type="file" name="PatternFile" accept=".pdf" />
                 </label>
 
                 <div>

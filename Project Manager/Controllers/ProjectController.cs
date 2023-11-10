@@ -38,6 +38,8 @@ namespace Project_Manager.Controllers
 
             var ext = Path.GetExtension(fileName).Substring(1).ToLower();
 
+            Console.Write(ext);
+
             switch (ext)
             {
                 case "jpg":
@@ -94,14 +96,17 @@ namespace Project_Manager.Controllers
             }
 
             var db = new project_manager_dbContext();
-
             var userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+            var acceptedImageFiles = new Regex("jpeg|jpg|png");
 
             if (formData.Project.Name == null || formData.Project.CategoryId == 0 || formData.Project.TypeId == 0 || formData.Project.StatusId == 0 || formData.Project.Description == null || formData.Material.Count() < 1)
             {
                 TempData["error"] = "Something Went Wrong Please Try Again";
-
                 return RedirectToAction("CreateProject");
+            }
+            else if (formData.Project.EndDate.HasValue && formData.Project.StartDate == null)
+            {
+                return RedirectToPageWithMessage("error", "If you add an end date you need to add a start date", "CreateProject", "Project");
             }
 
             var newProject = new Project()
@@ -114,13 +119,52 @@ namespace Project_Manager.Controllers
                 UserId = userId,
                 StartDate = formData.Project.StartDate,
                 EndDate = formData.Project.EndDate,
-                BeforeImage = formData.Project.BeforeImage,
-                AfterImage = formData.Project.AfterImage,
-                PatternLink = formData.Project.PatternLink,
-                Sketch = formData.Project.Sketch,
             };
 
             db.Project.Add(newProject);
+            db.SaveChanges();
+
+            var lasInsertedId = db.Project.Max(p => p.Id);
+
+            if (formData.BeforeImageFile != null)
+            {
+                if (!acceptedImageFiles.IsMatch(formData.BeforeImageFile.FileName))
+                {
+                    return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
+                }
+                newProject.BeforeImage = CreateFilePath(formData.BeforeImageFile, lasInsertedId, "BeforeImageFile");
+            }
+            else if (formData.AfterImageFile != null)
+            {
+
+                if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
+                {
+                    return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
+                }
+
+                newProject.AfterImage = CreateFilePath(formData.AfterImageFile, lasInsertedId, "AfterImageFile");
+            }
+            else if (formData.SketchImageFile != null)
+            {
+                if (!acceptedImageFiles.IsMatch(formData.SketchImageFile.FileName))
+                {
+                    return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
+                }
+
+                newProject.Sketch = CreateFilePath(formData.SketchImageFile, lasInsertedId, "SketchImageFile");
+                db.Project.Update(newProject);
+            }
+            else if (formData.PatternFile != null)
+            {
+                if (!formData.PatternFile.FileName.Contains(".pdf"))
+                {
+                    return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
+                }
+
+                newProject.PatternLink = CreateFilePath(formData.PatternFile, lasInsertedId, "PatternFile");
+                db.Project.Update(newProject);
+            }
+
             db.SaveChanges();
 
             foreach (var item in formData.Material)
@@ -392,6 +436,12 @@ namespace Project_Manager.Controllers
         {
             TempData[messageType] = message;
             return RedirectToAction("index", new { id = projectId });
+        }
+
+        public IActionResult RedirectToPageWithMessage(string messageType, string message, string controller, string action)
+        {
+            TempData[messageType] = message;
+            return RedirectToAction(action, controller);
         }
 
         public void CheckRequiredFields(dynamic formInformation, int projectId)
