@@ -133,8 +133,10 @@ namespace Project_Manager.Controllers
                     return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
                 }
                 newProject.BeforeImage = CreateFilePath(formData.BeforeImageFile, lasInsertedId, "BeforeImageFile");
+                db.Project.Update(newProject);
+                db.SaveChanges();
             }
-            else if (formData.AfterImageFile != null)
+            if (formData.AfterImageFile != null)
             {
 
                 if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
@@ -143,8 +145,10 @@ namespace Project_Manager.Controllers
                 }
 
                 newProject.AfterImage = CreateFilePath(formData.AfterImageFile, lasInsertedId, "AfterImageFile");
+                db.Project.Update(newProject);
+                db.SaveChanges();
             }
-            else if (formData.SketchImageFile != null)
+            if (formData.SketchImageFile != null)
             {
                 if (!acceptedImageFiles.IsMatch(formData.SketchImageFile.FileName))
                 {
@@ -153,8 +157,9 @@ namespace Project_Manager.Controllers
 
                 newProject.Sketch = CreateFilePath(formData.SketchImageFile, lasInsertedId, "SketchImageFile");
                 db.Project.Update(newProject);
+                db.SaveChanges();
             }
-            else if (formData.PatternFile != null)
+            if (formData.PatternFile != null)
             {
                 if (!formData.PatternFile.FileName.Contains(".pdf"))
                 {
@@ -163,9 +168,8 @@ namespace Project_Manager.Controllers
 
                 newProject.PatternLink = CreateFilePath(formData.PatternFile, lasInsertedId, "PatternFile");
                 db.Project.Update(newProject);
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
 
             foreach (var item in formData.Material)
             {
@@ -242,11 +246,11 @@ namespace Project_Manager.Controllers
             {
                 return RedirectToProjectIdPage("error", "All input fields needs too be filled in", projectId);
             }
-            else if (formData.Project.EndDate.HasValue && formData.Project.StartDate == null)
+            if (formData.Project.EndDate.HasValue && formData.Project.StartDate == null)
             {
                 return RedirectToProjectIdPage("error", "If you add an end date you need to add a start date", projectId);
             }
-            else if (formData.BeforeImageFile != null)
+            if (formData.BeforeImageFile != null)
             {
                 if (!acceptedImageFiles.IsMatch(formData.BeforeImageFile.FileName))
                 {
@@ -257,7 +261,7 @@ namespace Project_Manager.Controllers
                 db.Project.Update(project);
                 db.SaveChanges();
             }
-            else if (formData.AfterImageFile != null)
+            if (formData.AfterImageFile != null)
             {
 
                 if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
@@ -266,8 +270,10 @@ namespace Project_Manager.Controllers
                 }
 
                 project.AfterImage = CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
+                db.Project.Update(project);
+                db.SaveChanges();
             }
-            else if (formData.SketchImageFile != null)
+            if (formData.SketchImageFile != null)
             {
                 if (!acceptedImageFiles.IsMatch(formData.SketchImageFile.FileName))
                 {
@@ -278,7 +284,7 @@ namespace Project_Manager.Controllers
                 db.Project.Update(project);
                 db.SaveChanges();
             }
-            else if (formData.PatternFile != null)
+            if (formData.PatternFile != null)
             {
                 if (!formData.PatternFile.FileName.Contains(".pdf"))
                 {
@@ -420,6 +426,11 @@ namespace Project_Manager.Controllers
             return;
         }
 
+        /*public async Task<string> SaveFile()
+        {
+
+        }*/
+
         public string CreateFilePath(IFormFile file, int projectId, string fileName)
         {
             var imageFile = Path.Combine(AppHelper.GetImageFolder(), $"{projectId}_{fileName}{Path.GetExtension(file.FileName)}");
@@ -428,6 +439,47 @@ namespace Project_Manager.Controllers
             {
                 file.CopyToAsync(stream);
             }
+
+            /*using (MemoryStream mStream = new())
+            {
+                file.CopyTo(mStream);
+            }*/
+
+            /*using var dataStream = new MemoryStream();
+            await imageFile.CopyToAsync(dataStream);*/
+
+            /*if (!string.IsNullOrEmpty(formData.BeforeImageFile.FileName))
+            {
+                //var dataStream = new MemoryStream();
+                //dataStream.CopyTo(formData.BeforeImage);
+                //var imageUrl = formData.BeforeImageFile.FileName;
+                //var image = Request.Form.Files["BeforeImage"];
+
+                //using MemoryStream ms = new MemoryStream();
+                //using MemoryStream ms = new MemoryStream();
+                //imageUrl.CopyTo(ms);
+                //image.CopyTo(ms);
+
+                //using var dataStream = new MemoryStream();
+                //imageUrl.CopyTo(dataStream);
+
+                //var extension = Path.GetExtension(imageUrl);
+
+                *//*using (MemoryStream mStream = new())
+                {
+                    formData.BeforeImage.CopyTo(mStream);
+                    userIdentity.Pfp = mStream.ToArray();
+                }*/
+
+            /*var extension = Path.GetExtension(ImageFile.FileName);//get file name
+            if (ImageExtensions.Contains(extension.ToUpperInvariant()))
+            {
+                using var dataStream = new MemoryStream();
+                await ImageFile.CopyToAsync(dataStream);
+                byte[] imageBytes = dataStream.ToArray(); // you can save this to your byte array variable and remove the 2 lines below
+                string base64String = Convert.ToBase64String(imageBytes);
+                User.UserPicture = base64String; // to save the image as base64String 
+            }*/
 
             return imageFile;
         }
