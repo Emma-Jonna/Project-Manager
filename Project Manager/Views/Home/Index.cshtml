@@ -11,7 +11,9 @@
 
     @if (TempData["success"] != null)
     {
-        <p>@Html.Encode(TempData["success"])</p>
+        <div class="message-success">
+            <p>@Html.Encode(TempData["success"])</p>
+        </div>
     }
     else if (TempData["error"] != null)
     {

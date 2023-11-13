@@ -2,17 +2,18 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
 }
 
     .project-cards-container li {
-        background-color: lightpink;
+        background-color: var(--parchment);
+        border: solid var(--black) 3px;
         display: inline-block;
-        border: solid black 3px;
         border-radius: 4px;
         padding: 1rem;
-        white-space: nowrap;        
+        white-space: nowrap;
     }
 
 .project-list-container {

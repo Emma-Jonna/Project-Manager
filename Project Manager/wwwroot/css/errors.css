@@ -6,3 +6,15 @@
     gap: 2rem;
     margin-top: 4rem;
 }
+
+.message-success {
+    background-color: var(--bright-orange);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.message-error {
+    background-color: var(--red);
+    padding: 1.5rem;
+    border-radius: 4px;
+}

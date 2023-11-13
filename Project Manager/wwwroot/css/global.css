@@ -2,32 +2,38 @@
     /*Font Sizes*/
     /*    --p: 1rem;*/
     /*Colors*/
-    --black: #271620;
-    --white: #FFE1D4;
+    --black: #000000;
+    --white: #FFFCF2;
+    --purple-black: #271620;
+    --pink-white: #FFEFEF;
+    --pink-white: #FFE1D4;
     --dark-red: #61192C;
     --dark-purple: #4F3744;
     --light-purple: #774C60;
     --dark-pink: #B75D69;
     --light-orange: #FF8C61;
     --light-pink: #FFB499;
+    --parchment: #FCF5E5;
+    --red: #6F1D1B;
+    --bright-orange: #EB5E28;
+    --dark-brown: #432818;
+    --light-brown: #99582A;
+    --dark-sand: #BB9457;
+    --light-sand: #FFE6A7;
+    --grey-100: #B9B3B3;
+    --grey-200: #C8C1C1;
+    --grey-300: #E3DBDB;
+    --grey-400: #CCC5B9;
+    --grey-500: #403D39;
+    --grey-600: #252422;
 }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Courier Prime';
+    font-family: 'CourierPrime-Regular';
     color: var(--black);
-    /*font-family: 'Special Elite';*/
-    /*font-family: 'Rhodium Libre';*/
-    /*color: var(--black);*/
-    /*color: var(--white);*/
-    /*color: var(--dark-red);*/
-    /*color: var(--dark-purple);*/
-    /*color: var(--light-purple);*/
-    /*color: var(--dark-pink);*/
-    /*color: var(--light-orange);*/
-    /*color: var(--light-pink);*/
 }
 
 html {
@@ -43,20 +49,99 @@ body {
 }
 
 nav {
-    background-color: hotpink;
+    background-color: var(--grey-400);
     display: flex;
     flex-direction: row-reverse;
 }
 
 main {
-    background-color: aqua;
+    background-color: var(--grey-400);
     padding: 2rem;
 }
 
 footer {
-    background-color: red;
+    background-color: var(--grey-400);
 }
 
 a {
     text-decoration: none;
+}
+
+
+
+
+
+.special-elite {
+    font-family: 'SpecialElite';
+    font-size: 2rem;
+}
+
+.rhodium-libre {
+    font-family: 'RhodiumLibre';
+    font-size: 2rem;
+}
+
+.courier-prime-regular {
+    font-family: 'CourierPrime-Regular';
+    font-size: 2rem;
+}
+
+.courier-prime-bold {
+    font-family: 'CourierPrime-Bold';
+    font-size: 2rem;
+}
+
+.courier-prime-italic {
+    font-family: 'CourierPrime-Italic';
+    font-size: 2rem;
+}
+
+.courier-primebold-italic {
+    font-family: 'CourierPrime-BoldItalic';
+    font-size: 2rem;
+}
+
+.black {
+    background-color: var(--black);
+    color: white;
+    padding: 2rem;
+}
+
+.white {
+    background-color: var(--white);    
+    padding: 2rem;
+}
+
+.dark-red {
+    background-color: var(--dark-red);
+    color: white;
+    padding: 2rem;
+}
+
+.dark-purple {
+    background-color: var(--dark-purple);
+    color: white;
+    padding: 2rem;
+}
+
+.dark-pink {
+    background-color: var(--dark-pink);
+    color: white;
+    padding: 2rem;
+}
+
+.light-purple {
+    background-color: var(--light-purple);
+    padding: 2rem;
+}
+
+
+.light-orange {
+    background-color: var(--light-orange);
+    padding: 2rem;
+}
+
+.light-pink {
+    background-color: var(--light-pink);
+    padding: 2rem;
 }

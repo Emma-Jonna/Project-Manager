@@ -5,18 +5,13 @@
 
 <section class="project-info-page">
     <section class="project-info-wrapper">
-        <div class="message-error">
-            <p>If you add an end date you need to add a start date</p>
-        </div>
+        @if (TempData["error"] != null)
+        {
+            <div class="message-error">
+                <p>@Html.Encode(TempData["error"])</p>
+            </div>
+        }
         <section class="project-info-container">
-            @if (TempData["error"] != null)
-            {
-                <div class="message-error">
-                    <p>@Html.Encode(TempData["error"])</p>
-                </div>
-            }
-
-
             <h3>@Model.Name</h3>
 
             <div>
@@ -74,41 +69,56 @@
 
             <div class="project-before-image-container">
                 <h4>Before Image</h4>
-                @{
-                    if (File.Exists(Model.BeforeImage))
-                    {
-                        var beforeImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.BeforeImage}";
+                <div class="before-image-img">
+                    @{
+                        if (File.Exists(Model.BeforeImage))
+                        {
+                            var beforeImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.BeforeImage}";
 
-                        <img src="@beforeImageData" style="height: 100px" />
+                            <img src="@beforeImageData" class="project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="project-image" />
+                        }
                     }
-                    <p>@Model.BeforeImage</p>
-                }
+                </div>
             </div>
 
             <div class="project-after-image-container">
                 <h4>After Image</h4>
+                <div class="after-image-img">
                 @{
                     if (File.Exists(Model.AfterImage))
                     {
                         var afterImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.AfterImage}";
 
-                        <img src="@afterImageData" style="height: 100px" />
+                        <img src="@afterImageData" class="project-image" />
                     }
-                    <p>@Model.AfterImage</p>
+                    else
+                    {
+                        <img src="~/lib/icons/noImage.svg" class="project-image" />
+                    }
                 }
+                </div>
             </div>
 
             <div class="project-sketch-container">
                 <h4>Sketch</h4>
+                <div class="sketch-img">
                 @{
                     if (File.Exists(Model.Sketch))
                     {
                         var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Sketch}";
 
-                        <img src="@sketchImageData" style="height: 100px" />
+                        <img src="@sketchImageData" class="project-image" />
                     }
-                    <p>@Model.Sketch</p>
+                    else
+                    {
+                        <img src="~/lib/icons/noImage.svg" class="project-image" />
+                    }
                 }
+                </div>
             </div>
 
             <div class="project-pattern-link-container">
@@ -121,8 +131,11 @@
                         <a href="@patternLinkData">Link To Pattern</a>
                         <embed src="@patternLinkData" />
                     }
+                    else
+                    {
+                        <img src="~/lib/icons/noImage.svg" class="project-image" />
+                    }
                 }
-                <p>@Model.PatternLink</p>
             </div>
         </section>
 

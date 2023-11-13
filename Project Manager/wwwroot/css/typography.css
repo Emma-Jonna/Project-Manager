@@ -1,11 +1,15 @@
-﻿h1, h2, h3 {
-/*    font-family: 'Special Elite';*/
-    font-family: 'Rhodium Libre';
+﻿h1, h2 {
+    /*    font-family: 'Special Elite';*/
+    font-family: 'SpecialElite';
 }
 
-.sign-in-page h2, .sign-up-page h2 {
+.delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p{
+    color: var(--white);
+}
+
+.sign-in-page h2, .sign-up-page h2, h1 {
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: 400;    
 }
 
 .sign-in-form p, .sign-up-form p {
@@ -16,3 +20,4 @@
 .sign-in-button, .register-redirect-button, .sign-up-button, .go-back-button {
     font-size: 1rem;
 }
+
