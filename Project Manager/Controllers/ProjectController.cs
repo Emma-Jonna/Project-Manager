@@ -38,7 +38,9 @@ namespace Project_Manager.Controllers
 
             var ext = Path.GetExtension(fileName).Substring(1).ToLower();
 
-            Console.Write(ext);
+            /* Console.Write(fileName);
+             Console.Write(ext);
+             Console.WriteLine();*/
 
             switch (ext)
             {
@@ -50,7 +52,6 @@ namespace Project_Manager.Controllers
                     {
                         return File(eventBytes, "image/jpeg");
                     }
-
                 case "png":
                     {
                         return File(eventBytes, "image/png");
@@ -62,6 +63,9 @@ namespace Project_Manager.Controllers
             }
 
             return File(eventBytes, "application/octet-stream");
+            /*MemoryStream ms = new MemoryStream(ext);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;*/
         }
 
 
@@ -88,7 +92,7 @@ namespace Project_Manager.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult CreateNewProject(CreateProject formData)
+        public async Task<IActionResult> CreateNewProject(CreateProject formData)
         {
             if (User.FindFirst("UserId") == null)
             {
@@ -132,7 +136,7 @@ namespace Project_Manager.Controllers
                 {
                     return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
                 }
-                newProject.BeforeImage = CreateFilePath(formData.BeforeImageFile, lasInsertedId, "BeforeImageFile");
+                newProject.BeforeImage = await CreateFilePath(formData.BeforeImageFile, lasInsertedId, "BeforeImageFile");
             }
             if (formData.AfterImageFile != null)
             {
@@ -142,7 +146,7 @@ namespace Project_Manager.Controllers
                     return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
                 }
 
-                newProject.AfterImage = CreateFilePath(formData.AfterImageFile, lasInsertedId, "AfterImageFile");
+                newProject.AfterImage = await CreateFilePath(formData.AfterImageFile, lasInsertedId, "AfterImageFile");
             }
             if (formData.SketchImageFile != null)
             {
@@ -151,7 +155,7 @@ namespace Project_Manager.Controllers
                     return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
                 }
 
-                newProject.Sketch = CreateFilePath(formData.SketchImageFile, lasInsertedId, "SketchImageFile");
+                newProject.Sketch = await CreateFilePath(formData.SketchImageFile, lasInsertedId, "SketchImageFile");
             }
             if (formData.PatternFile != null)
             {
@@ -160,7 +164,7 @@ namespace Project_Manager.Controllers
                     return RedirectToPageWithMessage("error", "Wrong file type", "CreateProject", "Project");
                 }
 
-                newProject.PatternLink = CreateFilePath(formData.PatternFile, lasInsertedId, "PatternFile");
+                newProject.PatternLink = await CreateFilePath(formData.PatternFile, lasInsertedId, "PatternFile");
             }
 
             db.Project.Update(newProject);
@@ -208,7 +212,7 @@ namespace Project_Manager.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult UpdateProjectInfo(EditProject formData)
+        public async Task<IActionResult> UpdateProjectInfo(EditProject formData)
         {
             var materials = formData.Material.ToList();
 
@@ -252,17 +256,16 @@ namespace Project_Manager.Controllers
                     return RedirectToProjectIdPage("error", "Wrong file type", projectId);
                 }
 
-                project.BeforeImage = CreateFilePath(formData.BeforeImageFile, formData.Project.Id, "BeforeImageFile");
+                project.BeforeImage = await CreateFilePath(formData.BeforeImageFile, formData.Project.Id, "BeforeImageFile");
             }
             if (formData.AfterImageFile != null)
             {
-
                 if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
                 {
                     return RedirectToProjectIdPage("error", "Wrong file type", projectId);
                 }
 
-                project.AfterImage = CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
+                project.AfterImage = await CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
             }
             if (formData.SketchImageFile != null)
             {
@@ -271,7 +274,7 @@ namespace Project_Manager.Controllers
                     return RedirectToProjectIdPage("error", "Wrong file type", projectId);
                 }
 
-                project.Sketch = CreateFilePath(formData.SketchImageFile, formData.Project.Id, "SketchImageFile");
+                project.Sketch = await CreateFilePath(formData.SketchImageFile, formData.Project.Id, "SketchImageFile");
             }
             if (formData.PatternFile != null)
             {
@@ -280,7 +283,7 @@ namespace Project_Manager.Controllers
                     return RedirectToProjectIdPage("error", "Wrong file type", projectId);
                 }
 
-                project.PatternLink = CreateFilePath(formData.PatternFile, formData.Project.Id, "PatternFile");
+                project.PatternLink = await CreateFilePath(formData.PatternFile, formData.Project.Id, "PatternFile");
             }
 
             project.Name = formData.Project.Name;
@@ -413,7 +416,7 @@ namespace Project_Manager.Controllers
             return;
         }
 
-        public string CreateFilePath(IFormFile file, int projectId, string fileName)
+        public async Task<string> CreateFilePath(IFormFile file, int projectId, string fileName)
         {
             var imageFile = Path.Combine(AppHelper.GetImageFolder(), $"{projectId}_{fileName}{Path.GetExtension(file.FileName)}");
 
@@ -424,8 +427,10 @@ namespace Project_Manager.Controllers
                     stream.Position = 0;
                 }
 
-                file.CopyToAsync(stream);
+                await file.CopyToAsync(stream);
             }
+
+            Console.WriteLine(imageFile);
 
             return imageFile;
         }

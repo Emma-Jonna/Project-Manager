@@ -88,54 +88,59 @@
             <div class="project-after-image-container">
                 <h4>After Image</h4>
                 <div class="after-image-img">
-                @{
-                    if (File.Exists(Model.AfterImage))
-                    {
-                        var afterImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.AfterImage}";
+                    @{
+                        if (File.Exists(Model.AfterImage))
+                        {
+                            var afterImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.AfterImage}";
 
-                        <img src="@afterImageData" class="project-image" />
+                            <img src="@afterImageData" class="project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="project-image" />
+                        }
                     }
-                    else
-                    {
-                        <img src="~/lib/icons/noImage.svg" class="project-image" />
-                    }
-                }
                 </div>
             </div>
 
             <div class="project-sketch-container">
                 <h4>Sketch</h4>
                 <div class="sketch-img">
-                @{
-                    if (File.Exists(Model.Sketch))
-                    {
-                        var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Sketch}";
+                    @{
+                        if (File.Exists(Model.Sketch))
+                        {
+                            var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Sketch}";
 
-                        <img src="@sketchImageData" class="project-image" />
+                            <img src="@sketchImageData" class="project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="project-image" />
+                        }
                     }
-                    else
-                    {
-                        <img src="~/lib/icons/noImage.svg" class="project-image" />
-                    }
-                }
                 </div>
             </div>
 
             <div class="project-pattern-link-container">
                 <h4>Pattern</h4>
-                @{
-                    if (File.Exists(Model.PatternLink))
-                    {
-                        var patternLinkData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.PatternLink}";
+                <div class="pattern-link">
+                    @{
+                        if (File.Exists(Model.PatternLink))
+                        {
+                            var patternLinkData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.PatternLink}";
 
-                        <a href="@patternLinkData">Link To Pattern</a>
-                        <embed src="@patternLinkData" />
+                            <a href="@patternLinkData">Link To Pattern</a>
+                            <object data="@patternLinkData" type="application/pdf" width="750px" height="750px">
+                                <embed src="@patternLinkData" type="application/pdf" />
+
+                            </object>
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="project-image" />
+                        }
                     }
-                    else
-                    {
-                        <img src="~/lib/icons/noImage.svg" class="project-image" />
-                    }
-                }
+                </div>
             </div>
         </section>
 
