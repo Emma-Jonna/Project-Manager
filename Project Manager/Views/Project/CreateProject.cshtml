@@ -6,8 +6,7 @@
 <secion class="create-project-page">
     <section class="create-project-wrapper">
         <section class="create-project-container">
-
-            <h1>CreateProject</h1>
+            <h3>CreateProject</h3>
 
             @if (TempData["error"] != null)
             {
@@ -17,12 +16,12 @@
             }
 
             <form class="create-project-form" method="post" asp-controller="Project" asp-action="CreateNewProject" enctype="multipart/form-data">
-                <label>
+                <label class="form-name">
                     <h4>Project Name</h4>
                     <input name="Project.Name" type="text" />
                 </label>
 
-                <label>
+                <label class="form-category">
                     <h4>Project Category</h4>
                     <select name="Project.CategoryId">
                         <option value="0">Choose project category</option>
@@ -33,7 +32,7 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-type">
                     <h4>Project Type</h4>
                     <select name="Project.TypeId">
                         <option value="0">Choose project type</option>
@@ -44,7 +43,7 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-status">
                     <h4>Project Status</h4>
                     <select name="Project.StatusId">
                         <option value="0">Choose project status</option>
@@ -55,9 +54,9 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-description">
                     <h4>Description</h4>
-                    <textarea name="Project.Description" rows="4" cols="50"></textarea>
+                    <textarea name="Project.Description" rows="10" cols="60"></textarea>
                 </label>
 
                 <label>
@@ -72,35 +71,35 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="add-material-button">Add New Material</div>
+                    <div class="add-material-button"><p>Add Material</p></div>
                 </label>
 
-                <label>
+                <label class="form-date">
                     <h4>Start date</h4>
                     <input type="date" name="Project.StartDate" />
                 </label>
 
-                <label>
+                <label class="form-date">
                     <h4>End date</h4>
                     <input type="date" name="Project.EndDate" />
                 </label>
 
                 <label class="before-image-container">
                     <h4>Before Image</h4>
-                    <img src="" hidden class="before-image-preview" />
-                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, .jpeg, .png" />
+                    <img src="~/lib/icons/noImage.svg" class="before-image-preview project-image" />
+                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, .jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="after-image-container">
                     <h4>After Image</h4>
-                    <img src="" hidden class="after-image-preview" />
-                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, .jpeg, .png" />
+                    <img src="~/lib/icons/noImage.svg" class="after-image-preview project-image" />
+                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, .jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
-                    <img src="" hidden class="sketch-image-preview" />
-                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, .jpeg, .png" />
+                    <img src="~/lib/icons/noImage.svg" class="sketch-image-preview project-image" />
+                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, .jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="pattern-container">

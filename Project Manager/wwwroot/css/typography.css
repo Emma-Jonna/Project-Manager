@@ -1,15 +1,56 @@
-﻿h1, h2 {
+﻿h1 {
     /*    font-family: 'Special Elite';*/
     font-family: 'SpecialElite';
+    font-size: 2.7rem;
 }
 
-.delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p{
-    color: var(--white);
+.project-card h3 {
+    font-size: 1.8rem;
 }
 
-.sign-in-page h2, .sign-up-page h2, h1 {
-    font-size: 2.5rem;
-    font-weight: 400;    
+.update-project-page h3, .create-project-page h3 {
+    font-size: 2.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.update-project-page h4, .create-project-page h4 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.project-card p {
+    font-size: 1.2rem;
+    font-family: "CourierPrime-Italic"
+}
+
+    .project-info-container h3 {
+        font-size: 3rem;
+    }
+
+.project-info-container h4 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.project-info-container p, .pattern-link a {
+    font-size: 1.2rem;
+}
+
+.form-description textarea, .form-date input, .form-category select, .form-type select, .form-status select {
+    font-size: 1rem;
+}
+
+.form-date input, .form-category select, .form-type select, .form-status select {
+    font-family: "CourierPrime-Bold";
+}
+
+    .delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p {
+        color: var(--white);
+    }
+
+.sign-in-page h2, .sign-up-page h2 {
+    font-size: 3.5rem;
+    font-family: CourierPrime-Bold;
 }
 
 .sign-in-form p, .sign-up-form p {

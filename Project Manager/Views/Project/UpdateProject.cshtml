@@ -6,15 +6,15 @@
 <section class="update-project-page">
     <secion class="update-project-wrapper">
         <section class="update-project-container">
-            <h2>UpdateProject</h2>
+            <h3>UpdateProject</h3>
 
             <form class="update-project-form" method="post" asp-controller="Project" asp-action="UpdateProjectInfo" enctype="multipart/form-data">
-                <label>
+                <label class="form-name">
                     <h4>Name</h4>
                     <input name="Project.Name" value="@Model.Project.Name" />
                 </label>
 
-                <label>
+                <label class="form-category">
                     <h4>Project Category</h4>
                     <select name="Project.CategoryId">
                         @foreach (var item in Model.Category)
@@ -32,7 +32,7 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-type">
                     <h4>Project Type</h4>
                     <select name="Project.TypeId">
                         @foreach (var item in Model.Type)
@@ -50,7 +50,7 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-status">
                     <h4>Project Status</h4>
                     <select name="Project.StatusId">
                         @foreach (var item in Model.Status)
@@ -68,9 +68,9 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="form-description">
                     <h4>Description</h4>
-                    <textarea name="Project.Description" rows="4" cols="50">@Model.Project.Description</textarea>
+                    <textarea name="Project.Description" rows="10" cols="60">@Model.Project.Description</textarea>
                 </label>
 
                 <label>
@@ -107,15 +107,15 @@
                         }
 
                     </ul>
-                    <div class="add-material-button">Add New Material</div>
+                    <div class="add-material-button"><p>Add Material</p></div>
                 </label>
 
-                <label>
+                <label class="form-date">
                     <h4>Start date</h4>
                     <input type="date" name="Project.StartDate" value="@(Model.Project.StartDate.HasValue ? @Model.Project.StartDate.Value.ToString("yyyy-MM-dd") : "" )" />
                 </label>
 
-                <label>
+                <label class="form-date">
                     <h4>End date</h4>
                     <input type="date" name="Project.EndDate" value="@(Model.Project.EndDate.HasValue ? @Model.Project.EndDate.Value.ToString("yyyy-MM-dd") : "" )" />
                 </label>
@@ -135,7 +135,7 @@
                         }
                     }
                     <img src="" hidden class="before-image-preview" />
-                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
+                    <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="after-image-container">
@@ -174,7 +174,7 @@
 
                 <label class="pattern-container">
                     <h4>Pattern Link</h4>
-                    <input id="PatternFile" type="file" name="PatternFile" accept="application/pdf" />                    
+                    <input id="PatternFile" type="file" name="PatternFile" accept="application/pdf" />
                 </label>
 
                 <input name="Project.Id" value="@Model.Project.Id" hidden />
