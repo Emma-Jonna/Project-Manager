@@ -92,3 +92,10 @@
 .project-image {
     width: 70%;
 }
+
+.pattern-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

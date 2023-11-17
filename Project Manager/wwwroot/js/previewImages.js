@@ -5,15 +5,18 @@ const patternInput = document.getElementById("PatternFile");
 
 const changeImageFile = (element) => {
 
+    let elementInputImageSource = element.target.value;
+    let elementInputClasslist = element.target.classList;
     let elementParent = element.target.parentElement;
-    let elementSiblingImg = elementParent.children[1];    
+    let elementSiblingImg = elementParent.children[1];
 
-    if (elementSiblingImg.hasAttribute("hidden")) {
-        elementSiblingImg.removeAttribute("hidden");
-        elementSiblingImg.src = URL.createObjectURL(element.target.files[0]);
-    } else if (!elementSiblingImg.hasAttribute("hidden")) {
-        elementSiblingImg.setAttribute("hidden", true);
-        elementSiblingImg.src = "";
+    if (elementInputClasslist.contains("image-preview")) {
+
+        if (elementInputImageSource == "") {
+            elementSiblingImg.src = "/lib/icons/noImage.svg";
+        } else{
+            elementSiblingImg.src = URL.createObjectURL(element.target.files[0]);
+        }
     }
 }
 

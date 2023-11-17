@@ -38,10 +38,6 @@ namespace Project_Manager.Controllers
 
             var ext = Path.GetExtension(fileName).Substring(1).ToLower();
 
-            /* Console.Write(fileName);
-             Console.Write(ext);
-             Console.WriteLine();*/
-
             switch (ext)
             {
                 case "jpg":
@@ -63,9 +59,6 @@ namespace Project_Manager.Controllers
             }
 
             return File(eventBytes, "application/octet-stream");
-            /*MemoryStream ms = new MemoryStream(ext);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;*/
         }
 
 
@@ -258,6 +251,7 @@ namespace Project_Manager.Controllers
 
                 project.BeforeImage = await CreateFilePath(formData.BeforeImageFile, formData.Project.Id, "BeforeImageFile");
             }
+
             if (formData.AfterImageFile != null)
             {
                 if (!acceptedImageFiles.IsMatch(formData.AfterImageFile.FileName))
@@ -267,6 +261,7 @@ namespace Project_Manager.Controllers
 
                 project.AfterImage = await CreateFilePath(formData.AfterImageFile, formData.Project.Id, "AfterImageFile");
             }
+
             if (formData.SketchImageFile != null)
             {
                 if (!acceptedImageFiles.IsMatch(formData.SketchImageFile.FileName))
@@ -276,6 +271,7 @@ namespace Project_Manager.Controllers
 
                 project.Sketch = await CreateFilePath(formData.SketchImageFile, formData.Project.Id, "SketchImageFile");
             }
+
             if (formData.PatternFile != null)
             {
                 if (!formData.PatternFile.FileName.Contains(".pdf"))

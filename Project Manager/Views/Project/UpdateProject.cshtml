@@ -122,31 +122,59 @@
 
                 <label class="before-image-container">
                     <h4>Before Image</h4>
-                    <img src="" hidden class="before-image-preview"/>
+                    @{
+                        if (File.Exists(Model.Project.BeforeImage))
+                        {
+                            var beforeImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Project.BeforeImage}";
+
+                            <img src="@beforeImageData" class="before-image-preview project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="before-image-preview project-image" />
+                        }
+                    }
+                    <img src="" hidden class="before-image-preview" />
                     <input id="BeforeImageFile" type="file" name="BeforeImageFile" accept=".jpg, jpeg, .png" />
-                    @* @Html.EditorFor(model=>model.BeforeImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
                 </label>
 
                 <label class="after-image-container">
                     <h4>After Image</h4>
-                    <img src="" hidden class="after-image-preview" />
-                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" />
-                    @* @Html.EditorFor(model=>model.AfterImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
+                    @{
+                        if (File.Exists(Model.Project.AfterImage))
+                        {
+                            var afterImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Project.AfterImage}";
+
+                            <img src="@afterImageData" class="after-image-preview project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="after-image-preview project-image" />
+                        }
+                    }
+                    <input id="AfterImageFile" type="file" name="AfterImageFile" accept=".jpg, jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="sketch-image-container">
                     <h4>Sketch</h4>
-                    <img src="" hidden class="sketch-image-preview" />
-                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" />
-                    @* @Html.EditorFor(model=>model.SketchImageFile, new {htmlAttributes = new {@accept = ".jpg, .jpeg, .png"}}) *@
+                    @{
+                        if (File.Exists(Model.Project.Sketch))
+                        {
+                            var sketchImageData = $"https://localhost:7006/Project/ConvertFileToImageSource?filename={Model.Project.Sketch}";
+
+                            <img src="@sketchImageData" class="sketch-image-preview project-image" />
+                        }
+                        else
+                        {
+                            <img src="~/lib/icons/noImage.svg" class="sketch-image-preview project-image" />
+                        }
+                    }
+                    <input id="SketchImageFile" type="file" name="SketchImageFile" accept=".jpg, jpeg, .png" class="image-preview" />
                 </label>
 
                 <label class="pattern-container">
                     <h4>Pattern Link</h4>
-                    <input id="PatternFile" type="file" name="PatternFile" accept="application/pdf" />
-                    <div>
-                        @* @Html.EditorFor(model=>model.PatternFile, new {htmlAttributes = new {@accept = ".pdf"}}) *@
-                    </div>
+                    <input id="PatternFile" type="file" name="PatternFile" accept="application/pdf" />                    
                 </label>
 
                 <input name="Project.Id" value="@Model.Project.Id" hidden />
