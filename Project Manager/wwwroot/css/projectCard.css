@@ -8,13 +8,18 @@
 }
 
     .project-cards-container li {
-        background-color: var(--ghost-white);
-        border: solid var(--black) 3px;
+        background-color: var(--dark-wood);
+        border: solid var(--dark-wood) 3px;
+        transition: 0.2s;
         display: inline-block;
-        border-radius: 4px;
         padding: 1rem;
         white-space: nowrap;
     }
+
+        .project-cards-container li:hover {
+            border: solid var(--cream) 3px;
+            border-radius: 4px;
+        }
 
 .project-list-container {
     display: flex;

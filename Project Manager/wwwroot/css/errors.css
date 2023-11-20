@@ -8,7 +8,7 @@
 }
 
 .message-success {
-    background-color: var(--bright-orange);
+    background-color: var(--blue);
     padding: 1.5rem;
     border-radius: 4px;
 }

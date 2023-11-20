@@ -17,14 +17,14 @@
     height: 30px;
 }
 
-    .update-project-wrapper, .create-project-wrapper {
-        display: flex;
-        flex-direction: column;
-        border: solid black 3px;
-        background-color: var(--parchment);
-        border-radius: 4px;
-        padding: 3rem 7rem 3rem 7rem;
-    }
+.update-project-wrapper, .create-project-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: solid black 3px;
+    background-color: var(--cream);
+    border-radius: 4px;
+    padding: 3rem 7rem 3rem 7rem;
+}
 
 .update-project-form, .create-project-form {
     display: flex;

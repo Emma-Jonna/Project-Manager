@@ -6,6 +6,7 @@
 
 .project-card h3 {
     font-size: 1.8rem;
+    color: var(--white);
 }
 
 .update-project-page h3, .create-project-page h3 {
@@ -20,12 +21,13 @@
 
 .project-card p {
     font-size: 1.2rem;
-    font-family: "CourierPrime-Italic"
+    font-family: "CourierPrime-Italic";
+    color: var(--white);
 }
 
-    .project-info-container h3 {
-        font-size: 3rem;
-    }
+.project-info-container h3 {
+    font-size: 3rem;
+}
 
 .project-info-container h4 {
     font-size: 1.5rem;
@@ -36,7 +38,7 @@
     font-size: 1.2rem;
 }
 
-.form-description textarea, .form-date input, .form-category select, .form-type select, .form-status select {
+.form-description textarea, .form-date input, .form-category select, .form-type select, .form-status select, .save-project-changes-button, .edit-project-button, .delete-project-button, .create-project-button {
     font-size: 1rem;
 }
 
@@ -44,9 +46,9 @@
     font-family: "CourierPrime-Bold";
 }
 
-    .delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p {
-        color: var(--white);
-    }
+.delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p {
+    color: var(--white);
+}
 
 .sign-in-page h2, .sign-up-page h2 {
     font-size: 3.5rem;
@@ -61,4 +63,3 @@
 .sign-in-button, .register-redirect-button, .sign-up-button, .go-back-button {
     font-size: 1rem;
 }
-
