@@ -8,7 +8,7 @@
 }
 
     .project-cards-container li {
-        background-color: var(--parchment);
+        background-color: var(--ghost-white);
         border: solid var(--black) 3px;
         display: inline-block;
         border-radius: 4px;

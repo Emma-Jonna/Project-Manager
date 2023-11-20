@@ -43,13 +43,13 @@
     flex-direction: column;
     gap: 1.5rem;
     border: solid black 3px;
-    background-color: var(--parchment);
+    background-color: var(--ghost-white);
     border-radius: 4px;
     padding: 3rem 7rem 3rem 7rem;
 }
 
 .project-info-material-list ul li div{
-    background-color: var(--white);
+    background-color: var(--black);
 }
 
 .project-info-container h4 {

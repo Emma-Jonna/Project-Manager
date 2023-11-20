@@ -4,28 +4,39 @@
     /*Colors*/
     --black: #000000;
     --white: #FFFCF2;
-    --purple-black: #271620;
-    --pink-white: #FFEFEF;
-    --pink-white: #FFE1D4;
-    --dark-red: #61192C;
-    --dark-purple: #4F3744;
-    --light-purple: #774C60;
-    --dark-pink: #B75D69;
-    --light-orange: #FF8C61;
-    --light-pink: #FFB499;
-    --parchment: #FCF5E5;
+    /*    --purple-black: #271620;*/
+    /*    --pink-white: #FFEFEF;*/
+    /*    --pink-white: #FFE1D4;*/
+    /*    --dark-red: #61192C;*/
+    /*    --dark-purple: #4F3744;*/
+    /*    --light-purple: #774C60;*/
+    /*    --dark-pink: #B75D69;*/
+    /*    --light-orange: #FF8C61;*/
+    /*    --light-pink: #FFB499;*/
+    /*    --parchment: #FCF5E5;*/
     --red: #6F1D1B;
     --bright-orange: #EB5E28;
-    --dark-brown: #432818;
-    --light-brown: #99582A;
-    --dark-sand: #BB9457;
-    --light-sand: #FFE6A7;
-    --grey-100: #B9B3B3;
-    --grey-200: #C8C1C1;
-    --grey-300: #E3DBDB;
-    --grey-400: #CCC5B9;
-    --grey-500: #403D39;
-    --grey-600: #252422;
+    /*    --dark-brown: #432818;*/
+    /*    --light-brown: #99582A;*/
+    /*    --dark-sand: #BB9457;*/
+    /*    --light-sand: #FFE6A7;*/
+    /*    --grey-100: #B9B3B3;*/
+    /*    --grey-200: #C8C1C1;*/
+    /*    --grey-300: #E3DBDB;*/
+    /*    --grey-400: #CCC5B9;*/
+    /*    --grey-500: #403D39;*/
+    /*    --grey-600: #252422;*/
+    /*    --dark-blue: #202C39;*/
+    /*    --light-blue: #648381;*/
+    /*    --raw-umber: #875E4A;*/
+    /*    --tan: #CBAC8B;*/
+    --ghost-white: #EDEDE6;
+    --parchment: #FCF5E5;
+    --russian-violet: #250835;
+    --english-violet: #4A4063;
+    --chinese-violet: #70527A;
+    --thistle: #BFACC8;
+    --french-grey: #C8C6D7;
 }
 
 * {
@@ -33,34 +44,36 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'CourierPrime-Regular';
+    /*    font-family: 'SpecialElite';*/
     color: var(--black);
 }
 
 html {
     height: 100%;
     width: 100%;
+    background-color: var(--french-grey);
 }
 
 body {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;   
 }
 
 nav {
-    background-color: var(--grey-400);
+    /*    background-color: var(--grey-400);*/
     display: flex;
     flex-direction: row-reverse;
 }
 
 main {
-    background-color: var(--grey-400);
+    /*    background-color: var(--tan);*/
     padding: 2rem;
 }
 
 footer {
-    background-color: var(--grey-400);
+    /*    background-color: var(--grey-400);*/
 }
 
 a {
@@ -108,7 +121,7 @@ a {
 }
 
 .white {
-    background-color: var(--white);    
+    background-color: var(--white);
     padding: 2rem;
 }
 
