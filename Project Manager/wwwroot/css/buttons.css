@@ -1,8 +1,8 @@
 ﻿.create-new-project-button {
     background-color: var(--blue);
-    color: var(--white);
-    width: 120px;
-    height: 50px;
+    /*    color: var(--white);*/
+    /*    width: 120px;*/
+    /*    height: 50px;*/   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,22 +11,26 @@
     transition: 0.7s;
 }
 
-nav a {
-    background-color: var(--blue);
-    color: var(--white);
-    width: 100px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    margin: 16px;
-    transition: 0.7s;
-}
+    .create-new-project-button img {
+        height: 3rem;
+    }
+
+    nav a {
+        background-color: var(--blue);
+        /*    color: var(--white);*/
+        width: 100px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        margin: 16px;
+        transition: 0.7s;
+    }
 
 .register-redirect-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 100px;
     height: 50px;
     display: flex;
@@ -39,7 +43,7 @@ nav a {
 
 .sign-in-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 100px;
     height: 40px;
     display: inline-block;
@@ -51,7 +55,7 @@ nav a {
 
 .sign-up-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 100px;
     height: 40px;
     display: inline-block;
@@ -74,7 +78,7 @@ nav a {
 
 .create-project-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     padding: 10px;
     display: inline-block;
     border-radius: 4px;
@@ -84,7 +88,7 @@ nav a {
 
 .delete-button-container {
     background-color: var(--red);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 80px;
     height: 30px;
     display: flex;
@@ -96,7 +100,7 @@ nav a {
 
 .delete-project-button {
     background-color: var(--red);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 100px;
     height: 40px;
     display: inline-block;
@@ -107,7 +111,7 @@ nav a {
 
 .add-material-button p {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     padding: 10px;
     display: inline-block;
     border-radius: 4px;
@@ -117,7 +121,7 @@ nav a {
 
 .edit-project-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     width: 100px;
     height: 40px;
     display: inline-block;
@@ -129,7 +133,7 @@ nav a {
 
 .save-project-changes-button {
     background-color: var(--blue);
-    color: var(--white);
+    /*    color: var(--white);*/
     padding: 10px;
     transition: 0.7s;
     display: inline-block;
@@ -139,10 +143,10 @@ nav a {
 
     .edit-project-button:hover, .add-material-button p:hover, .create-project-button:hover, .sign-up-button:hover, .save-project-changes-button:hover, .sign-in-button:hover, .create-new-project-button:hover, nav a:hover, .register-redirect-button:hover {
         cursor: pointer;
-        background-color: var(--dark-blue);
+        /*        background-color: var(--dark-blue);*/
     }
 
 .go-back-button:hover, .delete-button-container:hover, .delete-project-button:hover {
     cursor: pointer;
-    background-color: var(--dark-red);
+    /*    background-color: var(--dark-red);*/
 }

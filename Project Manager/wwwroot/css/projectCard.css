@@ -1,25 +1,38 @@
 ﻿.project-cards-container {
     list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-rows: repeat(auto-fill, 500px);
+    grid-row-gap: 2rem;
+    grid-column-gap: 2rem;
 }
 
     .project-cards-container li {
         background-color: var(--dark-wood);
-        border: solid var(--dark-wood) 3px;
-        transition: 0.2s;
-        display: inline-block;
+        border: solid var(--black) 3px;
         padding: 1rem;
         white-space: nowrap;
     }
 
-        .project-cards-container li:hover {
-            border: solid var(--cream) 3px;
-            border-radius: 4px;
+        .project-cards-container li:not(:last-child) img {
+            width: 100%;
         }
+
+        .project-cards-container li:last-child {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+.add-new-project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
 
 .project-list-container {
     display: flex;
@@ -27,4 +40,5 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding: 0 2rem 0 2rem;
 }

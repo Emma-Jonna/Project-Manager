@@ -2,11 +2,12 @@
     /*    font-family: 'Special Elite';*/
     font-family: 'SpecialElite';
     font-size: 2.7rem;
+/*    font-weight: 100;*/
 }
 
 .project-card h3 {
     font-size: 1.8rem;
-    color: var(--white);
+/*    color: var(--white);*/
 }
 
 .update-project-page h3, .create-project-page h3 {
@@ -22,7 +23,8 @@
 .project-card p {
     font-size: 1.2rem;
     font-family: "CourierPrime-Italic";
-    color: var(--white);
+/*    font-weight: 100;*/
+/*    color: var(--white);*/
 }
 
 .project-info-container h3 {
@@ -43,20 +45,20 @@
 }
 
 .form-date input, .form-category select, .form-type select, .form-status select {
-    font-family: "CourierPrime-Bold";
+/*    font-family: "CourierPrime-Bold";*/
 }
 
 .delete-button-container p, .go-back-button p, .register-redirect-button p, .create-new-project-button p, .message-error p, .message-success p {
-    color: var(--white);
+/*    color: var(--white);*/
 }
 
 .sign-in-page h2, .sign-up-page h2 {
     font-size: 3.5rem;
-    font-family: CourierPrime-Bold;
+/*    font-family: "CourierPrime-Bold";*/
 }
 
 .sign-in-form p, .sign-up-form p {
-    font-family: CourierPrime-Bold;
+/*    font-family: CourierPrime-Bold;*/
     font-size: 1.4rem;
 }
 

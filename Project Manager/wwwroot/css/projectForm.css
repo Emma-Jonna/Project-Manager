@@ -23,7 +23,8 @@
     border: solid black 3px;
     background-color: var(--cream);
     border-radius: 4px;
-    padding: 3rem 7rem 3rem 7rem;
+    /*    padding: 3rem 7rem 3rem 7rem;*/
+    padding: 3rem;
 }
 
 .update-project-form, .create-project-form {
@@ -33,25 +34,25 @@
     margin-bottom: 2rem;
 }
 
-    .form-name input, .material-name, .material-amount {
-        width: 250px;
-        height: 30px;
-        font-size: 1rem;
-        padding-left: 0.5rem;
-    }
+.form-name input, .material-name, .material-amount {
+    width: 250px;
+    height: 30px;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+}
 
-        .material-amount {
-            width: 125px;
-        }
+.material-amount {
+    width: 125px;
+}
 
-        .material-checkbox {
-            width: 18px;
-            height: 18px;
-        }
+.material-checkbox {
+    width: 18px;
+    height: 18px;
+}
 
-        .update-project-form div, .update-project-wrapper a, .create-project-form div, .create-project-wrapper a {
-            align-self: center;
-        }
+.update-project-form div, .update-project-wrapper a, .create-project-form div, .create-project-wrapper a {
+    align-self: center;
+}
 
 .materials-list {
     display: flex;
