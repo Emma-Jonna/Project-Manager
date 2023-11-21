@@ -20,7 +20,7 @@
     <header>
         @if (User.Identity.IsAuthenticated)
         {
-            <nav>                
+            <nav>
                 <a asp-controller="User" asp-action="SignOutUser">Logout</a>
                 <a asp-controller="" asp-action="">Profile</a>
                 <a asp-controller="Home" asp-action="Index">Home</a>

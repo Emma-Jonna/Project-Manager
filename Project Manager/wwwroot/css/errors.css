@@ -11,10 +11,12 @@
     background-color: var(--blue);
     padding: 1.5rem;
     border: solid black 3px;
+    margin: 2rem 0 3rem 0;
 }
 
 .message-error {
     background-color: var(--red);
     padding: 1.5rem;
     border: solid black 3px;
+    margin: 2rem 0 3rem 0;
 }
