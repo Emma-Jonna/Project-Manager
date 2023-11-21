@@ -1,9 +1,7 @@
 ﻿:root {
-    /*Font Sizes*/
-    /*    --p: 1rem;*/
     /*Colors*/
     --black: #000000;
-    --white: #FFFCF2;
+    --white: #FFFFFF;
     /*    --purple-black: #271620;*/
     /*    --pink-white: #FFEFEF;*/
     /*    --pink-white: #FFE1D4;*/
@@ -55,14 +53,14 @@
     box-sizing: border-box;
     font-family: 'CourierPrime-Regular';
     font-weight: 100;
-    /*    font-family: 'SpecialElite';*/
     /*    color: var(--white);*/
-    color: var(--black);
+    /*    color: var(--black);*/
 }
 
 html {
     height: 100%;
     width: 100%;
+    /*    background-color: gray;*/
 }
 
 body {
@@ -75,10 +73,13 @@ body {
 
 nav {
     /*    background-color: var(--cream);*/
-    /*    box-shadow: 0 4px 2px -2px var(--dark-wood);*/
     border-bottom: solid var(--black) 3px;
     display: flex;
     flex-direction: row-reverse;
+}
+
+nav a {
+    color: var(--black);
 }
 
 main {
@@ -91,85 +92,12 @@ footer {
     /*    background-color: var(--grey-400);*/
 }
 
+    footer div {
+        height: 200px;
+        padding: 3rem;
+        border-top: solid black 3px;
+    }
+
 a {
     text-decoration: none;
-}
-
-
-
-
-
-.special-elite {
-    font-family: 'SpecialElite';
-    font-size: 2rem;
-}
-
-.rhodium-libre {
-    font-family: 'RhodiumLibre';
-    font-size: 2rem;
-}
-
-.courier-prime-regular {
-    font-family: 'CourierPrime-Regular';
-    font-size: 2rem;
-}
-
-.courier-prime-bold {
-    font-family: 'CourierPrime-Bold';
-    font-size: 2rem;
-}
-
-.courier-prime-italic {
-    font-family: 'CourierPrime-Italic';
-    font-size: 2rem;
-}
-
-.courier-primebold-italic {
-    font-family: 'CourierPrime-BoldItalic';
-    font-size: 2rem;
-}
-
-.black {
-    background-color: var(--black);
-    color: white;
-    padding: 2rem;
-}
-
-.white {
-    background-color: var(--white);
-    padding: 2rem;
-}
-
-.dark-red {
-    background-color: var(--dark-red);
-    color: white;
-    padding: 2rem;
-}
-
-.dark-purple {
-    background-color: var(--dark-purple);
-    color: white;
-    padding: 2rem;
-}
-
-.dark-pink {
-    background-color: var(--dark-pink);
-    color: white;
-    padding: 2rem;
-}
-
-.light-purple {
-    background-color: var(--light-purple);
-    padding: 2rem;
-}
-
-
-.light-orange {
-    background-color: var(--light-orange);
-    padding: 2rem;
-}
-
-.light-pink {
-    background-color: var(--light-pink);
-    padding: 2rem;
 }

@@ -10,11 +10,11 @@
 .message-success {
     background-color: var(--blue);
     padding: 1.5rem;
-    border-radius: 4px;
+    border: solid black 3px;
 }
 
 .message-error {
     background-color: var(--red);
     padding: 1.5rem;
-    border-radius: 4px;
+    border: solid black 3px;
 }

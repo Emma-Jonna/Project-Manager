@@ -20,13 +20,22 @@
         <div class="message-error">
             <p>@Html.Encode(TempData["error"])</p>
         </div>
-    }
+    }    
 
     @if (Model.Count() == 0)
     {
-        <div>
-            <h2>You have no projects</h2>
-        </div>
+        <ul class="project-cards-container">
+            <li class="project-card-wrapper">
+                <a class="create-new-project-button" asp-controller="Project" asp-action="CreateProject">
+                    <div class="project-card">
+                        <div class="add-new-project-card">
+                            <h3>Create New Project</h3>
+                            <img src="~/lib/icons/plus.svg" />
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
     }
     else
     {
@@ -54,7 +63,7 @@
                     <div class="project-card">
                         <div class="add-new-project-card">
                             <h3>Create New Project</h3>
-                            <img src="~/lib/icons/plus.svg" />
+                             <img src="~/lib/icons/plus.svg" />
                         </div>
                     </div>
                 </a>

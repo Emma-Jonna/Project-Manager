@@ -354,6 +354,7 @@ namespace Project_Manager.Controllers
         {
             if (projectId == null)
             {
+                TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("Index", "Home");
             }
 
@@ -367,6 +368,7 @@ namespace Project_Manager.Controllers
 
             if (projectToDelete == null)
             {
+                TempData["error"] = "Something Went Wrong Please Try Again";
                 return RedirectToAction("Index", "Home");
             }
             else if (materialsToDelete == null)
@@ -386,6 +388,7 @@ namespace Project_Manager.Controllers
             db.Project.Remove(projectToDelete);
             db.SaveChanges();
 
+            TempData["success"] = "Successfully deleted project";
             return RedirectToAction("Index", "Home");
         }
 

@@ -9,30 +9,41 @@
 }
 
     .project-cards-container li {
-        background-color: var(--dark-wood);
+        background-color: var(--white);        
         border: solid var(--black) 3px;
         padding: 1rem;
         white-space: nowrap;
+        transition: 0.3s;
     }
+
+        .project-cards-container li:hover {
+            box-shadow: 10px 10px var(--black);
+        }
 
         .project-cards-container li:not(:last-child) img {
             width: 100%;
         }
 
-        .project-cards-container li:last-child {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            .project-cards-container li:last-child {
+                width: 100%;
+                height: 502.4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-.add-new-project-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
+                .project-cards-container li:last-child a {
+                    height: 100%;
+                }
+
+                .add-new-project-card {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2rem;
+                    color: var(--black);
+                }
 
 .project-list-container {
     display: flex;
@@ -40,5 +51,10 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding: 0 2rem 0 2rem;
+    padding: 0 2rem 0 2rem;    
+}
+
+.project-card {
+    color: var(--black);
+    transition: 0.3s;
 }

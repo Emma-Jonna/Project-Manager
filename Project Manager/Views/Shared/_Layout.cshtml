@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Project_Manager</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="icon" type="image/x-icon" href="~/lib/icons/logo.svg">
-    <link rel="stylesheet" href="~/css/fonts.css"/>
+    <link rel="stylesheet" href="~/css/fonts.css" />
     <link rel="stylesheet" href="~/css/typography.css" />
     <link rel="stylesheet" href="~/css/global.css" />
     <link rel="stylesheet" href="~/css/projectCard.css" />
@@ -18,22 +18,23 @@
 </head>
 <body>
     <header>
-        <nav>            
-            @*<a class="" asp-controller="Home" asp-action="Index">Dashboard</a>*@
-            @if (User.Identity.IsAuthenticated)
-            {
-                @* <p>Profile</p> *@
-                @* <p>Filter</p> *@
-                <a asp-controller="User" asp-action="SignOutUser">Loggout</a>
-            }
-        </nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav>                
+                <a asp-controller="User" asp-action="SignOutUser">Logout</a>
+                <a asp-controller="" asp-action="">Profile</a>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </nav>
+        }
     </header>
     <main role="main" class="">
         @RenderBody()
     </main>
 
     <footer>
-        @* <p>Footer</p> *@
+        @* <div>
+            <p>Footer</p>
+        </div> *@
     </footer>
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@

@@ -1,9 +1,9 @@
 <svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="350" height="350" fill="#E4E4E4"/>
-<rect x="56" y="127.786" width="237.887" height="139.934" rx="16" fill="#ACACAC"/>
-<circle cx="174.944" cy="197.753" r="48.9768" fill="#E4E4E4"/>
-<circle cx="174.944" cy="197.753" r="34.9834" fill="#ACACAC"/>
-<path d="M118.97 99.8062C118.97 94.2833 123.447 89.8062 128.97 89.8062H220.917C226.44 89.8062 230.917 94.2833 230.917 99.8062V131.786H118.97V99.8062Z" fill="#ACACAC"/>
-<rect x="201.59" y="97.1116" width="27.9867" height="86.7589" rx="10" transform="rotate(-19 201.59 97.1116)" fill="#ACACAC"/>
-<rect x="122.427" y="88.0075" width="27.9867" height="86.7589" rx="10" transform="rotate(19 122.427 88.0075)" fill="#ACACAC"/>
+<rect width="350" height="350" fill="#060606"/>
+<rect x="56" y="127.786" width="237.887" height="139.934" rx="16" fill="white"/>
+<circle cx="174.944" cy="197.753" r="48.9768" fill="#060606"/>
+<circle cx="174.944" cy="197.753" r="34.9834" fill="white"/>
+<path d="M118.97 99.8062C118.97 94.2833 123.447 89.8062 128.97 89.8062H220.917C226.44 89.8062 230.917 94.2833 230.917 99.8062V131.786H118.97V99.8062Z" fill="white"/>
+<rect x="201.59" y="97.1116" width="27.9867" height="86.7589" rx="10" transform="rotate(-19 201.59 97.1116)" fill="white"/>
+<rect x="122.427" y="88.0075" width="27.9867" height="86.7589" rx="10" transform="rotate(19 122.427 88.0075)" fill="white"/>
 </svg>

@@ -3,19 +3,23 @@
     height: 20px;
 }
 
-    .project-info-page {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.project-info-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+    .project-info-page a {
+        color: var(--black);
     }
 
-.project-info-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    width: 80%;
-    padding: 3rem;
-}
+    .project-info-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        width: 80%;
+        padding: 3rem;
+    }
 
 .project-button-container {
     display: flex;
@@ -75,12 +79,6 @@
 .project-info-description p{
     white-space: pre-wrap;
 }
-
-/*.before-image-img, .after-image-img, .sketch-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
 
 .project-image {
     width: 70%;

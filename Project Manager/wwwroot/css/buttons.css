@@ -1,152 +1,126 @@
 ﻿.create-new-project-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    /*    width: 120px;*/
-    /*    height: 50px;*/   
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
     text-align: center;
-    transition: 0.7s;
 }
 
     .create-new-project-button img {
         height: 3rem;
     }
 
-    nav a {
-        background-color: var(--blue);
-        /*    color: var(--white);*/
-        width: 100px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        margin: 16px;
-        transition: 0.7s;
-    }
-
-.register-redirect-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    width: 100px;
-    height: 50px;
+nav a {
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    margin: 16px;
+    border: solid black 3px;
+    padding: 1rem;
+}
+
+.register-redirect-button {
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
+    color: var(--black);
 }
 
 .sign-in-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    width: 100px;
-    height: 40px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
     align-self: center;
     border: none;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 .sign-up-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    width: 100px;
-    height: 40px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
     align-self: center;
-    border: none;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 .go-back-button {
-    background-color: var(--red);
-    width: 100px;
-    height: 40px;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 .create-project-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    padding: 10px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
-    border: none;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 .delete-button-container {
-    background-color: var(--red);
-    /*    color: var(--white);*/
-    width: 80px;
-    height: 30px;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 0.6rem;
 }
 
 .delete-project-button {
-    background-color: var(--red);
-    /*    color: var(--white);*/
-    width: 100px;
-    height: 40px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
-    border: none;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 .add-material-button p {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    padding: 10px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
     text-align: center;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 0.6rem;
 }
 
 .edit-project-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    width: 100px;
-    height: 40px;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
-    border: none;
-    transition: 0.7s;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
 
 .save-project-changes-button {
-    background-color: var(--blue);
-    /*    color: var(--white);*/
-    padding: 10px;
-    transition: 0.7s;
+    background-color: var(--white);
     display: inline-block;
-    border-radius: 4px;
-    border: none;
+    border: solid black 3px;
+    padding: 1rem;
 }
 
-    .edit-project-button:hover, .add-material-button p:hover, .create-project-button:hover, .sign-up-button:hover, .save-project-changes-button:hover, .sign-in-button:hover, .create-new-project-button:hover, nav a:hover, .register-redirect-button:hover {
+    .edit-project-button:hover, .add-material-button p:hover, .sign-up-button:hover, .save-project-changes-button:hover, .sign-in-button:hover, .create-project-button:hover, .register-redirect-button:hover, .go-back-button:hover, .delete-button-container:hover, .delete-project-button:hover {
         cursor: pointer;
-        /*        background-color: var(--dark-blue);*/
+        color: var(--white);
+        background-color: var(--black);
     }
 
-.go-back-button:hover, .delete-button-container:hover, .delete-project-button:hover {
+nav a:hover {
     cursor: pointer;
-    /*    background-color: var(--dark-red);*/
+    color: var(--white);
+    background-color: var(--black);
+    border-color: var(--white);
+    box-shadow: 8px 8px var(--black);
+}
+
+.create-new-project-button:hover {
+    cursor: pointer;
+}
+
+.edit-project-button, .add-material-button p, .sign-up-button, .save-project-changes-button, .sign-in-button, .create-project-button, nav a, .register-redirect-button, .go-back-button, .delete-button-container, .delete-project-button {
+    transition: 0.3s;
 }
