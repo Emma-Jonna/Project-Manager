@@ -80,6 +80,10 @@ nav a {
     padding: 1rem;
 }
 
+.add-material-button {
+    display: inline-block;
+}
+
 .add-material-button p {
     background-color: var(--white);
     display: inline-block;
